@@ -1,0 +1,17 @@
+{
+  "notice": {
+    "label": "NOTICE",
+    "text": "Official launch coming soon — Operonix platform is currently in final preparation phase."
+  },
+  "header": {
+    "modules": "Modules",
+    "automotive": "Automotive",
+    "solutions": "Solutions",
+    "about": "About",
+    "signIn": "Sign In",
+    "requestDemo": "Request Demo"
+  },
+  "footer": {
+    "description": "Enterprise manufacturing platform for industrial excellence."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "notice": {
+    "label": "OBAVIJEST",
+    "text": "Zvanično lansiranje uskoro — Operonix platforma je u završnoj fazi pripreme."
+  },
+  "header": {
+    "modules": "Moduli",
+    "automotive": "Automobilska industrija",
+    "solutions": "Rješenja",
+    "about": "O nama",
+    "signIn": "Prijava",
+    "requestDemo": "Zatraži demo"
+  },
+  "footer": {
+    "description": "Enterprise platforma za industrijsku izvrsnost."
+  }
+}
