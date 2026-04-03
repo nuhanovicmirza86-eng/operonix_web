@@ -2,53 +2,85 @@ import Link from "next/link"
 import Image from "next/image"
 import { Globe } from "lucide-react"
 
-const footerLinks = {
-  Platform: [
-    { name: "MES", href: "#" },
-    { name: "OEE", href: "#" },
-    { name: "Maintenance", href: "#" },
-    { name: "Quality", href: "#" },
-    { name: "Logistics", href: "#" },
-    { name: "Production", href: "#" }, // ✅ DODANO
-  ],
-  Solutions: [
-    { name: "Automotive", href: "#" },
-    { name: "Discrete Manufacturing", href: "#" },
-    { name: "Process Industries", href: "#" },
-    { name: "Enterprise", href: "#" },
-  ],
-  Resources: [
-    { name: "Documentation", href: "#" },
-    { name: "API Reference", href: "#" },
-    { name: "Case Studies", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Support", href: "#" },
-  ],
-  Company: [
-    { name: "About", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "Partners", href: "#" },
-    { name: "Contact", href: "#" },
-  ],
+type FooterMessages = {
+  description: string
+  platform: string
+  solutions: string
+  resources: string
+  company: string
+  links: {
+    mes: string
+    oee: string
+    maintenance: string
+    quality: string
+    logistics: string
+    production: string
+    automotive: string
+    discrete: string
+    process: string
+    enterprise: string
+    documentation: string
+    api: string
+    caseStudies: string
+    blog: string
+    support: string
+    about: string
+    careers: string
+    partners: string
+    contact: string
+    privacy: string
+    terms: string
+    cookies: string
+  }
+}
+
+type FooterProps = {
+  messages: FooterMessages
 }
 
 const languages = [
-  { code: "ba", name: "Bosanski" },
+  { code: "bs", name: "Bosanski" },
   { code: "en", name: "English" },
 ]
 
-export function Footer() {
+export function Footer({ messages }: FooterProps) {
+  const footerLinks = {
+    [messages.platform]: [
+      { name: messages.links.mes, href: "#" },
+      { name: messages.links.oee, href: "#" },
+      { name: messages.links.maintenance, href: "#" },
+      { name: messages.links.quality, href: "#" },
+      { name: messages.links.logistics, href: "#" },
+      { name: messages.links.production, href: "#" },
+    ],
+    [messages.solutions]: [
+      { name: messages.links.automotive, href: "#" },
+      { name: messages.links.discrete, href: "#" },
+      { name: messages.links.process, href: "#" },
+      { name: messages.links.enterprise, href: "#" },
+    ],
+    [messages.resources]: [
+      { name: messages.links.documentation, href: "#" },
+      { name: messages.links.api, href: "#" },
+      { name: messages.links.caseStudies, href: "#" },
+      { name: messages.links.blog, href: "#" },
+      { name: messages.links.support, href: "#" },
+    ],
+    [messages.company]: [
+      { name: messages.links.about, href: "#" },
+      { name: messages.links.careers, href: "#" },
+      { name: messages.links.partners, href: "#" },
+      { name: messages.links.contact, href: "#" },
+    ],
+  }
+
   return (
     <footer className="bg-card border-t border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16">
-        {/* Main footer content */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           
-          {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-3">
-              
-              {/* ✅ PRAVI LOGO */}
               <Image
                 src="/logo.png"
                 alt="Operonix"
@@ -56,14 +88,12 @@ export function Footer() {
                 height={40}
                 className="h-10 w-auto object-contain"
               />
-
             </Link>
 
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              Enterprise manufacturing platform for industrial excellence.
+              {messages.description}
             </p>
             
-            {/* Language selector */}
             <div className="mt-6 flex items-center gap-2">
               <Globe className="h-4 w-4 text-muted-foreground" />
               <select className="bg-transparent text-sm text-muted-foreground border-none focus:ring-0 cursor-pointer">
@@ -76,7 +106,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h3 className="text-sm font-semibold text-foreground">{category}</h3>
@@ -96,20 +125,19 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Operonix. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <Link href="#" className="hover:text-foreground transition-colors">
-              Privacy Policy
+              {messages.links.privacy}
             </Link>
             <Link href="#" className="hover:text-foreground transition-colors">
-              Terms of Service
+              {messages.links.terms}
             </Link>
             <Link href="#" className="hover:text-foreground transition-colors">
-              Cookie Settings
+              {messages.links.cookies}
             </Link>
           </div>
         </div>

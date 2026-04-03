@@ -35,6 +35,36 @@ type CapabilityItem = {
   label: string
 }
 
+type CtaStat = {
+  value: string
+  label: string
+}
+
+type FooterLinks = {
+  mes: string
+  oee: string
+  maintenance: string
+  quality: string
+  logistics: string
+  production: string
+  automotive: string
+  discrete: string
+  process: string
+  enterprise: string
+  documentation: string
+  api: string
+  caseStudies: string
+  blog: string
+  support: string
+  about: string
+  careers: string
+  partners: string
+  contact: string
+  privacy: string
+  terms: string
+  cookies: string
+}
+
 type Messages = {
   notice: {
     label: string
@@ -85,8 +115,21 @@ type Messages = {
     capabilities: CapabilityItem[]
     items: SolutionItem[]
   }
+  cta: {
+    title: string
+    description: string
+    primaryCta: string
+    secondaryCta: string
+    trustItems: string[]
+    stats: CtaStat[]
+  }
   footer: {
     description: string
+    platform: string
+    solutions: string
+    resources: string
+    company: string
+    links: FooterLinks
   }
 }
 

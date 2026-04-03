@@ -6,14 +6,28 @@ import { Solutions } from "@/components/landing/solutions"
 import { CTA } from "@/components/landing/cta"
 import { Footer } from "@/components/landing/footer"
 
-import { getMessages, defaultLocale } from "@/lib/i18n"
+import { getMessages } from "@/lib/i18n"
 
-export default async function Home() {
-  const messages = await getMessages(defaultLocale)
+type HomeProps = {
+  searchParams?: Promise<{
+    lang?: string | string[]
+  }>
+}
+
+export default async function Home({ searchParams }: HomeProps) {
+  const params = searchParams ? await searchParams : {}
+  const rawLang = params?.lang
+
+  const locale =
+    rawLang === "bs" || (Array.isArray(rawLang) && rawLang[0] === "bs")
+      ? "bs"
+      : "en"
+
+  const messages = await getMessages(locale)
 
   return (
     <main className="min-h-screen bg-background pt-20">
-      <Header messages={messages.header} currentLang={defaultLocale} />
+      <Header messages={messages.header} currentLang={locale} />
 
       <div className="w-full bg-foreground text-background text-center text-sm py-2">
         {messages.notice.text}
@@ -23,8 +37,8 @@ export default async function Home() {
       <Modules messages={messages.modules} />
       <Automotive messages={messages.automotive} />
       <Solutions messages={messages.solutions} />
-      <CTA />
-      <Footer />
+      <CTA messages={messages.cta} />
+      <Footer messages={messages.footer} />
     </main>
   )
 }

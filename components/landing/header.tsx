@@ -46,7 +46,7 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
       <nav className="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Global">
         <div className="flex h-16 items-center justify-between">
           <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3">
+            <Link href={`/?lang=${currentLang}`} className="-m-1.5 p-1.5 flex items-center gap-3">
               <Image
                 src="/logo.png"
                 alt="Operonix"
@@ -93,13 +93,11 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
                   <span className="uppercase">{currentLang}</span>
                 </Button>
               </DropdownMenuTrigger>
+
               <DropdownMenuContent align="end" className="bg-card border-border">
                 {languages.map((lang) => (
-                  <DropdownMenuItem
-                    key={lang.code}
-                    className="cursor-pointer"
-                  >
-                    {lang.name}
+                  <DropdownMenuItem key={lang.code} asChild className="cursor-pointer">
+                    <Link href={`/?lang=${lang.code}`}>{lang.name}</Link>
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
@@ -108,6 +106,7 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
             <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
               {messages.signIn}
             </Button>
+
             <Button size="sm" className="bg-foreground text-background hover:bg-foreground/90">
               {messages.requestDemo}
             </Button>
@@ -129,16 +128,20 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
               ))}
 
               <div className="px-3 py-2">
-                <div className="mb-2 text-sm font-medium text-muted-foreground">Language</div>
+                <div className="mb-2 text-sm font-medium text-muted-foreground">
+                  Language
+                </div>
+
                 <div className="flex flex-col gap-1">
                   {languages.map((lang) => (
-                    <button
+                    <Link
                       key={lang.code}
-                      type="button"
+                      href={`/?lang=${lang.code}`}
                       className="rounded-lg px-3 py-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       {lang.name}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -147,6 +150,7 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
                 <Button variant="ghost" className="justify-start text-muted-foreground">
                   {messages.signIn}
                 </Button>
+
                 <Button className="bg-foreground text-background">
                   {messages.requestDemo}
                 </Button>

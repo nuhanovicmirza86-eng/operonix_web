@@ -311,7 +311,64 @@
       }
     ]
   },
+  "cta": {
+    "title": "Ready to transform your manufacturing operations?",
+    "description": "Join hundreds of manufacturers who have modernized their operations with Operonix. Get a personalized demo and see how we can help achieve your production goals.",
+    "primaryCta": "Schedule a Demo",
+    "secondaryCta": "Contact Sales",
+    "trustItems": [
+      "No credit card required",
+      "Free proof of concept",
+      "Enterprise support"
+    ],
+    "stats": [
+      {
+        "value": "500+",
+        "label": "Manufacturing Sites"
+      },
+      {
+        "value": "15M+",
+        "label": "Parts Tracked Daily"
+      },
+      {
+        "value": "99.9%",
+        "label": "Platform Uptime"
+      },
+      {
+        "value": "24/7",
+        "label": "Global Support"
+      }
+    ]
+  },
   "footer": {
-    "description": "Enterprise manufacturing platform for industrial excellence."
+    "description": "Enterprise manufacturing platform for industrial excellence.",
+    "platform": "Platform",
+    "solutions": "Solutions",
+    "resources": "Resources",
+    "company": "Company",
+    "links": {
+      "mes": "MES",
+      "oee": "OEE",
+      "maintenance": "Maintenance",
+      "quality": "Quality",
+      "logistics": "Logistics",
+      "production": "Production",
+      "automotive": "Automotive",
+      "discrete": "Discrete Manufacturing",
+      "process": "Process Industries",
+      "enterprise": "Enterprise",
+      "documentation": "Documentation",
+      "api": "API Reference",
+      "caseStudies": "Case Studies",
+      "blog": "Blog",
+      "support": "Support",
+      "about": "About",
+      "careers": "Careers",
+      "partners": "Partners",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Settings"
+    }
   }
 }

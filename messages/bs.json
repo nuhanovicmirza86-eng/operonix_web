@@ -14,9 +14,9 @@
   "hero": {
     "badge": "Platforma usklađena sa IATF 16949",
     "titleLine1": "Kompletna platforma za",
-    "titleAccent": "izgradnju proizvodne",
-    "titleLine2": "izvrsnosti.",
-    "description": "Objedinjeni MES, OEE, kvalitet, održavanje i logistika u jednoj enterprise platformi. Izgrađeno za automobilske standarde i industrijski obim.",
+    "titleAccent": "postizanje vrhunskih rezultata",
+    "titleLine2": "u proizvodnji.",
+    "description": "Objedinjeni MES, OEE, proizvodnja, kvalitet, održavanje i logistika u jednoj enterprise platformi. Izgrađeno za automobilske standarde i industrijski obim.",
     "primaryCta": "Zatraži demo",
     "secondaryCta": "Pogledaj pregled",
     "trustedBy": "Vodeći proizvođači širom svijeta imaju povjerenje u nas",
@@ -83,7 +83,7 @@
           "Praćenje proizvodnje u realnom vremenu",
           "Upravljanje radnim nalozima",
           "Sljedivost materijala",
-          "Prikupljanje podataka sa linije",
+          "Prikupljanje podataka sa linije/opreme",
           "Kontrola proizvodnih ruta"
         ]
       },
@@ -104,13 +104,13 @@
         "id": "maintenance",
         "name": "Održavanje",
         "fullName": "Upravljanje održavanjem",
-        "description": "Preventivno i prediktivno održavanje za maksimalnu dostupnost opreme.",
+        "description": "Preventivno i prediktivno(PdM) održavanje za maksimalnu dostupnost opreme.",
         "features": [
           "Planiranje održavanja",
           "Radni nalozi",
           "Rezervni dijelovi",
           "Praćenje životnog ciklusa",
-          "Prediktivna analitika"
+          "Prediktivna(PdM) analitika"
         ]
       },
       {
@@ -144,7 +144,7 @@
   "automotive": {
     "sectionLabel": "Automobilska izvrsnost",
     "title": "Izgrađeno za najzahtjevnije industrijske standarde.",
-    "description": "Od Tier 1 dobavljača do OEM kompanija, Operonix pruža alate i dokumentacionu infrastrukturu potrebnu za ispunjavanje i nadmašivanje zahtjeva kvaliteta u automobilskoj industriji.",
+    "description": "Od Tier 1 dobavljača do OEM proizvođača, Operonix osigurava napredne alate i dokumentacijsku infrastrukturu potrebnu za vrhunski kvalitet u automobilskoj industriji.",
     "complianceTitle": "Funkcionalnosti usklađenosti",
     "complianceSubtitle": "Ugrađeni automobilski standardi",
     "floatingBadge": "OEM odobreno",
@@ -261,7 +261,7 @@
           }
         ],
         "features": [
-          "Prediktivno održavanje",
+          "Prediktivno(PdM) održavanje",
           "Mobilni radni nalozi",
           "Upravljanje rezervnim dijelovima",
           "Praćenje stanja"
@@ -283,7 +283,7 @@
         ],
         "features": [
           "SPC i kontrolne karte",
-          "Workflow nesukladnosti",
+          "Workflow neusklađenosti",
           "CAPA upravljanje",
           "Kvalitet dobavljača"
         ]
@@ -311,7 +311,64 @@
       }
     ]
   },
+  "cta": {
+    "title": "Spremni da transformišete vaše proizvodne operacije?",
+    "description": "Pridružite nam se kako biste modernizovali svoje operacije u proizvodnji uz Operonix. Zatražite personalizovani demo i vidite kako možemo pomoći u ostvarenju vaših proizvodnih ciljeva.",
+    "primaryCta": "Zakaži demo",
+    "secondaryCta": "Kontaktiraj prodaju",
+    "trustItems": [
+      "Nije potrebna kreditna kartica",
+      "Besplatan proof of concept",
+      "Enterprise podrška"
+    ],
+    "stats": [
+      {
+        "value": "500+",
+        "label": "Proizvodnih lokacija"
+      },
+      {
+        "value": "15M+",
+        "label": "Dijelova dnevno praćeno"
+      },
+      {
+        "value": "99.9%",
+        "label": "Dostupnost platforme"
+      },
+      {
+        "value": "24/7",
+        "label": "Globalna podrška"
+      }
+    ]
+  },
   "footer": {
-    "description": "Poslovna platforma za industrijsku izvrsnost."
+    "description": "Poslovna platforma za industrijsku izvrsnost.",
+    "platform": "Platforma",
+    "solutions": "Rješenja",
+    "resources": "Resursi",
+    "company": "Kompanija",
+    "links": {
+      "mes": "MES",
+      "oee": "OEE",
+      "maintenance": "Održavanje",
+      "quality": "Kvalitet",
+      "logistics": "Logistika",
+      "production": "Proizvodnja",
+      "automotive": "Automobilska industrija",
+      "discrete": "Diskretna proizvodnja",
+      "process": "Procesna industrija",
+      "enterprise": "Enterprise",
+      "documentation": "Dokumentacija",
+      "api": "API referenca",
+      "caseStudies": "Studije slučaja",
+      "blog": "Blog",
+      "support": "Podrška",
+      "about": "O nama",
+      "careers": "Karijere",
+      "partners": "Partneri",
+      "contact": "Kontakt",
+      "privacy": "Politika privatnosti",
+      "terms": "Uslovi korištenja",
+      "cookies": "Postavke kolačića"
+    }
   }
 }
