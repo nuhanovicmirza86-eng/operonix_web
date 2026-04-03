@@ -11,6 +11,306 @@
     "signIn": "Sign In",
     "requestDemo": "Request Demo"
   },
+  "hero": {
+    "badge": "IATF 16949 Compliant Platform",
+    "titleLine1": "The complete platform to",
+    "titleAccent": "build manufacturing",
+    "titleLine2": "excellence.",
+    "description": "Unified MES, OEE, Quality, Maintenance, and Logistics in one enterprise platform. Built for automotive standards and industrial scale.",
+    "primaryCta": "Get a Demo",
+    "secondaryCta": "Watch Overview",
+    "trustedBy": "Trusted by leading manufacturers worldwide",
+    "companies": [
+      "AutoTech",
+      "PrecisionMfg",
+      "IndustrialCo",
+      "GlobalParts",
+      "MetalWorks"
+    ],
+    "stats": [
+      {
+        "value": "99.7%",
+        "label": "System Uptime",
+        "sublabel": "Enterprise SLA"
+      },
+      {
+        "value": "40%",
+        "label": "OEE Improvement",
+        "sublabel": "Average increase"
+      },
+      {
+        "value": "60%",
+        "label": "Faster Audits",
+        "sublabel": "With IATF tools"
+      },
+      {
+        "value": "500+",
+        "label": "Manufacturers",
+        "sublabel": "Global customers"
+      }
+    ]
+  },
+  "modules": {
+    "sectionLabel": "Platform Modules",
+    "title": "One platform. Complete control.",
+    "description": "Integrated modules that work together seamlessly to digitize your entire manufacturing operation.",
+    "dashboardLabel": "Dashboard",
+    "metrics": [
+      "Efficiency",
+      "Quality",
+      "Availability"
+    ],
+    "items": [
+      {
+        "id": "production",
+        "name": "Production",
+        "fullName": "Production Management",
+        "description": "Production planning, execution control, order tracking and resource coordination in one structured workflow.",
+        "features": [
+          "Production order management",
+          "Production planning and scheduling",
+          "Resource and capacity coordination",
+          "BOM and routing execution support",
+          "Real-time production status visibility"
+        ]
+      },
+      {
+        "id": "mes",
+        "name": "MES",
+        "fullName": "Manufacturing Execution System",
+        "description": "Real-time production tracking, work order management, and shop floor control for complete manufacturing visibility.",
+        "features": [
+          "Real-time production monitoring",
+          "Work order management",
+          "Material traceability",
+          "Shop floor data collection",
+          "Process routing control"
+        ]
+      },
+      {
+        "id": "oee",
+        "name": "OEE",
+        "fullName": "Overall Equipment Effectiveness",
+        "description": "Comprehensive equipment performance tracking with availability, performance, and quality metrics at your fingertips.",
+        "features": [
+          "Real-time OEE calculation",
+          "Downtime tracking & analysis",
+          "Performance benchmarking",
+          "Loss categorization",
+          "Trend analysis dashboards"
+        ]
+      },
+      {
+        "id": "maintenance",
+        "name": "Maintenance",
+        "fullName": "Maintenance Management",
+        "description": "Predictive and preventive maintenance scheduling to maximize equipment uptime and extend asset lifecycle.",
+        "features": [
+          "Preventive maintenance scheduling",
+          "Work order management",
+          "Spare parts inventory",
+          "Asset lifecycle tracking",
+          "Predictive analytics"
+        ]
+      },
+      {
+        "id": "quality",
+        "name": "Quality",
+        "fullName": "Quality Management System",
+        "description": "End-to-end quality control with inspection planning, non-conformance handling, and statistical process control.",
+        "features": [
+          "Inspection planning",
+          "SPC / Statistical analysis",
+          "Non-conformance management",
+          "CAPA workflow",
+          "Document control"
+        ]
+      },
+      {
+        "id": "logistics",
+        "name": "Logistics",
+        "fullName": "Logistics & Warehouse",
+        "description": "Streamlined material flow from receiving to shipping with barcode/RFID integration and inventory optimization.",
+        "features": [
+          "Warehouse management",
+          "Inventory optimization",
+          "Barcode/RFID integration",
+          "Shipping & receiving",
+          "Kanban automation"
+        ]
+      }
+    ]
+  },
+  "automotive": {
+    "sectionLabel": "Automotive Excellence",
+    "title": "Built for the most demanding industry standards.",
+    "description": "From Tier 1 suppliers to OEMs, Operonix provides the tools and documentation infrastructure needed to meet and exceed automotive quality requirements.",
+    "complianceTitle": "Compliance Features",
+    "complianceSubtitle": "Built-in automotive standards",
+    "floatingBadge": "OEM Approved",
+    "certifications": [
+      {
+        "title": "IATF 16949 Ready",
+        "description": "Built-in compliance features for automotive quality management system requirements."
+      },
+      {
+        "title": "APQP / PPAP Support",
+        "description": "Integrated tools for Advanced Product Quality Planning and Production Part Approval Process."
+      },
+      {
+        "title": "VDA 6.3 Aligned",
+        "description": "Process audit tools aligned with German Automotive Industry Association standards."
+      }
+    ],
+    "complianceFeatures": [
+      "Full traceability from raw material to finished product",
+      "Automated FMEA documentation and updates",
+      "Control plan integration with inspection",
+      "8D problem-solving workflow",
+      "Supplier quality management",
+      "Customer-specific requirements tracking",
+      "Audit trail for all quality events",
+      "Real-time alerting for quality escapes"
+    ]
+  },
+  "solutions": {
+    "sectionLabel": "Solutions",
+    "title": "Transform every aspect of manufacturing.",
+    "description": "Purpose-built solutions that deliver measurable results across your operations.",
+    "capabilities": [
+      {
+        "id": "realTimeData",
+        "label": "Real-time Data"
+      },
+      {
+        "id": "monitoring247",
+        "label": "24/7 Monitoring"
+      },
+      {
+        "id": "analytics",
+        "label": "Analytics"
+      },
+      {
+        "id": "configurable",
+        "label": "Configurable"
+      },
+      {
+        "id": "dataIntegration",
+        "label": "Data Integration"
+      },
+      {
+        "id": "secure",
+        "label": "Secure"
+      }
+    ],
+    "items": [
+      {
+        "id": "production",
+        "title": "Production",
+        "description": "Full production execution and control across all lines and processes.",
+        "stats": [
+          {
+            "label": "Throughput",
+            "value": "+30%"
+          },
+          {
+            "label": "Lead Time",
+            "value": "-25%"
+          }
+        ],
+        "features": [
+          "Production order management",
+          "BOM and routing control",
+          "Work center coordination",
+          "Real-time execution tracking"
+        ]
+      },
+      {
+        "id": "mesOee",
+        "title": "MES / OEE",
+        "description": "Real-time visibility into production performance",
+        "stats": [
+          {
+            "label": "OEE Increase",
+            "value": "+40%"
+          },
+          {
+            "label": "Downtime Reduction",
+            "value": "-35%"
+          }
+        ],
+        "features": [
+          "Live production dashboards",
+          "Automatic data collection",
+          "Bottleneck identification",
+          "Shift handover reports"
+        ]
+      },
+      {
+        "id": "maintenance",
+        "title": "Maintenance",
+        "description": "Maximize asset availability and lifecycle",
+        "stats": [
+          {
+            "label": "Uptime Improvement",
+            "value": "+25%"
+          },
+          {
+            "label": "Maintenance Costs",
+            "value": "-30%"
+          }
+        ],
+        "features": [
+          "Predictive maintenance",
+          "Mobile work orders",
+          "Spare parts management",
+          "Condition monitoring"
+        ]
+      },
+      {
+        "id": "quality",
+        "title": "Quality",
+        "description": "Zero-defect manufacturing with full traceability",
+        "stats": [
+          {
+            "label": "Defect Reduction",
+            "value": "-60%"
+          },
+          {
+            "label": "Audit Time",
+            "value": "-50%"
+          }
+        ],
+        "features": [
+          "SPC and control charts",
+          "Non-conformance workflow",
+          "CAPA management",
+          "Supplier quality"
+        ]
+      },
+      {
+        "id": "logistics",
+        "title": "Logistics",
+        "description": "Optimized material flow and inventory",
+        "stats": [
+          {
+            "label": "Inventory Accuracy",
+            "value": "99.5%"
+          },
+          {
+            "label": "Pick Time",
+            "value": "-40%"
+          }
+        ],
+        "features": [
+          "Warehouse management",
+          "Kanban automation",
+          "Barcode/RFID",
+          "JIT delivery"
+        ]
+      }
+    ]
+  },
   "footer": {
     "description": "Enterprise manufacturing platform for industrial excellence."
   }

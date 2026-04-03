@@ -35,8 +35,6 @@ const footerLinks = {
 const languages = [
   { code: "ba", name: "Bosanski" },
   { code: "en", name: "English" },
-  { code: "de", name: "Deutsch" },
-  { code: "si", name: "Slovenski" },
 ]
 
 export function Footer() {

@@ -12,23 +12,34 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-const navigation = [
-  { name: "Modules", href: "#modules" },
-  { name: "Automotive", href: "#automotive" },
-  { name: "Solutions", href: "#solutions" },
-  { name: "About", href: "#about" },
-]
+type HeaderMessages = {
+  modules: string
+  automotive: string
+  solutions: string
+  about: string
+  signIn: string
+  requestDemo: string
+}
+
+type HeaderProps = {
+  messages: HeaderMessages
+  currentLang?: "en" | "bs"
+}
 
 const languages = [
-  { code: "ba", name: "Bosanski" },
+  { code: "bs", name: "Bosanski" },
   { code: "en", name: "English" },
-  { code: "de", name: "Deutsch" },
-  { code: "si", name: "Slovenski" },
 ]
 
-export function Header() {
+export function Header({ messages, currentLang = "en" }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [currentLang, setCurrentLang] = useState("en")
+
+  const navigation = [
+    { name: messages.modules, href: "#modules" },
+    { name: messages.automotive, href: "#automotive" },
+    { name: messages.solutions, href: "#solutions" },
+    { name: messages.about, href: "#about" },
+  ]
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -44,7 +55,6 @@ export function Header() {
                 className="h-12 w-auto object-contain"
                 priority
               />
-            
             </Link>
           </div>
 
@@ -87,7 +97,6 @@ export function Header() {
                 {languages.map((lang) => (
                   <DropdownMenuItem
                     key={lang.code}
-                    onClick={() => setCurrentLang(lang.code)}
                     className="cursor-pointer"
                   >
                     {lang.name}
@@ -97,10 +106,10 @@ export function Header() {
             </DropdownMenu>
 
             <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-              Sign In
+              {messages.signIn}
             </Button>
             <Button size="sm" className="bg-foreground text-background hover:bg-foreground/90">
-              Request Demo
+              {messages.requestDemo}
             </Button>
           </div>
         </div>
@@ -126,7 +135,6 @@ export function Header() {
                     <button
                       key={lang.code}
                       type="button"
-                      onClick={() => setCurrentLang(lang.code)}
                       className="rounded-lg px-3 py-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
                     >
                       {lang.name}
@@ -137,10 +145,10 @@ export function Header() {
 
               <div className="pt-4 flex flex-col gap-2">
                 <Button variant="ghost" className="justify-start text-muted-foreground">
-                  Sign In
+                  {messages.signIn}
                 </Button>
                 <Button className="bg-foreground text-background">
-                  Request Demo
+                  {messages.requestDemo}
                 </Button>
               </div>
             </div>

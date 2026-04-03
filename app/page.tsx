@@ -13,17 +13,16 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-background pt-20">
-      <Header />
+      <Header messages={messages.header} currentLang={defaultLocale} />
 
-      {/* NOTICE */}
       <div className="w-full bg-foreground text-background text-center text-sm py-2">
         {messages.notice.text}
       </div>
 
-      <Hero />
-      <Modules />
-      <Automotive />
-      <Solutions />
+      <Hero messages={messages.hero} />
+      <Modules messages={messages.modules} />
+      <Automotive messages={messages.automotive} />
+      <Solutions messages={messages.solutions} />
       <CTA />
       <Footer />
     </main>

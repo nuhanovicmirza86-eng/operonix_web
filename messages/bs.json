@@ -11,7 +11,307 @@
     "signIn": "Prijava",
     "requestDemo": "Zatraži demo"
   },
+  "hero": {
+    "badge": "Platforma usklađena sa IATF 16949",
+    "titleLine1": "Kompletna platforma za",
+    "titleAccent": "izgradnju proizvodne",
+    "titleLine2": "izvrsnosti.",
+    "description": "Objedinjeni MES, OEE, kvalitet, održavanje i logistika u jednoj enterprise platformi. Izgrađeno za automobilske standarde i industrijski obim.",
+    "primaryCta": "Zatraži demo",
+    "secondaryCta": "Pogledaj pregled",
+    "trustedBy": "Vodeći proizvođači širom svijeta imaju povjerenje u nas",
+    "companies": [
+      "AutoTech",
+      "PrecisionMfg",
+      "IndustrialCo",
+      "GlobalParts",
+      "MetalWorks"
+    ],
+    "stats": [
+      {
+        "value": "99.7%",
+        "label": "Dostupnost sistema",
+        "sublabel": "Enterprise SLA"
+      },
+      {
+        "value": "40%",
+        "label": "Poboljšanje OEE",
+        "sublabel": "Prosječan rast"
+      },
+      {
+        "value": "60%",
+        "label": "Brže revizije",
+        "sublabel": "Uz IATF alate"
+      },
+      {
+        "value": "500+",
+        "label": "Proizvođača",
+        "sublabel": "Globalni korisnici"
+      }
+    ]
+  },
+  "modules": {
+    "sectionLabel": "Moduli platforme",
+    "title": "Jedna platforma. Potpuna kontrola.",
+    "description": "Integrisani moduli koji zajedno digitalizuju cijelu proizvodnju.",
+    "dashboardLabel": "Kontrolna ploča",
+    "metrics": [
+      "Efikasnost",
+      "Kvalitet",
+      "Dostupnost"
+    ],
+    "items": [
+      {
+        "id": "production",
+        "name": "Proizvodnja",
+        "fullName": "Upravljanje proizvodnjom",
+        "description": "Planiranje proizvodnje, kontrola izvršenja, praćenje naloga i koordinacija resursa u jednom strukturiranom procesu.",
+        "features": [
+          "Upravljanje proizvodnim nalozima",
+          "Planiranje i raspored proizvodnje",
+          "Koordinacija resursa i kapaciteta",
+          "Podrška za BOM i izvršenje ruta",
+          "Vidljivost statusa proizvodnje u realnom vremenu"
+        ]
+      },
+      {
+        "id": "mes",
+        "name": "MES",
+        "fullName": "Sistem upravljanja proizvodnjom",
+        "description": "Praćenje proizvodnje u realnom vremenu i upravljanje radnim nalozima za potpunu vidljivost.",
+        "features": [
+          "Praćenje proizvodnje u realnom vremenu",
+          "Upravljanje radnim nalozima",
+          "Sljedivost materijala",
+          "Prikupljanje podataka sa linije",
+          "Kontrola proizvodnih ruta"
+        ]
+      },
+      {
+        "id": "oee",
+        "name": "OEE",
+        "fullName": "Efikasnost opreme",
+        "description": "Praćenje performansi opreme kroz dostupnost, performanse i kvalitet.",
+        "features": [
+          "Izračun OEE u realnom vremenu",
+          "Praćenje zastoja",
+          "Benchmark analiza",
+          "Kategorizacija gubitaka",
+          "Trend analitika"
+        ]
+      },
+      {
+        "id": "maintenance",
+        "name": "Održavanje",
+        "fullName": "Upravljanje održavanjem",
+        "description": "Preventivno i prediktivno održavanje za maksimalnu dostupnost opreme.",
+        "features": [
+          "Planiranje održavanja",
+          "Radni nalozi",
+          "Rezervni dijelovi",
+          "Praćenje životnog ciklusa",
+          "Prediktivna analitika"
+        ]
+      },
+      {
+        "id": "quality",
+        "name": "Kvalitet",
+        "fullName": "Sistem upravljanja kvalitetom",
+        "description": "Kontrola kvaliteta kroz inspekcije i analitiku.",
+        "features": [
+          "Planiranje inspekcija",
+          "Statistička analiza",
+          "Upravljanje nesukladnostima",
+          "CAPA proces",
+          "Upravljanje dokumentima"
+        ]
+      },
+      {
+        "id": "logistics",
+        "name": "Logistika",
+        "fullName": "Logistika i skladište",
+        "description": "Optimizacija toka materijala i skladišta.",
+        "features": [
+          "Upravljanje skladištem",
+          "Optimizacija zaliha",
+          "Barcode/RFID",
+          "Prijem i otprema",
+          "Kanban automatizacija"
+        ]
+      }
+    ]
+  },
+  "automotive": {
+    "sectionLabel": "Automobilska izvrsnost",
+    "title": "Izgrađeno za najzahtjevnije industrijske standarde.",
+    "description": "Od Tier 1 dobavljača do OEM kompanija, Operonix pruža alate i dokumentacionu infrastrukturu potrebnu za ispunjavanje i nadmašivanje zahtjeva kvaliteta u automobilskoj industriji.",
+    "complianceTitle": "Funkcionalnosti usklađenosti",
+    "complianceSubtitle": "Ugrađeni automobilski standardi",
+    "floatingBadge": "OEM odobreno",
+    "certifications": [
+      {
+        "title": "Spremno za IATF 16949",
+        "description": "Ugrađene funkcionalnosti usklađenosti za zahtjeve sistema upravljanja kvalitetom u automobilskoj industriji."
+      },
+      {
+        "title": "APQP / PPAP podrška",
+        "description": "Integrisani alati za Advanced Product Quality Planning i Production Part Approval Process."
+      },
+      {
+        "title": "Usklađeno sa VDA 6.3",
+        "description": "Alati za procesne audite usklađeni sa standardima Njemačkog udruženja automobilske industrije."
+      }
+    ],
+    "complianceFeatures": [
+      "Potpuna sljedivost od sirovine do gotovog proizvoda",
+      "Automatizovana FMEA dokumentacija i ažuriranja",
+      "Integracija kontrolnog plana sa inspekcijama",
+      "8D workflow za rješavanje problema",
+      "Upravljanje kvalitetom dobavljača",
+      "Praćenje zahtjeva specifičnih za kupca",
+      "Audit trail za sve događaje kvaliteta",
+      "Upozorenja u realnom vremenu za odstupanja kvaliteta"
+    ]
+  },
+  "solutions": {
+    "sectionLabel": "Rješenja",
+    "title": "Transformiši svaki aspekt proizvodnje.",
+    "description": "Specijalizovana rješenja koja donose mjerljive rezultate kroz cijelu operaciju.",
+    "capabilities": [
+      {
+        "id": "realTimeData",
+        "label": "Podaci u realnom vremenu"
+      },
+      {
+        "id": "monitoring247",
+        "label": "24/7 praćenje"
+      },
+      {
+        "id": "analytics",
+        "label": "Analitika"
+      },
+      {
+        "id": "configurable",
+        "label": "Prilagodljivo"
+      },
+      {
+        "id": "dataIntegration",
+        "label": "Integracija podataka"
+      },
+      {
+        "id": "secure",
+        "label": "Sigurno"
+      }
+    ],
+    "items": [
+      {
+        "id": "production",
+        "title": "Proizvodnja",
+        "description": "Potpuna kontrola i izvršenje proizvodnje kroz sve linije i procese.",
+        "stats": [
+          {
+            "label": "Protok",
+            "value": "+30%"
+          },
+          {
+            "label": "Vrijeme ciklusa",
+            "value": "-25%"
+          }
+        ],
+        "features": [
+          "Upravljanje proizvodnim nalozima",
+          "BOM i kontrola ruta",
+          "Koordinacija radnih centara",
+          "Praćenje izvršenja u realnom vremenu"
+        ]
+      },
+      {
+        "id": "mesOee",
+        "title": "MES / OEE",
+        "description": "Vidljivost performansi proizvodnje u realnom vremenu",
+        "stats": [
+          {
+            "label": "Povećanje OEE",
+            "value": "+40%"
+          },
+          {
+            "label": "Smanjenje zastoja",
+            "value": "-35%"
+          }
+        ],
+        "features": [
+          "Dashboard u realnom vremenu",
+          "Automatsko prikupljanje podataka",
+          "Identifikacija uskih grla",
+          "Izvještaji smjena"
+        ]
+      },
+      {
+        "id": "maintenance",
+        "title": "Održavanje",
+        "description": "Maksimalna dostupnost opreme i duži životni ciklus",
+        "stats": [
+          {
+            "label": "Poboljšanje dostupnosti",
+            "value": "+25%"
+          },
+          {
+            "label": "Troškovi održavanja",
+            "value": "-30%"
+          }
+        ],
+        "features": [
+          "Prediktivno održavanje",
+          "Mobilni radni nalozi",
+          "Upravljanje rezervnim dijelovima",
+          "Praćenje stanja"
+        ]
+      },
+      {
+        "id": "quality",
+        "title": "Kvalitet",
+        "description": "Proizvodnja bez greške uz potpunu sljedivost",
+        "stats": [
+          {
+            "label": "Smanjenje grešaka",
+            "value": "-60%"
+          },
+          {
+            "label": "Vrijeme audita",
+            "value": "-50%"
+          }
+        ],
+        "features": [
+          "SPC i kontrolne karte",
+          "Workflow nesukladnosti",
+          "CAPA upravljanje",
+          "Kvalitet dobavljača"
+        ]
+      },
+      {
+        "id": "logistics",
+        "title": "Logistika",
+        "description": "Optimizovan tok materijala i zaliha",
+        "stats": [
+          {
+            "label": "Tačnost zaliha",
+            "value": "99.5%"
+          },
+          {
+            "label": "Vrijeme komisioniranja",
+            "value": "-40%"
+          }
+        ],
+        "features": [
+          "Upravljanje skladištem",
+          "Kanban automatizacija",
+          "Barcode/RFID",
+          "JIT isporuka"
+        ]
+      }
+    ]
+  },
   "footer": {
-    "description": "Enterprise platforma za industrijsku izvrsnost."
+    "description": "Poslovna platforma za industrijsku izvrsnost."
   }
 }
