@@ -210,7 +210,7 @@
         "description": "Potpuna kontrola i izvršenje proizvodnje kroz sve linije i procese.",
         "stats": [
           {
-            "label": "Protok",
+            "label": "Proizvodni kapacitet",
             "value": "+30%"
           },
           {
@@ -231,7 +231,7 @@
         "description": "Vidljivost performansi proizvodnje u realnom vremenu",
         "stats": [
           {
-            "label": "Povećanje OEE",
+            "label": "Povećanje efikasnosti/OEE",
             "value": "+40%"
           },
           {
@@ -252,7 +252,7 @@
         "description": "Maksimalna dostupnost opreme i duži životni ciklus",
         "stats": [
           {
-            "label": "Poboljšanje dostupnosti",
+            "label": "Unapređenje dostupnosti",
             "value": "+25%"
           },
           {
@@ -298,7 +298,7 @@
             "value": "99.5%"
           },
           {
-            "label": "Vrijeme komisioniranja",
+            "label": "Vrijeme preuzimanja",
             "value": "-40%"
           }
         ],
