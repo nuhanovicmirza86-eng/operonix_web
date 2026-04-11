@@ -77,6 +77,8 @@ type Messages = {
     about: string
     signIn: string
     requestDemo: string
+    productionApp: string
+    maintenanceApp: string
   }
   hero: {
     badge: string
@@ -86,6 +88,9 @@ type Messages = {
     description: string
     primaryCta: string
     secondaryCta: string
+    appLinksTitle: string
+    productionApp: string
+    maintenanceApp: string
     trustedBy: string
     companies: string[]
     stats: HeroStat[]

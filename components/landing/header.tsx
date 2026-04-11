@@ -4,7 +4,8 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Globe } from "lucide-react"
+import { OPERONIX_APP_URLS } from "@/lib/app-urls"
+import { Factory, Globe, Menu, Wrench, X } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,6 +20,8 @@ type HeaderMessages = {
   about: string
   signIn: string
   requestDemo: string
+  productionApp: string
+  maintenanceApp: string
 }
 
 type HeaderProps = {
@@ -103,6 +106,31 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
               </DropdownMenuContent>
             </DropdownMenu>
 
+            <div className="flex items-center gap-2 border-l border-border pl-4">
+              <Button variant="outline" size="sm" className="gap-1.5 text-foreground" asChild>
+                <a
+                  href={OPERONIX_APP_URLS.production}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={messages.productionApp}
+                >
+                  <Factory className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+                  <span className="max-w-[5.5rem] truncate sm:max-w-none">{messages.productionApp}</span>
+                </a>
+              </Button>
+              <Button variant="outline" size="sm" className="gap-1.5 text-foreground" asChild>
+                <a
+                  href={OPERONIX_APP_URLS.maintenance}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={messages.maintenanceApp}
+                >
+                  <Wrench className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+                  <span className="max-w-[5.5rem] truncate sm:max-w-none">{messages.maintenanceApp}</span>
+                </a>
+              </Button>
+            </div>
+
             <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
               {messages.signIn}
             </Button>
@@ -126,6 +154,31 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
                   {item.name}
                 </Link>
               ))}
+
+              <div className="grid grid-cols-2 gap-2 px-3 pt-2">
+                <Button variant="outline" size="sm" className="gap-1.5 justify-center text-foreground" asChild>
+                  <a
+                    href={OPERONIX_APP_URLS.production}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Factory className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+                    {messages.productionApp}
+                  </a>
+                </Button>
+                <Button variant="outline" size="sm" className="gap-1.5 justify-center text-foreground" asChild>
+                  <a
+                    href={OPERONIX_APP_URLS.maintenance}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Wrench className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+                    {messages.maintenanceApp}
+                  </a>
+                </Button>
+              </div>
 
               <div className="px-3 py-2">
                 <div className="mb-2 text-sm font-medium text-muted-foreground">

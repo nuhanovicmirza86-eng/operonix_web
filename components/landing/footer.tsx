@@ -1,6 +1,9 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Globe } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
+import { Factory, Globe, Wrench } from "lucide-react"
+
+import { OPERONIX_APP_URLS } from "@/lib/app-urls"
 
 type FooterMessages = {
   description: string
@@ -38,20 +41,34 @@ type FooterProps = {
   messages: FooterMessages
 }
 
+type FooterLinkItem = {
+  name: string
+  href: string
+  icon?: LucideIcon
+}
+
 const languages = [
   { code: "bs", name: "Bosanski" },
   { code: "en", name: "English" },
 ]
 
 export function Footer({ messages }: FooterProps) {
-  const footerLinks = {
+  const footerLinks: Record<string, FooterLinkItem[]> = {
     [messages.platform]: [
       { name: messages.links.mes, href: "#" },
       { name: messages.links.oee, href: "#" },
-      { name: messages.links.maintenance, href: "#" },
+      {
+        name: messages.links.maintenance,
+        href: OPERONIX_APP_URLS.maintenance,
+        icon: Wrench,
+      },
       { name: messages.links.quality, href: "#" },
       { name: messages.links.logistics, href: "#" },
-      { name: messages.links.production, href: "#" },
+      {
+        name: messages.links.production,
+        href: OPERONIX_APP_URLS.production,
+        icon: Factory,
+      },
     ],
     [messages.solutions]: [
       { name: messages.links.automotive, href: "#" },
@@ -110,16 +127,28 @@ export function Footer({ messages }: FooterProps) {
             <div key={category}>
               <h3 className="text-sm font-semibold text-foreground">{category}</h3>
               <ul className="mt-4 space-y-3">
-                {links.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
+                {links.map((link) => {
+                  const Icon = link.icon
+                  return (
+                    <li key={link.name} className="flex items-center gap-2">
+                      {Icon ? (
+                        <Icon
+                          className="h-4 w-4 shrink-0 text-muted-foreground"
+                          aria-hidden
+                        />
+                      ) : null}
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        {...(link.href.startsWith("http")
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           ))}

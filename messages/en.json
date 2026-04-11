@@ -9,7 +9,9 @@
     "solutions": "Solutions",
     "about": "About",
     "signIn": "Sign In",
-    "requestDemo": "Request Demo"
+    "requestDemo": "Request Demo",
+    "productionApp": "Production",
+    "maintenanceApp": "Maintenance"
   },
   "hero": {
     "badge": "IATF 16949 Compliant Platform",
@@ -19,6 +21,9 @@
     "description": "Unified MES, OEE, Quality, Maintenance, and Logistics in one enterprise platform. Built for automotive standards and industrial scale.",
     "primaryCta": "Get a Demo",
     "secondaryCta": "Watch Overview",
+    "appLinksTitle": "Web applications",
+    "productionApp": "Operonix Production",
+    "maintenanceApp": "Operonix Maintenance",
     "trustedBy": "Trusted by leading manufacturers worldwide",
     "companies": [
       "AutoTech",

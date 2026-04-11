@@ -9,7 +9,9 @@
     "solutions": "Rješenja",
     "about": "O nama",
     "signIn": "Prijava",
-    "requestDemo": "Zatraži demo"
+    "requestDemo": "Zatraži demo",
+    "productionApp": "Proizvodnja",
+    "maintenanceApp": "Održavanje"
   },
   "hero": {
     "badge": "Platforma usklađena sa IATF 16949",
@@ -19,6 +21,9 @@
     "description": "Objedinjeni MES, OEE, proizvodnja, kvalitet, održavanje i logistika u jednoj enterprise platformi. Izgrađeno za automobilske standarde i industrijski obim.",
     "primaryCta": "Zatraži demo",
     "secondaryCta": "Pogledaj pregled",
+    "appLinksTitle": "Web aplikacije",
+    "productionApp": "Operonix Production",
+    "maintenanceApp": "Operonix Maintenance",
     "trustedBy": "Vodeći proizvođači širom svijeta imaju povjerenje u nas",
     "companies": [
       "AutoTech",

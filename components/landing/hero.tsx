@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Play } from "lucide-react"
+import { OPERONIX_APP_URLS } from "@/lib/app-urls"
+import { ArrowRight, Factory, Play, Wrench } from "lucide-react"
 
 type HeroStat = {
   value: string
@@ -15,6 +16,9 @@ type HeroMessages = {
   description: string
   primaryCta: string
   secondaryCta: string
+  appLinksTitle: string
+  productionApp: string
+  maintenanceApp: string
   trustedBy: string
   companies: string[]
   stats: HeroStat[]
@@ -64,6 +68,44 @@ export function Hero({ messages }: HeroProps) {
                 <Play className="h-4 w-4" />
                 {messages.secondaryCta}
               </Button>
+            </div>
+
+            <div className="mt-10 w-full max-w-xl mx-auto lg:mx-0 rounded-xl border border-border bg-card/40 p-5 backdrop-blur-sm">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4 text-center lg:text-left">
+                {messages.appLinksTitle}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="gap-2.5 justify-center border border-border bg-background/80 text-foreground hover:bg-secondary"
+                  asChild
+                >
+                  <a
+                    href={OPERONIX_APP_URLS.production}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Factory className="h-5 w-5 shrink-0 text-accent" aria-hidden />
+                    {messages.productionApp}
+                  </a>
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="gap-2.5 justify-center border border-border bg-background/80 text-foreground hover:bg-secondary"
+                  asChild
+                >
+                  <a
+                    href={OPERONIX_APP_URLS.maintenance}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Wrench className="h-5 w-5 shrink-0 text-accent" aria-hidden />
+                    {messages.maintenanceApp}
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
 
