@@ -1,6 +1,7 @@
+import { AppBrandIcon } from "@/components/landing/app-brand-icon"
 import { Button } from "@/components/ui/button"
 import { OPERONIX_APP_URLS } from "@/lib/app-urls"
-import { ArrowRight, Factory, Play, Wrench } from "lucide-react"
+import { ArrowRight, Play } from "lucide-react"
 
 type HeroStat = {
   value: string
@@ -86,7 +87,7 @@ export function Hero({ messages }: HeroProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Factory className="h-5 w-5 shrink-0 text-accent" aria-hidden />
+                    <AppBrandIcon variant="production" size={24} />
                     {messages.productionApp}
                   </a>
                 </Button>
@@ -101,7 +102,7 @@ export function Hero({ messages }: HeroProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Wrench className="h-5 w-5 shrink-0 text-accent" aria-hidden />
+                    <AppBrandIcon variant="maintenance" size={24} />
                     {messages.maintenanceApp}
                   </a>
                 </Button>

@@ -1,8 +1,9 @@
 import Link from "next/link"
 import Image from "next/image"
 import type { LucideIcon } from "lucide-react"
-import { Factory, Globe, Wrench } from "lucide-react"
+import { Globe } from "lucide-react"
 
+import { AppBrandIcon } from "@/components/landing/app-brand-icon"
 import { OPERONIX_APP_URLS } from "@/lib/app-urls"
 
 type FooterMessages = {
@@ -45,6 +46,8 @@ type FooterLinkItem = {
   name: string
   href: string
   icon?: LucideIcon
+  /** Brendirana PNG ikona umjesto Lucide (npr. link na Flutter web aplikacije). */
+  brandIcon?: "production" | "maintenance"
 }
 
 const languages = [
@@ -60,14 +63,14 @@ export function Footer({ messages }: FooterProps) {
       {
         name: messages.links.maintenance,
         href: OPERONIX_APP_URLS.maintenance,
-        icon: Wrench,
+        brandIcon: "maintenance",
       },
       { name: messages.links.quality, href: "#" },
       { name: messages.links.logistics, href: "#" },
       {
         name: messages.links.production,
         href: OPERONIX_APP_URLS.production,
-        icon: Factory,
+        brandIcon: "production",
       },
     ],
     [messages.solutions]: [
@@ -131,7 +134,9 @@ export function Footer({ messages }: FooterProps) {
                   const Icon = link.icon
                   return (
                     <li key={link.name} className="flex items-center gap-2">
-                      {Icon ? (
+                      {link.brandIcon ? (
+                        <AppBrandIcon variant={link.brandIcon} size={18} className="opacity-90" />
+                      ) : Icon ? (
                         <Icon
                           className="h-4 w-4 shrink-0 text-muted-foreground"
                           aria-hidden

@@ -18,7 +18,7 @@
     "titleLine1": "The complete platform to",
     "titleAccent": "build manufacturing",
     "titleLine2": "excellence.",
-    "description": "Unified MES, OEE, Quality, Maintenance, and Logistics in one enterprise platform. Built for automotive standards and industrial scale.",
+    "description": "Unified MES, OEE, Production, Quality, Maintenance, and Logistics in one enterprise platform. Built for automotive standards and industrial scale.",
     "primaryCta": "Get a Demo",
     "secondaryCta": "Watch Overview",
     "appLinksTitle": "Web applications",
@@ -49,7 +49,7 @@
         "sublabel": "With IATF tools"
       },
       {
-        "value": "500+",
+        "value": "100+",
         "label": "Manufacturers",
         "sublabel": "Global customers"
       }

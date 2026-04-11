@@ -4,8 +4,9 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { AppBrandIcon } from "@/components/landing/app-brand-icon"
 import { OPERONIX_APP_URLS } from "@/lib/app-urls"
-import { Factory, Globe, Menu, Wrench, X } from "lucide-react"
+import { Globe, Menu, X } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -114,7 +115,7 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
                   rel="noopener noreferrer"
                   title={messages.productionApp}
                 >
-                  <Factory className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+                  <AppBrandIcon variant="production" size={20} />
                   <span className="max-w-[5.5rem] truncate sm:max-w-none">{messages.productionApp}</span>
                 </a>
               </Button>
@@ -125,7 +126,7 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
                   rel="noopener noreferrer"
                   title={messages.maintenanceApp}
                 >
-                  <Wrench className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+                  <AppBrandIcon variant="maintenance" size={20} />
                   <span className="max-w-[5.5rem] truncate sm:max-w-none">{messages.maintenanceApp}</span>
                 </a>
               </Button>
@@ -163,7 +164,7 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
                     rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <Factory className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+                    <AppBrandIcon variant="production" size={20} />
                     {messages.productionApp}
                   </a>
                 </Button>
@@ -174,7 +175,7 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
                     rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <Wrench className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+                    <AppBrandIcon variant="maintenance" size={20} />
                     {messages.maintenanceApp}
                   </a>
                 </Button>
