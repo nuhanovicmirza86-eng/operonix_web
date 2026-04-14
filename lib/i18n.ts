@@ -91,6 +91,10 @@ type Messages = {
     appLinksTitle: string
     productionApp: string
     maintenanceApp: string
+    mobileQrTitle: string
+    mobileQrSubtitle: string
+    mobileQrAndroid: string
+    mobileQrIos: string
     trustedBy: string
     companies: string[]
     stats: HeroStat[]

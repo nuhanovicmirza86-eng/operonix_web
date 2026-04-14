@@ -24,6 +24,10 @@
     "appLinksTitle": "Web aplikacije",
     "productionApp": "Operonix Production",
     "maintenanceApp": "Operonix Maintenance",
+    "mobileQrTitle": "Android i iPhone",
+    "mobileQrSubtitle": "Skenirajte QR kod kamerom telefona da otvorite aplikaciju na Androidu ili iOS-u.",
+    "mobileQrAndroid": "Android",
+    "mobileQrIos": "iOS",
     "trustedBy": "Vodeći proizvođači širom svijeta imaju povjerenje u nas",
     "companies": [
       "AutoTech",

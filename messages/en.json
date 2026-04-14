@@ -24,6 +24,10 @@
     "appLinksTitle": "Web applications",
     "productionApp": "Operonix Production",
     "maintenanceApp": "Operonix Maintenance",
+    "mobileQrTitle": "Android & iPhone",
+    "mobileQrSubtitle": "Scan the QR code with your phone camera to open the app on Android or iOS.",
+    "mobileQrAndroid": "Android",
+    "mobileQrIos": "iOS",
     "trustedBy": "Trusted by leading manufacturers worldwide",
     "companies": [
       "AutoTech",

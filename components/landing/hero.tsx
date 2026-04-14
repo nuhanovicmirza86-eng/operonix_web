@@ -1,4 +1,5 @@
 import { AppBrandIcon } from "@/components/landing/app-brand-icon"
+import { HeroMobileQrSection } from "@/components/landing/hero-mobile-qr-section"
 import { Button } from "@/components/ui/button"
 import { OPERONIX_APP_URLS } from "@/lib/app-urls"
 import { ArrowRight, Play } from "lucide-react"
@@ -20,6 +21,10 @@ type HeroMessages = {
   appLinksTitle: string
   productionApp: string
   maintenanceApp: string
+  mobileQrTitle: string
+  mobileQrSubtitle: string
+  mobileQrAndroid: string
+  mobileQrIos: string
   trustedBy: string
   companies: string[]
   stats: HeroStat[]
@@ -31,7 +36,7 @@ type HeroProps = {
 
 export function Hero({ messages }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative min-h-screen overflow-x-hidden pt-16">
       {/* Background grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1f2c_1px,transparent_1px),linear-gradient(to_bottom,#1a1f2c_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
 
@@ -39,7 +44,7 @@ export function Hero({ messages }: HeroProps) {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[128px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-24 sm:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start lg:items-center">
           {/* Left content */}
           <div className="text-center lg:text-left">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-4 py-1.5 text-sm text-muted-foreground mb-8">
@@ -60,18 +65,7 @@ export function Hero({ messages }: HeroProps) {
               {messages.description}
             </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 gap-2">
-                {messages.primaryCta}
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-secondary gap-2">
-                <Play className="h-4 w-4" />
-                {messages.secondaryCta}
-              </Button>
-            </div>
-
-            <div className="mt-10 w-full max-w-xl mx-auto lg:mx-0 rounded-xl border border-border bg-card/40 p-5 backdrop-blur-sm">
+            <div className="mt-8 w-full max-w-xl mx-auto lg:mx-0 rounded-xl border border-border bg-card/40 p-5 backdrop-blur-sm">
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4 text-center lg:text-left">
                 {messages.appLinksTitle}
               </p>
@@ -107,6 +101,28 @@ export function Hero({ messages }: HeroProps) {
                   </a>
                 </Button>
               </div>
+            </div>
+
+            <HeroMobileQrSection
+              messages={{
+                title: messages.mobileQrTitle,
+                subtitle: messages.mobileQrSubtitle,
+                androidLabel: messages.mobileQrAndroid,
+                iosLabel: messages.mobileQrIos,
+                productionName: messages.productionApp,
+                maintenanceName: messages.maintenanceApp,
+              }}
+            />
+
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 gap-2">
+                {messages.primaryCta}
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-secondary gap-2">
+                <Play className="h-4 w-4" />
+                {messages.secondaryCta}
+              </Button>
             </div>
           </div>
 
