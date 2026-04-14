@@ -22,9 +22,12 @@ type HeroMessages = {
   productionApp: string
   maintenanceApp: string
   mobileQrTitle: string
-  mobileQrSubtitle: string
+  mobileQrSubtitleStore: string
+  mobileQrSubtitleWeb: string
+  mobileQrSubtitleMixed: string
   mobileQrAndroid: string
   mobileQrIos: string
+  mobileQrRowWebBadge: string
   trustedBy: string
   companies: string[]
   stats: HeroStat[]
@@ -106,9 +109,12 @@ export function Hero({ messages }: HeroProps) {
             <HeroMobileQrSection
               messages={{
                 title: messages.mobileQrTitle,
-                subtitle: messages.mobileQrSubtitle,
+                subtitleStore: messages.mobileQrSubtitleStore,
+                subtitleWeb: messages.mobileQrSubtitleWeb,
+                subtitleMixed: messages.mobileQrSubtitleMixed,
                 androidLabel: messages.mobileQrAndroid,
                 iosLabel: messages.mobileQrIos,
+                rowWebBadge: messages.mobileQrRowWebBadge,
                 productionName: messages.productionApp,
                 maintenanceName: messages.maintenanceApp,
               }}

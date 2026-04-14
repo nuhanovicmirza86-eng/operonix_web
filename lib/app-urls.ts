@@ -43,3 +43,24 @@ export const OPERONIX_MOBILE_INSTALL_URLS = {
     ),
   },
 } as const
+
+export type OperonixAppVariant = keyof typeof OPERONIX_MOBILE_INSTALL_URLS
+
+/** True kad QR još uvijek pokazuje na web URL (nema posebnog Play / App Store linka). */
+export function mobileQrRowOpensWebOnly(variant: OperonixAppVariant): boolean {
+  const web = OPERONIX_APP_URLS[variant]
+  const u = OPERONIX_MOBILE_INSTALL_URLS[variant]
+  return u.android === web && u.ios === web
+}
+
+/*
+ * Za instalaciju native aplikacije skeniranjem QR-a, postavite URL trgovina u Vercel env (build):
+ *
+ *   NEXT_PUBLIC_PRODUCTION_ANDROID_URL=https://play.google.com/store/apps/details?id=com.operonix.production
+ *   NEXT_PUBLIC_PRODUCTION_IOS_URL=https://apps.apple.com/... (App Store Connect)
+ *   NEXT_PUBLIC_MAINTENANCE_ANDROID_URL=...
+ *   NEXT_PUBLIC_MAINTENANCE_IOS_URL=...
+ *
+ * Android: Play Console → aplikacija → „View on Play“ kopira link.
+ * iOS: App Store Connect → App Information → Apple ID link.
+ */

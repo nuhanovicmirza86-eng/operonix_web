@@ -92,9 +92,12 @@ type Messages = {
     productionApp: string
     maintenanceApp: string
     mobileQrTitle: string
-    mobileQrSubtitle: string
+    mobileQrSubtitleStore: string
+    mobileQrSubtitleWeb: string
+    mobileQrSubtitleMixed: string
     mobileQrAndroid: string
     mobileQrIos: string
+    mobileQrRowWebBadge: string
     trustedBy: string
     companies: string[]
     stats: HeroStat[]

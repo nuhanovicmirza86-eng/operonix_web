@@ -25,9 +25,12 @@
     "productionApp": "Operonix Production",
     "maintenanceApp": "Operonix Maintenance",
     "mobileQrTitle": "Android & iPhone",
-    "mobileQrSubtitle": "Scan the QR code with your phone camera to open the app on Android or iOS.",
+    "mobileQrSubtitleStore": "Scan the Android code for Google Play and the iOS code for the App Store to install the app.",
+    "mobileQrSubtitleWeb": "QR codes open the website in your browser, not the store install yet. After the native apps are published, the same codes will be pointed to Google Play and the App Store (configured in hosting).",
+    "mobileQrSubtitleMixed": "Some apps already use store install links; others still open the web version until their store URLs are configured.",
     "mobileQrAndroid": "Android",
     "mobileQrIos": "iOS",
+    "mobileQrRowWebBadge": "Web",
     "trustedBy": "Trusted by leading manufacturers worldwide",
     "companies": [
       "AutoTech",

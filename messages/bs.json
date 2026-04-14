@@ -25,9 +25,12 @@
     "productionApp": "Operonix Production",
     "maintenanceApp": "Operonix Maintenance",
     "mobileQrTitle": "Android i iPhone",
-    "mobileQrSubtitle": "Skenirajte QR kod kamerom telefona da otvorite aplikaciju na Androidu ili iOS-u.",
+    "mobileQrSubtitleStore": "Skenirajte kod za Android da otvorite Google Play, a kod za iOS App Store — tamo instalirate aplikaciju.",
+    "mobileQrSubtitleWeb": "QR kodovi trenutno otvaraju web stranicu u pregledniku, ne instalaciju iz trgovine. Kad native aplikacije budu objavljene, isti kodovi mogu pokazivati na Google Play i App Store (postavlja se u hosting okruženju).",
+    "mobileQrSubtitleMixed": "Jedna aplikacija već vodi na trgovinu, druga još na web dok se ne dodaju store linkovi.",
     "mobileQrAndroid": "Android",
     "mobileQrIos": "iOS",
+    "mobileQrRowWebBadge": "Web",
     "trustedBy": "Vodeći proizvođači širom svijeta imaju povjerenje u nas",
     "companies": [
       "AutoTech",
