@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
 
+import { LegalDocShell } from "@/components/landing/legal-doc-shell"
 import { getMessages, localeFromQueryLang, type Locale } from "@/lib/i18n"
 
 const CONTACT_EMAIL = "info@operonixindustrial.com"
@@ -44,35 +43,7 @@ export default async function PrivacyPolicyPage({
   const articleLang = locale === "bs" ? "bs" : "en"
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-border">
-        <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-6 py-4">
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/logo.png"
-              alt="Operonix"
-              width={140}
-              height={40}
-              className="h-9 w-auto object-contain"
-            />
-          </Link>
-          <div className="flex flex-wrap items-center gap-4 text-sm">
-            <Link
-              href={pp.switchLanguage.href}
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {pp.switchLanguage.label}
-            </Link>
-            <Link
-              href="/"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {pp.home}
-            </Link>
-          </div>
-        </div>
-      </header>
-
+    <LegalDocShell homeLabel={pp.home} switchLanguage={pp.switchLanguage}>
       <article
         lang={articleLang}
         className="mx-auto max-w-3xl px-6 py-12 text-muted-foreground"
@@ -165,6 +136,6 @@ export default async function PrivacyPolicyPage({
           </ul>
         </section>
       </article>
-    </div>
+    </LegalDocShell>
   )
 }

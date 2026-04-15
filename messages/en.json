@@ -429,5 +429,81 @@
       "company": "Operonix Industrial",
       "website": "www.operonixindustrial.com"
     }
+  },
+  "termsOfService": {
+    "metaTitle": "Terms of Service | Operonix Industrial",
+    "metaDescription": "Terms governing use of the Operonix Industrial website and related information services.",
+    "home": "Home",
+    "switchLanguage": {
+      "label": "Bosanski",
+      "href": "/terms-of-service?lang=bs"
+    },
+    "title": "Terms of Service",
+    "intro": "These Terms of Service (\"Terms\") govern your access to and use of the Operonix Industrial website at operonixindustrial.com (the \"Site\"). By using the Site, you agree to these Terms. If you do not agree, please do not use the Site.",
+    "sections": [
+      {
+        "heading": "Other agreements",
+        "body": "Use of Operonix software applications (such as Operonix Production or Operonix Maintenance) is governed by separate agreements, licenses, or terms provided when you access those services. These Site Terms apply to the marketing website and general information we publish here."
+      },
+      {
+        "heading": "Acceptable use",
+        "body": "You agree not to misuse the Site, including attempting unauthorized access to our systems, interfering with the proper working of the Site, introducing malware, scraping the Site in a way that harms our infrastructure, or using the Site for any unlawful purpose."
+      },
+      {
+        "heading": "Intellectual property",
+        "body": "The Site and its content (including text, graphics, logos, and layout) are owned by Operonix Industrial or its licensors and are protected by applicable intellectual property laws. You may not copy, modify, or distribute Site content without our prior written consent, except as permitted by law."
+      },
+      {
+        "heading": "Disclaimer",
+        "body": "The Site is provided on an \"as is\" and \"as available\" basis. To the fullest extent permitted by law, we disclaim all warranties, express or implied, regarding the Site and any information provided through it."
+      },
+      {
+        "heading": "Limitation of liability",
+        "body": "To the fullest extent permitted by applicable law, Operonix Industrial and its affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, arising out of or related to your use of the Site."
+      },
+      {
+        "heading": "Changes",
+        "body": "We may update these Terms from time to time. The updated version will be posted on this page with a continued effective date implied by publication. Your continued use of the Site after changes constitutes acceptance of the updated Terms."
+      }
+    ],
+    "contact": {
+      "heading": "Contact",
+      "company": "Operonix Industrial",
+      "website": "www.operonixindustrial.com"
+    }
+  },
+  "cookieSettings": {
+    "metaTitle": "Cookie settings | Operonix Industrial",
+    "metaDescription": "How operonixindustrial.com uses cookies and similar technologies, and how you can control them.",
+    "home": "Home",
+    "switchLanguage": {
+      "label": "Bosanski",
+      "href": "/cookie-settings?lang=bs"
+    },
+    "title": "Cookie settings",
+    "intro": "This notice describes how operonixindustrial.com (the \"Site\") uses cookies and similar technologies when you visit.",
+    "sections": [
+      {
+        "heading": "What are cookies?",
+        "body": "Cookies are small text files stored on your device when you visit a website. They are widely used to make sites work more efficiently and to provide information to site operators."
+      },
+      {
+        "heading": "Cookies we use",
+        "body": "We use essential cookies required for the Site to function (for example, security and load balancing where applicable by our hosting provider). We also use analytics cookies through Vercel Analytics to collect aggregate usage information (such as page views) to understand how visitors use the Site. These analytics cookies do not identify you personally beyond what your browser shares in ordinary web requests."
+      },
+      {
+        "heading": "Your choices",
+        "body": "You can control or delete cookies through your browser settings. Blocking or deleting cookies may affect how the Site works. For more information, see your browser’s help documentation."
+      },
+      {
+        "heading": "Updates",
+        "body": "We may update this cookie notice from time to time. The latest version will always be available on this page."
+      }
+    ],
+    "contact": {
+      "heading": "Contact",
+      "company": "Operonix Industrial",
+      "website": "www.operonixindustrial.com"
+    }
   }
 }

@@ -40,6 +40,22 @@ type CtaStat = {
   label: string
 }
 
+/** Stranice tipa Terms / Cookies: uvod, sekcije, kontakt. */
+export type LegalArticlePageMessages = {
+  metaTitle: string
+  metaDescription: string
+  home: string
+  switchLanguage: { label: string; href: string }
+  title: string
+  intro: string
+  sections: { heading: string; body: string }[]
+  contact: {
+    heading: string
+    company: string
+    website: string
+  }
+}
+
 type PrivacyPolicyMessages = {
   metaTitle: string
   metaDescription: string
@@ -180,6 +196,8 @@ type Messages = {
     links: FooterLinks
   }
   privacyPolicy: PrivacyPolicyMessages
+  termsOfService: LegalArticlePageMessages
+  cookieSettings: LegalArticlePageMessages
 }
 
 export const locales = ["en", "bs"] as const

@@ -429,5 +429,81 @@
       "company": "Operonix Industrial",
       "website": "www.operonixindustrial.com"
     }
+  },
+  "termsOfService": {
+    "metaTitle": "Uslovi korištenja | Operonix Industrial",
+    "metaDescription": "Uslovi koji uređuju korištenje web stranice Operonix Industrial i povezanih informacionih usluga.",
+    "home": "Početna",
+    "switchLanguage": {
+      "label": "English",
+      "href": "/terms-of-service"
+    },
+    "title": "Uslovi korištenja",
+    "intro": "Ovi uslovi korištenja („Uslovi“) regulišu vaš pristup i korištenje web stranice Operonix Industrial na operonixindustrial.com („Stranica“). Korištenjem Stranice prihvatate ove Uslove. Ako se ne slažete, nemojte koristiti Stranicu.",
+    "sections": [
+      {
+        "heading": "Ostali ugovori",
+        "body": "Korištenje softverskih aplikacija Operonix (npr. Operonix Production ili Operonix Maintenance) uređuje se posebnim ugovorima, licencama ili uslovima koje dobijete pri pristupu tim uslugama. Ovi Uslovi za Stranicu odnose se na marketinški web i opće informacije koje ovdje objavljujemo."
+      },
+      {
+        "heading": "Prihvatljivo korištenje",
+        "body": "Slažete se da nećete zloupotrebljavati Stranicu, uključujući pokušaj neovlaštenog pristupa našim sistemima, ometanje ispravnog rada Stranice, unošenje zlonamjernog softvera, skeniranje Stranice na način koji šteti našoj infrastrukturi ili korištenje Stranice u nezakonite svrhe."
+      },
+      {
+        "heading": "Intelektualna svojina",
+        "body": "Stranica i njen sadržaj (uključujući tekst, grafiku, logotipe i raspored) u vlasništvu su Operonix Industrial ili davatelja licence i zaštićeni su primjenjivim zakonima o intelektualnoj svojini. Ne smijete kopirati, mijenjati ili distribuirati sadržaj Stranice bez našeg prethodnog pismenog odobrenja, osim ako zakon drugačije dopušta."
+      },
+      {
+        "heading": "Odricanje od odgovornosti",
+        "body": "Stranica se pruža „kakva jest“ i „prema dostupnosti“. U najvećoj mjeri dopuštenoj zakonom, odričemo se svih izričitih ili podrazumijevanih garancija u vezi sa Stranicom i informacijama kroz nju."
+      },
+      {
+        "heading": "Ograničenje odgovornosti",
+        "body": "U najvećoj mjeri dopuštenoj primjenjivim pravom, Operonix Industrial i povezana društva ne odgovaraju za neizravne, slučajne, posebne, posljedične ili kaznene štete, niti za gubitak dobiti ili prihoda, koji proizlaze iz ili su povezani s korištenjem Stranice."
+      },
+      {
+        "heading": "Izmjene",
+        "body": "Ove Uslove možemo s vremena na vrijeme ažurirati. Ažurirana verzija bit će objavljena na ovoj stranici. Nastavak korištenja Stranice nakon izmjena smatra se prihvatanjem ažuriranih Uslova."
+      }
+    ],
+    "contact": {
+      "heading": "Kontakt",
+      "company": "Operonix Industrial",
+      "website": "www.operonixindustrial.com"
+    }
+  },
+  "cookieSettings": {
+    "metaTitle": "Postavke kolačića | Operonix Industrial",
+    "metaDescription": "Kako operonixindustrial.com koristi kolačiće i slične tehnologije i kako ih možete kontrolisati.",
+    "home": "Početna",
+    "switchLanguage": {
+      "label": "English",
+      "href": "/cookie-settings"
+    },
+    "title": "Postavke kolačića",
+    "intro": "Ova obavještenje opisuje kako operonixindustrial.com („Stranica“) koristi kolačiće i slične tehnologije kada je posjetite.",
+    "sections": [
+      {
+        "heading": "Šta su kolačići?",
+        "body": "Kolačići su male tekstualne datoteke koje se pohranjuju na vaš uređaj kada posjetite web stranicu. Široko se koriste da stranice rade učinkovitije i da operatorima stranica pruže informacije."
+      },
+      {
+        "heading": "Kolačići koje koristimo",
+        "body": "Koristimo nužne kolačiće potrebne za funkcionisanje Stranice (npr. sigurnost i balans opterećenja gdje to omogućava naš hosting). Također koristimo analitičke kolačiće putem Vercel Analytics za agregirane informacije o korištenju (npr. pregledi stranica) kako bismo razumjeli kako posjetioci koriste Stranicu. Ti analitički kolačići vas ne identifikuju lično izvan onoga što vaš preglednik dijeli u uobičajenim web zahtjevima."
+      },
+      {
+        "heading": "Vaše opcije",
+        "body": "Kolačiće možete kontrolisati ili brisati putem postavki preglednika. Blokiranje ili brisanje kolačića može uticati na rad Stranice. Više informacija potražite u pomoći vašeg preglednika."
+      },
+      {
+        "heading": "Ažuriranja",
+        "body": "Ovo obavještenje o kolačićima možemo s vremena na vrijeme ažurirati. Najnovija verzija uvijek je dostupna na ovoj stranici."
+      }
+    ],
+    "contact": {
+      "heading": "Kontakt",
+      "company": "Operonix Industrial",
+      "website": "www.operonixindustrial.com"
+    }
   }
 }

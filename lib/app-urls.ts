@@ -11,6 +11,16 @@ export function operonixPrivacyPolicyUrl(locale: "en" | "bs"): string {
   return `${OPERONIX_MARKETING_ORIGIN}/privacy-policy${q}`
 }
 
+export function operonixTermsOfServiceUrl(locale: "en" | "bs"): string {
+  const q = locale === "bs" ? "?lang=bs" : ""
+  return `${OPERONIX_MARKETING_ORIGIN}/terms-of-service${q}`
+}
+
+export function operonixCookieSettingsUrl(locale: "en" | "bs"): string {
+  const q = locale === "bs" ? "?lang=bs" : ""
+  return `${OPERONIX_MARKETING_ORIGIN}/cookie-settings${q}`
+}
+
 /** Javni URL-ovi Flutter web aplikacija (Firebase Hosting / custom domen). */
 export const OPERONIX_APP_URLS = {
   production: "https://production.operonixindustrial.com",

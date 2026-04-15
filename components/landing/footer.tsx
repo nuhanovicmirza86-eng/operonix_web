@@ -4,7 +4,12 @@ import type { LucideIcon } from "lucide-react"
 import { Globe } from "lucide-react"
 
 import { AppBrandIcon } from "@/components/landing/app-brand-icon"
-import { OPERONIX_APP_URLS, operonixPrivacyPolicyUrl } from "@/lib/app-urls"
+import {
+  OPERONIX_APP_URLS,
+  operonixCookieSettingsUrl,
+  operonixPrivacyPolicyUrl,
+  operonixTermsOfServiceUrl,
+} from "@/lib/app-urls"
 import type { Locale } from "@/lib/i18n"
 
 type FooterMessages = {
@@ -59,9 +64,10 @@ const languages = [
 ]
 
 export function Footer({ messages, currentLang = "en" }: FooterProps) {
-  const privacyPolicyHref = operonixPrivacyPolicyUrl(
-    currentLang === "bs" ? "bs" : "en"
-  )
+  const loc = currentLang === "bs" ? "bs" : "en"
+  const privacyPolicyHref = operonixPrivacyPolicyUrl(loc)
+  const termsOfServiceHref = operonixTermsOfServiceUrl(loc)
+  const cookieSettingsHref = operonixCookieSettingsUrl(loc)
 
   const footerLinks: Record<string, FooterLinkItem[]> = {
     [messages.platform]: [
@@ -177,12 +183,18 @@ export function Footer({ messages, currentLang = "en" }: FooterProps) {
             >
               {messages.links.privacy}
             </a>
-            <Link href="#" className="hover:text-foreground transition-colors">
+            <a
+              href={termsOfServiceHref}
+              className="cursor-pointer underline-offset-4 transition-colors hover:text-foreground hover:underline"
+            >
               {messages.links.terms}
-            </Link>
-            <Link href="#" className="hover:text-foreground transition-colors">
+            </a>
+            <a
+              href={cookieSettingsHref}
+              className="cursor-pointer underline-offset-4 transition-colors hover:text-foreground hover:underline"
+            >
               {messages.links.cookies}
-            </Link>
+            </a>
           </div>
         </div>
       </div>
