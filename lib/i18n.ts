@@ -40,6 +40,42 @@ type CtaStat = {
   label: string
 }
 
+type PrivacyPolicyMessages = {
+  metaTitle: string
+  metaDescription: string
+  home: string
+  switchLanguage: { label: string; href: string }
+  title: string
+  intro: string
+  collection: {
+    heading: string
+    lead: string
+    items: string[]
+  }
+  use: {
+    heading: string
+    lead: string
+    items: string[]
+  }
+  sharing: {
+    heading: string
+    body: string
+  }
+  security: {
+    heading: string
+    body: string
+  }
+  deletion: {
+    heading: string
+    lead: string
+  }
+  contact: {
+    heading: string
+    company: string
+    website: string
+  }
+}
+
 type FooterLinks = {
   mes: string
   oee: string
@@ -143,12 +179,22 @@ type Messages = {
     company: string
     links: FooterLinks
   }
+  privacyPolicy: PrivacyPolicyMessages
 }
 
 export const locales = ["en", "bs"] as const
 export type Locale = (typeof locales)[number]
 
 export const defaultLocale: Locale = "en"
+
+/** Isti kriterij kao na početnoj (`?lang=bs`). */
+export function localeFromQueryLang(
+  rawLang: string | string[] | undefined
+): Locale {
+  return rawLang === "bs" || (Array.isArray(rawLang) && rawLang[0] === "bs")
+    ? "bs"
+    : "en"
+}
 
 export async function getMessages(locale: Locale): Promise<Messages> {
   switch (locale) {

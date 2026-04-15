@@ -4,7 +4,8 @@ import type { LucideIcon } from "lucide-react"
 import { Globe } from "lucide-react"
 
 import { AppBrandIcon } from "@/components/landing/app-brand-icon"
-import { OPERONIX_APP_URLS } from "@/lib/app-urls"
+import { OPERONIX_APP_URLS, operonixPrivacyPolicyUrl } from "@/lib/app-urls"
+import type { Locale } from "@/lib/i18n"
 
 type FooterMessages = {
   description: string
@@ -40,6 +41,8 @@ type FooterMessages = {
 
 type FooterProps = {
   messages: FooterMessages
+  /** Jezik početne (`?lang=bs`); određuje href na politiku privatnosti. */
+  currentLang?: Locale
 }
 
 type FooterLinkItem = {
@@ -55,7 +58,11 @@ const languages = [
   { code: "en", name: "English" },
 ]
 
-export function Footer({ messages }: FooterProps) {
+export function Footer({ messages, currentLang = "en" }: FooterProps) {
+  const privacyPolicyHref = operonixPrivacyPolicyUrl(
+    currentLang === "bs" ? "bs" : "en"
+  )
+
   const footerLinks: Record<string, FooterLinkItem[]> = {
     [messages.platform]: [
       { name: messages.links.mes, href: "#" },
@@ -164,9 +171,12 @@ export function Footer({ messages }: FooterProps) {
             &copy; {new Date().getFullYear()} Operonix. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <Link href="#" className="hover:text-foreground transition-colors">
+            <a
+              href={privacyPolicyHref}
+              className="cursor-pointer underline-offset-4 transition-colors hover:text-foreground hover:underline"
+            >
               {messages.links.privacy}
-            </Link>
+            </a>
             <Link href="#" className="hover:text-foreground transition-colors">
               {messages.links.terms}
             </Link>

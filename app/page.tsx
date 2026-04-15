@@ -6,7 +6,7 @@ import { Solutions } from "@/components/landing/solutions"
 import { CTA } from "@/components/landing/cta"
 import { Footer } from "@/components/landing/footer"
 
-import { getMessages } from "@/lib/i18n"
+import { getMessages, localeFromQueryLang } from "@/lib/i18n"
 
 type HomeProps = {
   searchParams?: Promise<{
@@ -16,12 +16,7 @@ type HomeProps = {
 
 export default async function Home({ searchParams }: HomeProps) {
   const params = searchParams ? await searchParams : {}
-  const rawLang = params?.lang
-
-  const locale =
-    rawLang === "bs" || (Array.isArray(rawLang) && rawLang[0] === "bs")
-      ? "bs"
-      : "en"
+  const locale = localeFromQueryLang(params?.lang)
 
   const messages = await getMessages(locale)
 
@@ -38,7 +33,7 @@ export default async function Home({ searchParams }: HomeProps) {
       <Automotive messages={messages.automotive} />
       <Solutions messages={messages.solutions} />
       <CTA messages={messages.cta} />
-      <Footer messages={messages.footer} />
+      <Footer messages={messages.footer} currentLang={locale} />
     </main>
   )
 }

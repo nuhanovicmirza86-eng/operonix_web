@@ -1,3 +1,16 @@
+/** Javni marketing sajt (landing, politika privatnosti). */
+export const OPERONIX_MARKETING_ORIGIN = "https://operonixindustrial.com" as const
+
+/**
+ * Kanonski URL stranice politike privatnosti.
+ * Koristi puni origin da navigacija uvijek otvori marketing sajt (stabilno i kad
+ * korisnik nije na istom hostu npr. Flutter web na poddomenu).
+ */
+export function operonixPrivacyPolicyUrl(locale: "en" | "bs"): string {
+  const q = locale === "bs" ? "?lang=bs" : ""
+  return `${OPERONIX_MARKETING_ORIGIN}/privacy-policy${q}`
+}
+
 /** Javni URL-ovi Flutter web aplikacija (Firebase Hosting / custom domen). */
 export const OPERONIX_APP_URLS = {
   production: "https://production.operonixindustrial.com",

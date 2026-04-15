@@ -382,5 +382,52 @@
       "terms": "Uslovi korištenja",
       "cookies": "Postavke kolačića"
     }
+  },
+  "privacyPolicy": {
+    "metaTitle": "Politika privatnosti – Operonix Production | Operonix Industrial",
+    "metaDescription": "Politika privatnosti za aplikaciju Operonix Production: prikupljanje, korištenje, dijeljenje i brisanje podataka te kontakt.",
+    "home": "Početna",
+    "switchLanguage": {
+      "label": "English",
+      "href": "/privacy-policy"
+    },
+    "title": "Privacy Policy – Operonix Production",
+    "intro": "Operonix Production je aplikacija za upravljanje proizvodnjom i poslovnim procesima.",
+    "collection": {
+      "heading": "Prikupljanje podataka",
+      "lead": "Aplikacija može prikupljati sljedeće podatke:",
+      "items": [
+        "korisničke podatke (ime, email)",
+        "podatke o kompaniji i proizvodnji koje korisnik unosi",
+        "tehničke podatke potrebne za rad aplikacije"
+      ]
+    },
+    "use": {
+      "heading": "Korištenje podataka",
+      "lead": "Podaci se koriste isključivo za:",
+      "items": [
+        "funkcionisanje aplikacije",
+        "autentifikaciju korisnika",
+        "upravljanje proizvodnim procesima",
+        "poboljšanje stabilnosti i performansi"
+      ]
+    },
+    "sharing": {
+      "heading": "Dijeljenje podataka",
+      "body": "Operonix Production ne dijeli korisničke podatke sa trećim stranama osim kada je to potrebno za funkcionisanje sistema (npr. Firebase usluge)."
+    },
+    "security": {
+      "heading": "Sigurnost",
+      "body": "Podaci se čuvaju koristeći industrijske standarde sigurnosti."
+    },
+    "deletion": {
+      "heading": "Brisanje podataka",
+      "lead": "Korisnik može zatražiti brisanje svojih podataka kontaktiranjem:"
+    },
+    "contact": {
+      "heading": "Kontakt",
+      "company": "Operonix Industrial",
+      "website": "www.operonixindustrial.com"
+    }
   }
 }

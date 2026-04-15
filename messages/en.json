@@ -382,5 +382,52 @@
       "terms": "Terms of Service",
       "cookies": "Cookie Settings"
     }
+  },
+  "privacyPolicy": {
+    "metaTitle": "Privacy Policy – Operonix Production | Operonix Industrial",
+    "metaDescription": "Privacy policy for the Operonix Production app: what we collect, how we use and share data, security, deletion requests, and contact details.",
+    "home": "Home",
+    "switchLanguage": {
+      "label": "Bosanski",
+      "href": "/privacy-policy?lang=bs"
+    },
+    "title": "Privacy Policy – Operonix Production",
+    "intro": "Operonix Production is an application for managing manufacturing and business processes.",
+    "collection": {
+      "heading": "Data collection",
+      "lead": "The application may collect the following data:",
+      "items": [
+        "user data (name, email)",
+        "company and production data entered by the user",
+        "technical data required for the application to operate"
+      ]
+    },
+    "use": {
+      "heading": "Use of data",
+      "lead": "Data is used solely for:",
+      "items": [
+        "operating the application",
+        "authenticating users",
+        "managing production processes",
+        "improving stability and performance"
+      ]
+    },
+    "sharing": {
+      "heading": "Sharing data",
+      "body": "Operonix Production does not share user data with third parties except where necessary for the system to function (for example, Firebase services)."
+    },
+    "security": {
+      "heading": "Security",
+      "body": "Data is stored using industry-standard security practices."
+    },
+    "deletion": {
+      "heading": "Data deletion",
+      "lead": "You may request deletion of your data by contacting:"
+    },
+    "contact": {
+      "heading": "Contact",
+      "company": "Operonix Industrial",
+      "website": "www.operonixindustrial.com"
+    }
   }
 }
