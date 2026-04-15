@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 
+import { LegalCrossLinks } from "@/components/landing/legal-cross-links"
 import { LegalDocShell } from "@/components/landing/legal-doc-shell"
 import { getMessages, localeFromQueryLang, type Locale } from "@/lib/i18n"
 
@@ -136,6 +137,15 @@ export default async function PrivacyPolicyPage({
           </ul>
         </section>
       </article>
+      <LegalCrossLinks
+        locale={locale}
+        current="privacy"
+        labels={{
+          privacy: messages.footer.links.privacy,
+          terms: messages.footer.links.terms,
+          cookies: messages.footer.links.cookies,
+        }}
+      />
     </LegalDocShell>
   )
 }
