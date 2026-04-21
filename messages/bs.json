@@ -129,9 +129,9 @@
         "id": "quality",
         "name": "Kvalitet",
         "fullName": "Sistem upravljanja kvalitetom",
-        "description": "Kontrola kvaliteta kroz inspekcije i analitiku.",
+        "description": "Kontrola kvaliteta kroz kontrole i analitiku.",
         "features": [
-          "Planiranje inspekcija",
+          "Planiranje kontrola",
           "Statistička analiza",
           "Upravljanje nesukladnostima",
           "CAPA proces",
@@ -177,7 +177,7 @@
     "complianceFeatures": [
       "Potpuna sljedivost od sirovine do gotovog proizvoda",
       "Automatizovana FMEA dokumentacija i ažuriranja",
-      "Integracija kontrolnog plana sa inspekcijama",
+      "Integracija kontrolnog plana s kontrolama",
       "8D workflow za rješavanje problema",
       "Upravljanje kvalitetom dobavljača",
       "Praćenje zahtjeva specifičnih za kupca",
