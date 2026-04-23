@@ -117,13 +117,13 @@
         "id": "oee",
         "name": "OEE",
         "fullName": "Efikasnost opreme (OOE / OEE)",
-        "description": "OEE/OOE po dostupnosti, performansama i kvalitetu: uživo po stroju i smjeni, katalog gubitaka (TPM), kontekst smjene, TEEP/kapacitet i sažeci za upravljanje.",
+        "description": "OOE, OEE i TEEP su implementirani kao puni, povezani operativni set: OOE mjeri stvarnu efikasnost tokom planiranog vremena rada, OEE standardizuje efikasnost opreme po dostupnosti/perfomansama/kvalitetu, a TEEP prikazuje ukupni potencijal opreme u odnosu na 24/7 kapacitet. Zajedno daju cjelovitu sliku performansi i prostora za unapređenje.",
         "features": [
-          "Uživo OOE i sažeci smjene; ciljni OOE po stroju",
-          "Zastoji i razlozi gubitaka (TPM mapiranje)",
-          "Alarmi na OOE i udio škarta; potvrda i odbacivanje",
-          "Planirani kontekst smjene i neto operativno vrijeme",
-          "Pareto i trendovi za analizu gubitaka"
+          "OOE: praćenje operativne efikasnosti tokom planiranog vremena rada po mašini i smjeni",
+          "OEE: standardizovani A/P/Q model (dostupnost, performanse, kvalitet) za uporedivost i upravljanje",
+          "TEEP: analiza ukupnog potencijala opreme u odnosu na kalendarski 24/7 kapacitet",
+          "Puna integracija: OOE + OEE + TEEP na istim događajima, istim KPI pravilima i istim dashboardima",
+          "Brza reakcija: alarmi, TPM gubici, Pareto i trendovi za prioritetne intervencije i smanjenje troškova"
         ]
       },
       {
@@ -182,8 +182,8 @@
         "caption": "Stanja rada, ključni KPI i zdravlje opreme u aplikaciji."
       },
       {
-        "title": "OOE / OEE i smjena",
-        "caption": "Mjerila, A/P/Q i uvid u smjenu nakon prijave."
+        "title": "OOE / OEE / TEEP i smjena",
+        "caption": "Puna implementacija OOE, OEE i TEEP: operativna efikasnost, A/P/Q model i ukupni 24/7 potencijal opreme."
       },
       {
         "title": "Alarmi i odziv",

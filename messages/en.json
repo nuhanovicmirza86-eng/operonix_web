@@ -117,13 +117,13 @@
         "id": "oee",
         "name": "OEE",
         "fullName": "Overall Equipment Effectiveness (OOE/OEE)",
-        "description": "OEE/OOE across availability, performance, and quality: live OOE per machine and shift, loss catalog (TPM), shift context, TEEP/capacity path, and dashboard-ready roll-ups.",
+        "description": "OOE, OEE, and TEEP are implemented as one connected operational toolkit: OOE measures actual effectiveness during planned production time, OEE standardizes equipment effectiveness through availability/performance/quality, and TEEP shows total equipment potential against 24/7 calendar capacity. Together they provide a complete performance and improvement view.",
         "features": [
-          "Live OOE and shift roll-ups; per-machine OOE targets",
-          "Downtime and loss reasons (TPM six-losses mapping)",
-          "Configurable OOE and scrap-rate alerts; acknowledge or dismiss",
-          "Planned shift context and operating time for stable availability",
-          "Pareto and trend views for loss analysis"
+          "OOE: operational effectiveness tracking during planned runtime by machine and shift",
+          "OEE: standardized A/P/Q model (availability, performance, quality) for comparability and control",
+          "TEEP: total equipment potential analysis against 24/7 calendar capacity",
+          "Full implementation: OOE + OEE + TEEP on shared event streams, KPI rules, and dashboards",
+          "Fast response: alarms, TPM losses, Pareto and trend analysis for prioritized action and cost reduction"
         ]
       },
       {
@@ -182,8 +182,8 @@
         "caption": "Run states, key KPIs, and at-a-glance health for machines and lines."
       },
       {
-        "title": "OOE / OEE & shift",
-        "caption": "Gauges, A/P/Q style breakdown, and shift visibility in the app."
+        "title": "OOE / OEE / TEEP & shift",
+        "caption": "Full implementation of OOE, OEE, and TEEP: operational effectiveness, A/P/Q model, and total 24/7 equipment potential."
       },
       {
         "title": "Alarms & response",
