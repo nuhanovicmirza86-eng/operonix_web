@@ -19,7 +19,20 @@
     "titleLine1": "Kompletna platforma za",
     "titleAccent": "postizanje vrhunskih rezultata",
     "titleLine2": "u proizvodnji.",
-    "description": "Objedinjeni MES, OEE/OOE, proizvodnja, kvalitet, održavanje i logistika. SCADA prikazi uživo, OOE analitika po smjenama, TPM katalog gubitaka, kontekst smjene, podesivi alarmi (OEE, udio škarta) s potvrdom, ciljni OOE po stroju i status u realnom vremenu — uz tanka Firestore pravila i kritične upise preko Cloud Functions. Za automobilske standarde i industrijski obim.",
+    "rotatingHighlights": [
+      "Jedna cjelina za MES, OOE i SCADA — nije povezivanje mnoštva točkastih alata.",
+      "Sigurnost koju objasnete menadžmentu: jasne granice tenanta, tanki pravilnici, poslovna pravila kroz poslužiteljske funkcije.",
+      "Od događaja na stroju do OOE i Pareto gubitaka — ista priča s linije do analize.",
+      "Alarmi, pragovi kvaliteta i potvrde operatera u istom toku rada, bez lutanja među ekranima.",
+      "Projektirano za disciplinu iz automobilske industrije: tragljivost i softver koji prati stvaran rad pogona."
+    ],
+    "visualLabels": {
+      "scada": "SCADA uživo",
+      "performance": "OOE i performanse",
+      "production": "Puls proizvodnje",
+      "footnote": "Pojednostavljene slike stvarnih modula u proizvodu — vaši stvarni podaci nakon prijave."
+    },
+    "description": "Operonix je za timove koji prerastu rastjerkane tabele i krhke integracije: jedan tenant-ograničen sloj od linije do ureda, s operabilnim SCADA pločama, OOE po smjeni, TPM katalogom gubitaka i tragljivošću kvaliteta. MES, analitika i IIoT često se dijele među isporučiteljima; ovdje je cjelovit proizvod s očekivanjom bezbjednosti (mali pravilnici, callables na kritičnim stazama) i web aplikacijama za proizvodnju i održavanje na istom modelu podataka.",
     "primaryCta": "Zatraži demo",
     "secondaryCta": "Pogledaj pregled",
     "appLinksTitle": "Web aplikacije",

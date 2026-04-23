@@ -1,5 +1,7 @@
 import { AppBrandIcon } from "@/components/landing/app-brand-icon"
 import { HeroMobileQrSection } from "@/components/landing/hero-mobile-qr-section"
+import { HeroProductVisuals } from "@/components/landing/hero-product-visuals"
+import { HeroRotatingHighlights } from "@/components/landing/hero-rotating-highlights"
 import { Button } from "@/components/ui/button"
 import { OPERONIX_APP_URLS } from "@/lib/app-urls"
 import { ArrowRight, Play } from "lucide-react"
@@ -16,6 +18,13 @@ type HeroMessages = {
   titleAccent: string
   titleLine2: string
   description: string
+  rotatingHighlights: string[]
+  visualLabels: {
+    scada: string
+    performance: string
+    production: string
+    footnote: string
+  }
   primaryCta: string
   secondaryCta: string
   appLinksTitle: string
@@ -64,7 +73,14 @@ export function Hero({ messages }: HeroProps) {
               <span className="text-balance">{messages.titleLine2}</span>
             </h1>
 
-            <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <div className="mt-5">
+              <HeroRotatingHighlights
+                messages={messages.rotatingHighlights}
+                className="max-w-xl mx-auto lg:mx-0"
+              />
+            </div>
+
+            <p className="mt-5 text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
               {messages.description}
             </p>
 
@@ -132,24 +148,27 @@ export function Hero({ messages }: HeroProps) {
             </div>
           </div>
 
-          {/* Right content - Stats */}
-          <div className="grid grid-cols-2 gap-4">
-            {messages.stats.map((stat, index) => (
-              <div
-                key={index}
-                className="relative group rounded-lg border border-border bg-card/50 p-6 hover:border-accent/50 transition-colors"
-              >
-                <div className="text-3xl sm:text-4xl font-bold text-foreground">
-                  {stat.value}
+          {/* Right: product-style visuals + stats */}
+          <div className="space-y-6 w-full max-w-lg mx-auto lg:max-w-none">
+            <HeroProductVisuals labels={messages.visualLabels} />
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              {messages.stats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="relative group rounded-lg border border-border bg-card/50 p-4 sm:p-5 hover:border-accent/50 transition-colors"
+                >
+                  <div className="text-2xl sm:text-3xl font-bold text-foreground">
+                    {stat.value}
+                  </div>
+                  <div className="mt-1.5 text-sm font-medium text-foreground">
+                    {stat.label}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {stat.sublabel}
+                  </div>
                 </div>
-                <div className="mt-2 text-sm font-medium text-foreground">
-                  {stat.label}
-                </div>
-                <div className="text-xs text-muted-foreground">
-                  {stat.sublabel}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 

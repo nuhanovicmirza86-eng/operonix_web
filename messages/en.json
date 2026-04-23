@@ -19,7 +19,20 @@
     "titleLine1": "The complete platform to",
     "titleAccent": "build manufacturing",
     "titleLine2": "excellence.",
-    "description": "Unified MES, OEE/OOE, production, quality, maintenance, and logistics in one platform. SCADA live views, OOE per-shift analytics, TPM loss reasons, shift context, configurable OOE and scrap alerts with acknowledge flows, per-machine OOE targets, and real-time status — with enterprise security (thin Firestore rules, critical writes via Cloud Functions). Built for automotive standards and scale.",
+    "rotatingHighlights": [
+      "One platform for MES, OOE, and SCADA — not a stack of point tools glued together.",
+      "Security you can stand behind: clear tenant boundaries, thin database rules, and business writes through server functions where it matters.",
+      "From machine events to OOE and loss Pareto — the same data story from line to review.",
+      "Alarms, scrap thresholds, and operator acknowledgement without leaving the flow of work.",
+      "Engineered for automotive rigor: traceability, discipline, and software that models how plants really run."
+    ],
+    "visualLabels": {
+      "scada": "SCADA live",
+      "performance": "OOE & performance",
+      "production": "Production pulse",
+      "footnote": "Stylized views of real product areas — your live data after you sign in."
+    },
+    "description": "Operonix is built for teams that outgrow disconnected spreadsheets and fragile integrations: a single, tenant-safe layer for the shop floor and the office, with operable SCADA-style boards, per-shift OOE, TPM loss reasons, and quality traceability. Competitors often split MES, analytics, and IIoT; we ship a coherent product with a security posture (lean rules, callables for critical paths) that enterprise IT expects — plus native web apps for production and maintenance on the same contract.",
     "primaryCta": "Get a Demo",
     "secondaryCta": "Watch Overview",
     "appLinksTitle": "Web applications",

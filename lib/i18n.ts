@@ -139,6 +139,13 @@ type Messages = {
     titleAccent: string
     titleLine2: string
     description: string
+    rotatingHighlights: string[]
+    visualLabels: {
+      scada: string
+      performance: string
+      production: string
+      footnote: string
+    }
     primaryCta: string
     secondaryCta: string
     appLinksTitle: string
