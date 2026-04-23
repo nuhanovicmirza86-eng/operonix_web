@@ -20,19 +20,19 @@
     "titleAccent": "postizanje vrhunskih rezultata",
     "titleLine2": "u proizvodnji.",
     "rotatingHighlights": [
-      "Jedna cjelina za MES, OOE i SCADA — nije povezivanje mnoštva točkastih alata.",
-      "Sigurnost koju objasnete menadžmentu: jasne granice tenanta, tanki pravilnici, poslovna pravila kroz poslužiteljske funkcije.",
-      "Od događaja na stroju do OOE i Pareto gubitaka — ista priča s linije do analize.",
-      "Alarmi, pragovi kvaliteta i potvrde operatera u istom toku rada, bez lutanja među ekranima.",
-      "Projektirano za disciplinu iz automobilske industrije: tragljivost i softver koji prati stvaran rad pogona."
+      "Operonix objedinjuje MES, OOE i SCADA u jednom sistemu, bez fragmentiranih dodatnih alata.",
+      "Sigurnosni model je jasan i auditabilan: stroga izolacija tenanta, minimalna pravila pristupa i kritični upisi preko serverskih funkcija.",
+      "Podaci su konzistentni od događaja na mašini do OOE izvještaja i Pareto analize gubitaka.",
+      "Alarmi, pragovi kvaliteta i potvrde operatera su u istom operativnom toku rada.",
+      "Platforma je prilagođena zahtjevima automobilske industrije: sljedivost, standardizacija procesa i kontrola izvršenja."
     ],
     "visualLabels": {
       "scada": "SCADA uživo",
       "performance": "OOE i performanse",
       "production": "Puls proizvodnje",
-      "footnote": "Stvarni screenshotovi Operonix modula (SCADA, performanse, praćenje proizvodnje)."
+      "footnote": "Stvarni snimci ekrana Operonix modula (SCADA, performanse, praćenje proizvodnje)."
     },
-    "description": "Operonix je za timove koji prerastu rastjerkane tabele i krhke integracije: jedan tenant-ograničen sloj od linije do ureda, s operabilnim SCADA pločama, OOE po smjeni, TPM katalogom gubitaka i tragljivošću kvaliteta. MES, analitika i IIoT često se dijele među isporučiteljima; ovdje je cjelovit proizvod s očekivanjom bezbjednosti (mali pravilnici, callables na kritičnim stazama) i web aplikacijama za proizvodnju i održavanje na istom modelu podataka.",
+    "description": "Operonix je namijenjen proizvodnim timovima koji trebaju pouzdan i mjerljiv rad sistema: jedinstven tenant-izolovan sloj od pogona do uprave, sa SCADA prikazima, OOE analizom po smjenama, TPM katalogom gubitaka i sljedivošću kvaliteta. Za razliku od rješenja koja razdvajaju MES, analitiku i IIoT, Operonix isporučuje jedinstven proizvod sa jasnim sigurnosnim modelom i web aplikacijama za proizvodnju i održavanje na istom modelu podataka.",
     "primaryCta": "Zatraži demo",
     "secondaryCta": "Pogledaj pregled",
     "appLinksTitle": "Web aplikacije",
@@ -170,7 +170,7 @@
   "scada": {
     "sectionLabel": "SCADA i vidljivost",
     "title": "Pogon, OOE i alarmi na jednom mjestu",
-    "lead": "Ovo su stvarne mogućnosti u proizvodu. Ne koristimo zalihe ili generičke slike na stranici — nakon prijave u Operonix Proizvodnja (web) otvorite SCADA stil (live), OOE prikaze i alarme u svom tenantu.",
+    "lead": "Prikazane funkcionalnosti su dio stvarnog proizvoda. Nakon prijave u Operonix Production (web) dostupni su SCADA pregled pogona, OOE prikazi i upravljanje alarmima u vašem tenant-u.",
     "highlights": [
       "SCADA stil table za status linije i opreme",
       "OOE po smjeni, TPM katalog gubitaka i ciljevi po stroju",
@@ -191,8 +191,8 @@
       }
     ],
     "cta": {
-      "title": "Pogledaj živi UI u proizvodu",
-      "body": "SCADA hub i OOE rade u Operonix Proizvodnja (web) nakon prijave. Ova stranica opisuje mogućnosti — bez marketinških generiranih slika.",
+      "title": "Pregled stvarnog interfejsa u proizvodu",
+      "body": "SCADA hub i OOE moduli rade u Operonix Production (web) nakon prijave. Marketing stranica prikazuje stvarne ekrane i stvarne funkcionalnosti.",
       "button": "Otvori Operonix Proizvodnja (web)"
     }
   },
