@@ -20,11 +20,11 @@
     "titleAccent": "build manufacturing",
     "titleLine2": "excellence.",
     "rotatingHighlights": [
-      "One platform for MES, OOE, and SCADA — not a stack of point tools glued together.",
-      "Security you can stand behind: clear tenant boundaries, thin database rules, and business writes through server functions where it matters.",
-      "From machine events to OOE and loss Pareto — the same data story from line to review.",
-      "Alarms, scrap thresholds, and operator acknowledgement without leaving the flow of work.",
-      "Engineered for automotive rigor: traceability, discipline, and software that models how plants really run."
+      "Operonix unifies MES + OOE/OEE + TEEP + SCADA in one platform, not a fragmented stack of point tools.",
+      "OperonixAI Assistant supports production planning and execution monitoring, improving decision speed on the shop floor.",
+      "Fast issue detection through alarms, deviations, and KPI thresholds enables faster operational response.",
+      "IATF toolset includes PFMEA, action and reaction plans per non-conformance, and traceable execution records.",
+      "Process risk scoring is tracked by OperonixAI Assistant and linked directly with production and quality events."
     ],
     "visualLabels": {
       "scada": "SCADA live",
@@ -32,7 +32,7 @@
       "production": "Production pulse",
       "footnote": "Real screenshots from Operonix modules (SCADA, performance, production tracking)."
     },
-    "description": "Operonix is built for teams that outgrow disconnected spreadsheets and fragile integrations: a single, tenant-safe layer for the shop floor and the office, with operable SCADA-style boards, per-shift OOE, TPM loss reasons, and quality traceability. Competitors often split MES, analytics, and IIoT; we ship a coherent product with a security posture (lean rules, callables for critical paths) that enterprise IT expects — plus native web apps for production and maintenance on the same contract.",
+    "description": "Operonix is built for manufacturing teams that need reliable, measurable, and fast operations: one tenant-safe layer from shop floor to management, with SCADA views, MES execution, OOE/OEE/TEEP analytics, TPM loss tracking, and quality traceability. OperonixAI Assistant supports planning, monitoring, process risk evaluation, and response prioritization. Unlike solutions that split MES, analytics, and IIoT across separate vendors, Operonix delivers one coherent product with enterprise-grade security and dedicated web apps for production and maintenance on the same data contract.",
     "primaryCta": "Get a Demo",
     "secondaryCta": "Watch Overview",
     "appLinksTitle": "Web applications",
@@ -91,7 +91,7 @@
         "id": "production",
         "name": "Production",
         "fullName": "Production Management",
-        "description": "Production planning, execution control, order tracking and resource coordination in one structured workflow.",
+        "description": "Production planning, execution control, order tracking, and resource coordination in one structured workflow, with OperonixAI Assistant support for priorities and operational recommendations.",
         "features": [
           "Production order management",
           "Production planning and scheduling",
@@ -145,11 +145,11 @@
         "fullName": "Quality Management System",
         "description": "End-to-end quality control with inspection planning, non-conformance handling, and statistical process control.",
         "features": [
-          "Inspection planning",
-          "SPC / Statistical analysis",
-          "Non-conformance management",
-          "CAPA workflow",
-          "Document control"
+          "PFMEA and process control plan management",
+          "Action and reaction plans for each non-conformance",
+          "Process risk scoring with OperonixAI Assistant support",
+          "CAPA and 8D problem-solving workflow",
+          "Audit-ready records and document control"
         ]
       },
       {
@@ -172,9 +172,9 @@
     "title": "Plant boards, OOE, and alarms — in one view",
     "lead": "These are real product capabilities. We do not use stock or placeholder screenshots on this site: open Operonix Production (web) after sign-in to use the same SCADA-style live hub, OOE views, and alerts in your tenant.",
     "highlights": [
-      "SCADA live-style dashboards for line and equipment status",
-      "OOE per shift, loss reasons (TPM), and per-machine target tracking",
-      "Threshold-based OOE and scrap alerts with operator acknowledgement"
+      "SCADA dashboards for line, machine, and operating-condition status in real time",
+      "MES + OOE/OEE + TEEP for shift tracking, TPM losses, and per-machine targets",
+      "OperonixAI Assistant for faster issue detection, risk evaluation, and recommended response"
     ],
     "items": [
       {
@@ -192,7 +192,7 @@
     ],
     "cta": {
       "title": "See the live UI in the product",
-      "body": "The SCADA hub and OOE views run in Operonix Production (web) after you sign in. This marketing page shows what you get — without static mock-up images.",
+      "body": "SCADA hub, MES, OOE/OEE/TEEP, and OperonixAI Assistant run in Operonix Production (web) after sign-in. This marketing page shows real screens and core capabilities for measurable operational improvement and cost reduction.",
       "button": "Open Operonix Production (web)"
     }
   },

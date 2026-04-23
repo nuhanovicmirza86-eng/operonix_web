@@ -20,11 +20,11 @@
     "titleAccent": "postizanje vrhunskih rezultata",
     "titleLine2": "u proizvodnji.",
     "rotatingHighlights": [
-      "Operonix objedinjuje MES, OOE i SCADA u jednom sistemu, bez fragmentiranih dodatnih alata.",
-      "Sigurnosni model je jasan i auditabilan: stroga izolacija tenanta, minimalna pravila pristupa i kritični upisi preko serverskih funkcija.",
-      "Podaci su konzistentni od događaja na mašini do OOE izvještaja i Pareto analize gubitaka.",
-      "Alarmi, pragovi kvaliteta i potvrde operatera su u istom operativnom toku rada.",
-      "Platforma je prilagođena zahtjevima automobilske industrije: sljedivost, standardizacija procesa i kontrola izvršenja."
+      "Operonix objedinjuje MES + OOE/OEE + TEEP + SCADA u jednom sistemu, bez fragmentiranih dodatnih alata.",
+      "OperonixAI Asistent podržava planiranje i praćenje proizvodnje, te ubrzava operativne odluke u realnom vremenu.",
+      "Brzo otkrivanje problema kroz alarme, odstupanja i KPI pragove omogućava brzu reakciju operativnih timova.",
+      "IATF alati uključuju PFMEA, akcione i reakcione planove za svaku neusklađenost, te sljedive zapise izvršenja.",
+      "Procjene rizika po procesu prati OperonixAI Asistent i povezuje ih sa proizvodnim događajima i kvalitetom."
     ],
     "visualLabels": {
       "scada": "SCADA uživo",
@@ -32,7 +32,7 @@
       "production": "Puls proizvodnje",
       "footnote": "Stvarni snimci ekrana Operonix modula (SCADA, performanse, praćenje proizvodnje)."
     },
-    "description": "Operonix je namijenjen proizvodnim timovima koji trebaju pouzdan i mjerljiv rad sistema: jedinstven tenant-izolovan sloj od pogona do uprave, sa SCADA prikazima, OOE analizom po smjenama, TPM katalogom gubitaka i sljedivošću kvaliteta. Za razliku od rješenja koja razdvajaju MES, analitiku i IIoT, Operonix isporučuje jedinstven proizvod sa jasnim sigurnosnim modelom i web aplikacijama za proizvodnju i održavanje na istom modelu podataka.",
+    "description": "Operonix je namijenjen proizvodnim timovima koji trebaju pouzdan, mjerljiv i operativno brz sistem: jedinstven tenant-izolovan sloj od pogona do uprave, sa SCADA prikazima, MES izvršenjem, OOE/OEE/TEEP analizom, TPM katalogom gubitaka i sljedivošću kvaliteta. OperonixAI Asistent pomaže planiranje i praćenje proizvodnje, procjenu rizika i prioritetizaciju reakcija. Za razliku od rješenja koja razdvajaju MES, analitiku i IIoT, Operonix isporučuje jedinstven proizvod sa jasnim sigurnosnim modelom i web aplikacijama za proizvodnju i održavanje na istom modelu podataka.",
     "primaryCta": "Zatraži demo",
     "secondaryCta": "Pogledaj pregled",
     "appLinksTitle": "Web aplikacije",
@@ -91,7 +91,7 @@
         "id": "production",
         "name": "Proizvodnja",
         "fullName": "Upravljanje proizvodnjom",
-        "description": "Planiranje proizvodnje, kontrola izvršenja, praćenje naloga i koordinacija resursa u jednom strukturiranom procesu.",
+        "description": "Planiranje proizvodnje, kontrola izvršenja, praćenje naloga i koordinacija resursa u jednom strukturiranom procesu, uz podršku OperonixAI Asistenta za prioritete i operativne preporuke.",
         "features": [
           "Upravljanje proizvodnim nalozima",
           "Planiranje i raspored proizvodnje",
@@ -145,11 +145,11 @@
         "fullName": "Sistem upravljanja kvalitetom",
         "description": "Kontrola kvaliteta kroz kontrole i analitiku.",
         "features": [
-          "Planiranje kontrola",
-          "Statistička analiza",
-          "Upravljanje nesukladnostima",
-          "CAPA proces",
-          "Upravljanje dokumentima"
+          "PFMEA i plan kontrole po procesu",
+          "Akcioni i reakcioni planovi po neusklađenosti",
+          "Procjena rizika procesa uz OperonixAI Asistent",
+          "CAPA i 8D tok rješavanja problema",
+          "Auditabilna evidencija i upravljanje dokumentima"
         ]
       },
       {
@@ -172,9 +172,9 @@
     "title": "Pogon, OOE i alarmi na jednom mjestu",
     "lead": "Prikazane funkcionalnosti su dio stvarnog proizvoda. Nakon prijave u Operonix Production (web) dostupni su SCADA pregled pogona, OOE prikazi i upravljanje alarmima u vašem tenant-u.",
     "highlights": [
-      "SCADA stil table za status linije i opreme",
-      "OOE po smjeni, TPM katalog gubitaka i ciljevi po stroju",
-      "Alarmi na pragove OOE i škarta s potvrdom operatera"
+      "SCADA table za status linija, mašina i operativnih uslova u realnom vremenu",
+      "MES + OOE/OEE + TEEP: praćenje smjena, TPM gubitaka i ciljeva po mašini",
+      "OperonixAI Asistent za brzo prepoznavanje problema, procjenu rizika i preporučenu reakciju"
     ],
     "items": [
       {
@@ -192,7 +192,7 @@
     ],
     "cta": {
       "title": "Pregled stvarnog interfejsa u proizvodu",
-      "body": "SCADA hub i OOE moduli rade u Operonix Production (web) nakon prijave. Marketing stranica prikazuje stvarne ekrane i stvarne funkcionalnosti.",
+      "body": "SCADA hub, MES, OOE/OEE/TEEP i OperonixAI Asistent rade u Operonix Production (web) nakon prijave. Marketing stranica prikazuje stvarne ekrane i ključne funkcionalnosti za operativno unapređenje i smanjenje troškova.",
       "button": "Otvori Operonix Proizvodnja (web)"
     }
   },
