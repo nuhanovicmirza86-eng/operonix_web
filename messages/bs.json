@@ -30,7 +30,7 @@
       "scada": "SCADA uživo",
       "performance": "OOE i performanse",
       "production": "Puls proizvodnje",
-      "footnote": "Pojednostavljene slike stvarnih modula u proizvodu — vaši stvarni podaci nakon prijave."
+      "footnote": "Stvarni screenshotovi Operonix modula (SCADA, performanse, praćenje proizvodnje)."
     },
     "description": "Operonix je za timove koji prerastu rastjerkane tabele i krhke integracije: jedan tenant-ograničen sloj od linije do ureda, s operabilnim SCADA pločama, OOE po smjeni, TPM katalogom gubitaka i tragljivošću kvaliteta. MES, analitika i IIoT često se dijele među isporučiteljima; ovdje je cjelovit proizvod s očekivanjom bezbjednosti (mali pravilnici, callables na kritičnim stazama) i web aplikacijama za proizvodnju i održavanje na istom modelu podataka.",
     "primaryCta": "Zatraži demo",

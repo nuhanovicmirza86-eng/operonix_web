@@ -30,7 +30,7 @@
       "scada": "SCADA live",
       "performance": "OOE & performance",
       "production": "Production pulse",
-      "footnote": "Stylized views of real product areas — your live data after you sign in."
+      "footnote": "Real screenshots from Operonix modules (SCADA, performance, production tracking)."
     },
     "description": "Operonix is built for teams that outgrow disconnected spreadsheets and fragile integrations: a single, tenant-safe layer for the shop floor and the office, with operable SCADA-style boards, per-shift OOE, TPM loss reasons, and quality traceability. Competitors often split MES, analytics, and IIoT; we ship a coherent product with a security posture (lean rules, callables for critical paths) that enterprise IT expects — plus native web apps for production and maintenance on the same contract.",
     "primaryCta": "Get a Demo",
