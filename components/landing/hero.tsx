@@ -56,9 +56,9 @@ export function Hero({ messages }: HeroProps) {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[128px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-24 sm:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-start lg:items-center">
-          {/* Left content */}
-          <div className="text-center lg:text-left">
+        <div className="grid gap-10 lg:gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.22fr)] lg:items-stretch">
+          {/* Left content (definira min. visinu reda) */}
+          <div className="text-center lg:text-left lg:min-h-0">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-4 py-1.5 text-sm text-muted-foreground mb-8">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
@@ -148,10 +148,13 @@ export function Hero({ messages }: HeroProps) {
             </div>
           </div>
 
-          {/* Right: product-style visuals + stats */}
-          <div className="space-y-6 w-full max-w-lg mx-auto lg:max-w-none">
-            <HeroProductVisuals labels={messages.visualLabels} />
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          {/* Desno: ista visina kao lijevo (stretch) — slika raste, statovi na dnu */}
+          <div className="mx-auto flex min-h-0 w-full min-w-0 max-w-xl flex-col gap-6 lg:mx-0 lg:h-full lg:max-w-none">
+            <HeroProductVisuals
+              labels={messages.visualLabels}
+              className="min-h-0 flex-1"
+            />
+            <div className="grid shrink-0 grid-cols-2 gap-3 sm:gap-4">
               {messages.stats.map((stat, index) => (
                 <div
                   key={index}

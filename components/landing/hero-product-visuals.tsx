@@ -48,8 +48,13 @@ export function HeroProductVisuals({ labels, className }: HeroProductVisualsProp
   }, [])
 
   return (
-    <div className={cn("flex flex-col gap-3", className)}>
-      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:justify-end">
+    <div
+      className={cn(
+        "flex h-full min-h-0 w-full flex-col gap-3",
+        className
+      )}
+    >
+      <div className="flex shrink-0 flex-wrap items-center justify-center gap-2 sm:justify-end">
         {order.map((key, idx) => {
           const label =
             key === "scada"
@@ -65,7 +70,7 @@ export function HeroProductVisuals({ labels, className }: HeroProductVisualsProp
               type="button"
               onClick={() => setActive(idx)}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-medium transition-colors",
+                "inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-xs sm:text-sm font-medium transition-colors",
                 isOn
                   ? "border-accent/60 bg-accent/15 text-foreground"
                   : "border-border/80 bg-card/30 text-muted-foreground hover:border-accent/30 hover:text-foreground"
@@ -79,9 +84,15 @@ export function HeroProductVisuals({ labels, className }: HeroProductVisualsProp
       </div>
 
       <div
-        className="relative aspect-[20/11] w-full min-h-[200px] overflow-hidden rounded-xl border border-border/90 bg-gradient-to-b from-card/80 to-card/40 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_50px_-20px_rgba(0,0,0,0.55)]"
+        className={cn(
+          "relative min-h-[300px] w-full min-w-0 flex-1 overflow-hidden rounded-xl border border-border/90 sm:min-h-[380px]",
+          "bg-gradient-to-b from-card/80 to-card/40",
+          "shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_50px_-20px_rgba(0,0,0,0.55)]",
+          // Na lg+: visina kao lijeva kolona (grid stretch + flex-1); na mobile fiksna min. visina
+          "lg:min-h-0"
+        )}
       >
-        <div className="absolute inset-0 p-2 sm:p-3">
+        <div className="absolute inset-0 p-1 sm:p-1.5">
           <div
             key={panel}
             className="relative h-full w-full overflow-hidden rounded-lg [animation:hero-panel-crossfade_0.4s_ease-out]"
@@ -90,14 +101,14 @@ export function HeroProductVisuals({ labels, className }: HeroProductVisualsProp
               src={panelImages[panel].src}
               alt={panelImages[panel].alt}
               fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-top"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+              className="object-contain object-top"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent" />
           </div>
         </div>
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent py-2 px-3 text-[10px] text-muted-foreground/90 sm:text-xs">
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-background/90 to-transparent py-2.5 px-3 sm:py-3 sm:px-4 text-[11px] text-muted-foreground/90 sm:text-xs">
           {labels.footnote}
         </div>
       </div>
