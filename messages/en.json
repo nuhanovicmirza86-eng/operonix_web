@@ -5,6 +5,7 @@
   },
   "header": {
     "modules": "Modules",
+    "scada": "SCADA",
     "automotive": "Automotive",
     "solutions": "Solutions",
     "about": "About",
@@ -18,7 +19,7 @@
     "titleLine1": "The complete platform to",
     "titleAccent": "build manufacturing",
     "titleLine2": "excellence.",
-    "description": "Unified MES, OEE, Production, Quality, Maintenance, and Logistics in one enterprise platform. Built for automotive standards and industrial scale.",
+    "description": "Unified MES, OEE/OOE, production, quality, maintenance, and logistics in one platform. SCADA live views, OOE per-shift analytics, TPM loss reasons, shift context, configurable OOE and scrap alerts with acknowledge flows, per-machine OOE targets, and real-time status — with enterprise security (thin Firestore rules, critical writes via Cloud Functions). Built for automotive standards and scale.",
     "primaryCta": "Get a Demo",
     "secondaryCta": "Watch Overview",
     "appLinksTitle": "Web applications",
@@ -90,26 +91,26 @@
         "id": "mes",
         "name": "MES",
         "fullName": "Manufacturing Execution System",
-        "description": "Real-time production tracking, work order management, and shop floor control for complete manufacturing visibility.",
+        "description": "Real-time production tracking, work order management, and shop floor control — with SCADA-style live views and operator events (machine state, counts) feeding MES/OOE.",
         "features": [
-          "Real-time production monitoring",
-          "Work order management",
-          "Material traceability",
-          "Shop floor data collection",
-          "Process routing control"
+          "SCADA live boards for line and device status (tier-based)",
+          "Real-time production monitoring and work order execution",
+          "Machine state, count, and quality events for traceability",
+          "Material and routing control with order visibility",
+          "Shop floor data collection integrated with OOE analytics"
         ]
       },
       {
         "id": "oee",
         "name": "OEE",
-        "fullName": "Overall Equipment Effectiveness",
-        "description": "Comprehensive equipment performance tracking with availability, performance, and quality metrics at your fingertips.",
+        "fullName": "Overall Equipment Effectiveness (OOE/OEE)",
+        "description": "OEE/OOE across availability, performance, and quality: live OOE per machine and shift, loss catalog (TPM), shift context, TEEP/capacity path, and dashboard-ready roll-ups.",
         "features": [
-          "Real-time OEE calculation",
-          "Downtime tracking & analysis",
-          "Performance benchmarking",
-          "Loss categorization",
-          "Trend analysis dashboards"
+          "Live OOE and shift roll-ups; per-machine OOE targets",
+          "Downtime and loss reasons (TPM six-losses mapping)",
+          "Configurable OOE and scrap-rate alerts; acknowledge or dismiss",
+          "Planned shift context and operating time for stable availability",
+          "Pareto and trend views for loss analysis"
         ]
       },
       {
@@ -152,6 +153,35 @@
         ]
       }
     ]
+  },
+  "scada": {
+    "sectionLabel": "SCADA & visibility",
+    "title": "Plant boards, OOE, and alarms — in one view",
+    "lead": "These are real product capabilities. We do not use stock or placeholder screenshots on this site: open Operonix Production (web) after sign-in to use the same SCADA-style live hub, OOE views, and alerts in your tenant.",
+    "highlights": [
+      "SCADA live-style dashboards for line and equipment status",
+      "OOE per shift, loss reasons (TPM), and per-machine target tracking",
+      "Threshold-based OOE and scrap alerts with operator acknowledgement"
+    ],
+    "items": [
+      {
+        "title": "Line / plant view",
+        "caption": "Run states, key KPIs, and at-a-glance health for machines and lines."
+      },
+      {
+        "title": "OOE / OEE & shift",
+        "caption": "Gauges, A/P/Q style breakdown, and shift visibility in the app."
+      },
+      {
+        "title": "Alarms & response",
+        "caption": "Priorities, time order, and clear acknowledgement paths in production."
+      }
+    ],
+    "cta": {
+      "title": "See the live UI in the product",
+      "body": "The SCADA hub and OOE views run in Operonix Production (web) after you sign in. This marketing page shows what you get — without static mock-up images.",
+      "button": "Open Operonix Production (web)"
+    }
   },
   "automotive": {
     "sectionLabel": "Automotive Excellence",
@@ -239,8 +269,8 @@
       },
       {
         "id": "mesOee",
-        "title": "MES / OEE",
-        "description": "Real-time visibility into production performance",
+        "title": "MES / OOE",
+        "description": "MES execution with OOE/OEE, SCADA live, loss analysis, and proactive alerts in one flow.",
         "stats": [
           {
             "label": "OEE Increase",
@@ -252,10 +282,10 @@
           }
         ],
         "features": [
-          "Live production dashboards",
-          "Automatic data collection",
-          "Bottleneck identification",
-          "Shift handover reports"
+          "SCADA live and live OOE status per line and machine",
+          "Shift roll-ups, shift context, and TPM loss reason catalog",
+          "OOE and scrap alert rules; evaluate, acknowledge, and dismiss in-app",
+          "Per-machine OOE targets and operational event streams"
         ]
       },
       {

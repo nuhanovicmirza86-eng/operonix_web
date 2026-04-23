@@ -124,6 +124,7 @@ type Messages = {
   }
   header: {
     modules: string
+    scada: string
     automotive: string
     solutions: string
     about: string
@@ -161,6 +162,18 @@ type Messages = {
     dashboardLabel: string
     metrics: string[]
     items: ModuleItem[]
+  }
+  scada: {
+    sectionLabel: string
+    title: string
+    lead: string
+    highlights: string[]
+    items: { title: string; caption: string }[]
+    cta: {
+      title: string
+      body: string
+      button: string
+    }
   }
   automotive: {
     sectionLabel: string

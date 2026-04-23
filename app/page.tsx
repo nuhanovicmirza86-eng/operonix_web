@@ -4,6 +4,7 @@ import { Modules } from "@/components/landing/modules"
 import { Automotive } from "@/components/landing/automotive"
 import { Solutions } from "@/components/landing/solutions"
 import { CTA } from "@/components/landing/cta"
+import { ScadaShowcase } from "@/components/landing/scada-showcase"
 import { Footer } from "@/components/landing/footer"
 
 import { getMessages, localeFromQueryLang } from "@/lib/i18n"
@@ -30,6 +31,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
       <Hero messages={messages.hero} />
       <Modules messages={messages.modules} />
+      <ScadaShowcase messages={messages.scada} />
       <Automotive messages={messages.automotive} />
       <Solutions messages={messages.solutions} />
       <CTA messages={messages.cta} />

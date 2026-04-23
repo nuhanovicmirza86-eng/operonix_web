@@ -5,6 +5,7 @@
   },
   "header": {
     "modules": "Moduli",
+    "scada": "SCADA",
     "automotive": "Automobilska industrija",
     "solutions": "Rješenja",
     "about": "O nama",
@@ -18,7 +19,7 @@
     "titleLine1": "Kompletna platforma za",
     "titleAccent": "postizanje vrhunskih rezultata",
     "titleLine2": "u proizvodnji.",
-    "description": "Objedinjeni MES, OEE, proizvodnja, kvalitet, održavanje i logistika u jednoj enterprise platformi. Izgrađeno za automobilske standarde i industrijski obim.",
+    "description": "Objedinjeni MES, OEE/OOE, proizvodnja, kvalitet, održavanje i logistika. SCADA prikazi uživo, OOE analitika po smjenama, TPM katalog gubitaka, kontekst smjene, podesivi alarmi (OEE, udio škarta) s potvrdom, ciljni OOE po stroju i status u realnom vremenu — uz tanka Firestore pravila i kritične upise preko Cloud Functions. Za automobilske standarde i industrijski obim.",
     "primaryCta": "Zatraži demo",
     "secondaryCta": "Pogledaj pregled",
     "appLinksTitle": "Web aplikacije",
@@ -90,26 +91,26 @@
         "id": "mes",
         "name": "MES",
         "fullName": "Sistem upravljanja proizvodnjom",
-        "description": "Praćenje proizvodnje u realnom vremenu i upravljanje radnim nalozima za potpunu vidljivost.",
+        "description": "Praćenje u realnom vremenu, radni nalozi i SCADA Live prikazi — operativni događaji (stanje stroja, brojači) napajaju MES/OOE.",
         "features": [
-          "Praćenje proizvodnje u realnom vremenu",
-          "Upravljanje radnim nalozima",
-          "Sljedivost materijala",
-          "Prikupljanje podataka sa linije/opreme",
-          "Kontrola proizvodnih ruta"
+          "SCADA Live table po liniji i uređaju (prema nivou pretplate)",
+          "Praćenje i izvršenje radnih naloga",
+          "Sljedivost materijala i događaji stroja/brojača/kvaliteta",
+          "Prikupljanje podataka s poda i integracija s OOE analitikom",
+          "Kontrola proizvodnih ruta i vidljivost statusa"
         ]
       },
       {
         "id": "oee",
         "name": "OEE",
-        "fullName": "Efikasnost opreme",
-        "description": "Praćenje performansi opreme kroz dostupnost, performanse i kvalitet.",
+        "fullName": "Efikasnost opreme (OOE / OEE)",
+        "description": "OEE/OOE po dostupnosti, performansama i kvalitetu: uživo po stroju i smjeni, katalog gubitaka (TPM), kontekst smjene, TEEP/kapacitet i sažeci za upravljanje.",
         "features": [
-          "Izračun OEE u realnom vremenu",
-          "Praćenje zastoja",
-          "Benchmark analiza",
-          "Kategorizacija gubitaka",
-          "Trend analitika"
+          "Uživo OOE i sažeci smjene; ciljni OOE po stroju",
+          "Zastoji i razlozi gubitaka (TPM mapiranje)",
+          "Alarmi na OOE i udio škarta; potvrda i odbacivanje",
+          "Planirani kontekst smjene i neto operativno vrijeme",
+          "Pareto i trendovi za analizu gubitaka"
         ]
       },
       {
@@ -152,6 +153,35 @@
         ]
       }
     ]
+  },
+  "scada": {
+    "sectionLabel": "SCADA i vidljivost",
+    "title": "Pogon, OOE i alarmi na jednom mjestu",
+    "lead": "Ovo su stvarne mogućnosti u proizvodu. Ne koristimo zalihe ili generičke slike na stranici — nakon prijave u Operonix Proizvodnja (web) otvorite SCADA stil (live), OOE prikaze i alarme u svom tenantu.",
+    "highlights": [
+      "SCADA stil table za status linije i opreme",
+      "OOE po smjeni, TPM katalog gubitaka i ciljevi po stroju",
+      "Alarmi na pragove OOE i škarta s potvrdom operatera"
+    ],
+    "items": [
+      {
+        "title": "Pogled na liniju / pogon",
+        "caption": "Stanja rada, ključni KPI i zdravlje opreme u aplikaciji."
+      },
+      {
+        "title": "OOE / OEE i smjena",
+        "caption": "Mjerila, A/P/Q i uvid u smjenu nakon prijave."
+      },
+      {
+        "title": "Alarmi i odziv",
+        "caption": "Prioriteti, redoslijed i jasne potvrde u proizvodnji."
+      }
+    ],
+    "cta": {
+      "title": "Pogledaj živi UI u proizvodu",
+      "body": "SCADA hub i OOE rade u Operonix Proizvodnja (web) nakon prijave. Ova stranica opisuje mogućnosti — bez marketinških generiranih slika.",
+      "button": "Otvori Operonix Proizvodnja (web)"
+    }
   },
   "automotive": {
     "sectionLabel": "Automobilska izvrsnost",
@@ -239,8 +269,8 @@
       },
       {
         "id": "mesOee",
-        "title": "MES / OEE",
-        "description": "Vidljivost performansi proizvodnje u realnom vremenu",
+        "title": "MES / OOE",
+        "description": "MES izvršenje uz OOE/OEE, SCADA prikaze, analizu gubitaka i proaktivne alarme u jednom toku.",
         "stats": [
           {
             "label": "Povećanje efikasnosti/OEE",
@@ -252,10 +282,10 @@
           }
         ],
         "features": [
-          "Dashboard u realnom vremenu",
-          "Automatsko prikupljanje podataka",
-          "Identifikacija uskih grla",
-          "Izvještaji smjena"
+          "SCADA Live i OOE kartice po liniji i stroju",
+          "Sažeci smjene, kontekst smjene i TPM katalog razloga",
+          "Pragovi za OOE i škarta; evaluacija, priznanje i odbacivanje u aplikaciji",
+          "Ciljni OOE po stroju i tok operativnih događaja"
         ]
       },
       {

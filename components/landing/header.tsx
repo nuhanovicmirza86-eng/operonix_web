@@ -16,6 +16,7 @@ import {
 
 type HeaderMessages = {
   modules: string
+  scada: string
   automotive: string
   solutions: string
   about: string
@@ -40,6 +41,7 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
 
   const navigation = [
     { name: messages.modules, href: "#modules" },
+    { name: messages.scada, href: "#scada" },
     { name: messages.automotive, href: "#automotive" },
     { name: messages.solutions, href: "#solutions" },
     { name: messages.about, href: "#about" },
