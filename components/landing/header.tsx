@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { AppBrandIcon } from "@/components/landing/app-brand-icon"
@@ -21,7 +22,7 @@ type HeaderMessages = {
   solutions: string
   about: string
   signIn: string
-  requestDemo: string
+  requestQuote: string
   productionApp: string
   maintenanceApp: string
 }
@@ -38,6 +39,10 @@ const languages = [
 
 export function Header({ messages, currentLang = "en" }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname() || "/"
+
+  const langHref = (code: string) =>
+    pathname === "/" ? `/?lang=${code}` : `${pathname}?lang=${code}`
 
   const navigation = [
     { name: messages.modules, href: "#modules" },
@@ -64,7 +69,14 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
             </Link>
           </div>
 
-          <div className="flex lg:hidden">
+          <div className="flex lg:hidden items-center gap-2">
+            <Button
+              size="sm"
+              className="shrink-0 max-w-[10rem] truncate bg-foreground text-background hover:bg-foreground/90 text-xs sm:text-sm px-2.5"
+              asChild
+            >
+              <Link href="/upitnik">{messages.requestQuote}</Link>
+            </Button>
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-muted-foreground"
@@ -103,7 +115,7 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
               <DropdownMenuContent align="end" className="bg-card border-border">
                 {languages.map((lang) => (
                   <DropdownMenuItem key={lang.code} asChild className="cursor-pointer">
-                    <Link href={`/?lang=${lang.code}`}>{lang.name}</Link>
+                    <Link href={langHref(lang.code)}>{lang.name}</Link>
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
@@ -138,8 +150,8 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
               {messages.signIn}
             </Button>
 
-            <Button size="sm" className="bg-foreground text-background hover:bg-foreground/90">
-              {messages.requestDemo}
+            <Button size="sm" className="bg-foreground text-background hover:bg-foreground/90" asChild>
+              <Link href="/upitnik">{messages.requestQuote}</Link>
             </Button>
           </div>
         </div>
@@ -192,7 +204,7 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
                   {languages.map((lang) => (
                     <Link
                       key={lang.code}
-                      href={`/?lang=${lang.code}`}
+                      href={langHref(lang.code)}
                       className="rounded-lg px-3 py-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -207,8 +219,10 @@ export function Header({ messages, currentLang = "en" }: HeaderProps) {
                   {messages.signIn}
                 </Button>
 
-                <Button className="bg-foreground text-background">
-                  {messages.requestDemo}
+                <Button className="bg-foreground text-background" asChild>
+                  <Link href="/upitnik" onClick={() => setMobileMenuOpen(false)}>
+                    {messages.requestQuote}
+                  </Link>
                 </Button>
               </div>
             </div>

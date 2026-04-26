@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { AppBrandIcon } from "@/components/landing/app-brand-icon"
 import { HeroMobileQrSection } from "@/components/landing/hero-mobile-qr-section"
 import { HeroProductVisuals } from "@/components/landing/hero-product-visuals"
@@ -47,6 +48,7 @@ type HeroProps = {
 }
 
 export function Hero({ messages }: HeroProps) {
+  const upitnikHref = "/upitnik"
   return (
     <section className="relative min-h-screen overflow-x-hidden pt-16">
       {/* Background grid pattern */}
@@ -137,13 +139,17 @@ export function Hero({ messages }: HeroProps) {
             />
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 gap-2">
-                {messages.primaryCta}
-                <ArrowRight className="h-4 w-4" />
+              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 gap-2" asChild>
+                <Link href={upitnikHref}>
+                  {messages.primaryCta}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-secondary gap-2">
-                <Play className="h-4 w-4" />
-                {messages.secondaryCta}
+              <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-secondary gap-2" asChild>
+                <Link href="#modules">
+                  <Play className="h-4 w-4" />
+                  {messages.secondaryCta}
+                </Link>
               </Button>
             </div>
           </div>

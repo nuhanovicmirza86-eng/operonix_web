@@ -1,4 +1,6 @@
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import type { Locale } from "@/lib/i18n"
 import { ArrowRight, Calendar, MessageSquare } from "lucide-react"
 
 type CtaStat = {
@@ -17,9 +19,12 @@ type CtaMessages = {
 
 type CTAProps = {
   messages: CtaMessages
+  currentLang: Locale
 }
 
-export function CTA({ messages }: CTAProps) {
+export function CTA({ messages, currentLang }: CTAProps) {
+  const upitnikHref = "/upitnik"
+
   return (
     <section className="py-24 sm:py-32 relative overflow-hidden">
       {/* Background gradient */}
@@ -35,14 +40,18 @@ export function CTA({ messages }: CTAProps) {
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 gap-2">
-              <Calendar className="h-4 w-4" />
-              {messages.primaryCta}
-              <ArrowRight className="h-4 w-4" />
+            <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 gap-2" asChild>
+              <Link href={upitnikHref}>
+                <Calendar className="h-4 w-4" />
+                {messages.primaryCta}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-secondary gap-2">
-              <MessageSquare className="h-4 w-4" />
-              {messages.secondaryCta}
+            <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-secondary gap-2" asChild>
+              <Link href={`/?lang=${currentLang}#site-footer`}>
+                <MessageSquare className="h-4 w-4" />
+                {messages.secondaryCta}
+              </Link>
             </Button>
           </div>
 

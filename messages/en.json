@@ -3,6 +3,13 @@
     "label": "NOTICE",
     "text": "Official launch coming soon — Operonix platform is currently in final preparation phase."
   },
+  "upitnikGate": {
+    "heading": "Questionnaire language",
+    "intro": "Choose the language for the form: Bosnian / Croatian / Serbian (Latin) or English.",
+    "langBs": "Bosnian / Croatian / Serbian (Latin)",
+    "langEn": "English",
+    "backHome": "← Home"
+  },
   "header": {
     "modules": "Modules",
     "scada": "SCADA",
@@ -10,7 +17,7 @@
     "solutions": "Solutions",
     "about": "About",
     "signIn": "Sign In",
-    "requestDemo": "Request Demo",
+    "requestQuote": "Request a quote",
     "productionApp": "Production",
     "maintenanceApp": "Maintenance"
   },
@@ -33,7 +40,7 @@
       "footnote": "Real screenshots from Operonix modules (SCADA, performance, production tracking)."
     },
     "description": "Operonix is built for manufacturing teams that need reliable, measurable, and fast operations: one tenant-safe layer from shop floor to management, with SCADA views, MES execution, OOE/OEE/TEEP analytics, TPM loss tracking, and quality traceability. OperonixAI Assistant supports planning, monitoring, process risk evaluation, and response prioritization. Unlike solutions that split MES, analytics, and IIoT across separate vendors, Operonix delivers one coherent product with enterprise-grade security and dedicated web apps for production and maintenance on the same data contract.",
-    "primaryCta": "Get a Demo",
+    "primaryCta": "Request a quote",
     "secondaryCta": "Watch Overview",
     "appLinksTitle": "Web applications",
     "productionApp": "Operonix Production",
@@ -368,12 +375,12 @@
   },
   "cta": {
     "title": "Ready to transform your manufacturing operations?",
-    "description": "Join hundreds of manufacturers who have modernized their operations with Operonix. Get a personalized demo and see how we can help achieve your production goals.",
-    "primaryCta": "Schedule a Demo",
+    "description": "Complete the short questionnaire: we will review your digitalization profile and return a tailored quote as soon as possible.",
+    "primaryCta": "Request a quote",
     "secondaryCta": "Contact Sales",
     "trustItems": [
       "No credit card required",
-      "Free proof of concept",
+      "Response after we review your questionnaire",
       "Enterprise support"
     ],
     "stats": [
@@ -412,6 +419,7 @@
       "discrete": "Discrete Manufacturing",
       "process": "Process Industries",
       "enterprise": "Enterprise",
+      "assessment": "Request a quote",
       "documentation": "Documentation",
       "api": "API Reference",
       "caseStudies": "Case Studies",

@@ -115,12 +115,20 @@ type FooterLinks = {
   privacy: string
   terms: string
   cookies: string
+  assessment: string
 }
 
-type Messages = {
+export type Messages = {
   notice: {
     label: string
     text: string
+  }
+  upitnikGate: {
+    heading: string
+    intro: string
+    langBs: string
+    langEn: string
+    backHome: string
   }
   header: {
     modules: string
@@ -129,7 +137,7 @@ type Messages = {
     solutions: string
     about: string
     signIn: string
-    requestDemo: string
+    requestQuote: string
     productionApp: string
     maintenanceApp: string
   }

@@ -9,6 +9,9 @@ import { Footer } from "@/components/landing/footer"
 
 import { getMessages, localeFromQueryLang } from "@/lib/i18n"
 
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 type HomeProps = {
   searchParams?: Promise<{
     lang?: string | string[]
@@ -34,7 +37,7 @@ export default async function Home({ searchParams }: HomeProps) {
       <ScadaShowcase messages={messages.scada} />
       <Automotive messages={messages.automotive} />
       <Solutions messages={messages.solutions} />
-      <CTA messages={messages.cta} />
+      <CTA messages={messages.cta} currentLang={locale} />
       <Footer messages={messages.footer} currentLang={locale} />
     </main>
   )

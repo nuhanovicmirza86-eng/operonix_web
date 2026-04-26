@@ -41,6 +41,7 @@ type FooterMessages = {
     privacy: string
     terms: string
     cookies: string
+    assessment: string
   }
 }
 
@@ -93,6 +94,10 @@ export function Footer({ messages, currentLang = "en" }: FooterProps) {
       { name: messages.links.enterprise, href: "#" },
     ],
     [messages.resources]: [
+      {
+        name: messages.links.assessment,
+        href: "/upitnik",
+      },
       { name: messages.links.documentation, href: "#" },
       { name: messages.links.api, href: "#" },
       { name: messages.links.caseStudies, href: "#" },
@@ -108,7 +113,7 @@ export function Footer({ messages, currentLang = "en" }: FooterProps) {
   }
 
   return (
-    <footer className="bg-card border-t border-border">
+    <footer id="site-footer" className="bg-card border-t border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           

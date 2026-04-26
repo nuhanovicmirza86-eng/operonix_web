@@ -3,6 +3,13 @@
     "label": "OBAVIJEST",
     "text": "Zvanično lansiranje uskoro — Operonix platforma je u završnoj fazi pripreme."
   },
+  "upitnikGate": {
+    "heading": "Jezik upitnika",
+    "intro": "Odaberite jezik u kojem želite ispuniti upitnik (bosanski / hrvatski / srpski latinica ili engleski).",
+    "langBs": "Bosanski / hrvatski / srpski (latinica)",
+    "langEn": "English",
+    "backHome": "← Početna"
+  },
   "header": {
     "modules": "Moduli",
     "scada": "SCADA",
@@ -10,7 +17,7 @@
     "solutions": "Rješenja",
     "about": "O nama",
     "signIn": "Prijava",
-    "requestDemo": "Zatraži demo",
+    "requestQuote": "Zatraži ponudu",
     "productionApp": "Proizvodnja",
     "maintenanceApp": "Održavanje"
   },
@@ -33,7 +40,7 @@
       "footnote": "Stvarni snimci ekrana Operonix modula (SCADA, performanse, praćenje proizvodnje)."
     },
     "description": "Operonix je namijenjen proizvodnim timovima koji trebaju pouzdan, mjerljiv i operativno brz sistem: jedinstven tenant-izolovan sloj od pogona do uprave, sa SCADA prikazima, MES izvršenjem, OOE/OEE/TEEP analizom, TPM katalogom gubitaka i sljedivošću kvaliteta. OperonixAI Asistent pomaže planiranje i praćenje proizvodnje, procjenu rizika i prioritetizaciju reakcija. Za razliku od rješenja koja razdvajaju MES, analitiku i IIoT, Operonix isporučuje jedinstven proizvod sa jasnim sigurnosnim modelom i web aplikacijama za proizvodnju i održavanje na istom modelu podataka.",
-    "primaryCta": "Zatraži demo",
+    "primaryCta": "Zatraži ponudu",
     "secondaryCta": "Pogledaj pregled",
     "appLinksTitle": "Web aplikacije",
     "productionApp": "Operonix Production",
@@ -368,12 +375,12 @@
   },
   "cta": {
     "title": "Spremni da transformišete vaše proizvodne operacije?",
-    "description": "Pridružite nam se kako biste modernizovali svoje operacije u proizvodnji uz Operonix. Zatražite personalizovani demo i vidite kako možemo pomoći u ostvarenju vaših proizvodnih ciljeva.",
-    "primaryCta": "Zakaži demo",
+    "description": "Ispunite kratki upitnik: procjenu digitalizacije i ponudu prilagođenu vašem pogonu pošaljemo na pregled u najkraćem mogućem roku.",
+    "primaryCta": "Zatraži ponudu",
     "secondaryCta": "Kontaktiraj prodaju",
     "trustItems": [
       "Nije potrebna kreditna kartica",
-      "Besplatan proof of concept",
+      "Odgovor nakon pregleda upitnika",
       "Enterprise podrška"
     ],
     "stats": [
@@ -412,6 +419,7 @@
       "discrete": "Diskretna proizvodnja",
       "process": "Procesna industrija",
       "enterprise": "Enterprise",
+      "assessment": "Zatraži ponudu",
       "documentation": "Dokumentacija",
       "api": "API referenca",
       "caseStudies": "Studije slučaja",

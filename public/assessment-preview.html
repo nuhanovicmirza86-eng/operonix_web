@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Operonix — pregled upitnika (statički)</title>
+  <style>
+    :root { --navy: #0B1F3A; --blue: #1E3A5F; --cyan: #00C2FF; --muted: #64748B; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, "Segoe UI", Roboto, sans-serif; margin: 0; background: #f8fafc; color: #0f172a; line-height: 1.5; }
+    .bar { background: var(--navy); color: #e2e8f0; text-align: center; padding: 0.4rem; font-size: 0.8rem; }
+    .wrap { max-width: 48rem; margin: 0 auto; padding: 1.5rem; }
+    .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: 0.05em; color: var(--navy); }
+    .sub { color: var(--muted); font-size: 0.8rem; margin: 0.5rem 0 1.5rem; }
+    .box { background: #fff; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
+    .box h2 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--navy); }
+    details { border: 1px solid #e2e8f0; border-radius: 0.5rem; margin-bottom: 0.5rem; background: #fff; }
+    summary { cursor: pointer; padding: 0.75rem 1rem; font-weight: 600; color: var(--blue); }
+    details[open] summary { border-bottom: 1px solid #e2e8f0; }
+    .in { padding: 0.75rem 1rem; font-size: 0.85rem; color: #334155; }
+    .tag { display: inline-block; font-size: 0.65rem; border: 1px solid var(--cyan); color: #0369a1; border-radius: 0.25rem; padding: 0.1rem 0.35rem; margin-right: 0.4rem; }
+    .f { height: 1.5rem; border: 1px solid #cbd5e1; border-radius: 0.25rem; width: 100%; margin: 0.25rem 0; }
+    .note { background: #eff6ff; border: 1px solid #93c5fd; color: #1e3a5f; padding: 0.75rem; border-radius: 0.5rem; font-size: 0.8rem; margin-bottom: 1.25rem; }
+  </style>
+</head>
+<body>
+  <div class="bar">Ovo je <strong>statički pregled</strong> (dvoklik u folderu) — nije potreban local server. Nalog „Pošalji“ i bodovi rade u živoj verziji na <code>/upitnik</code>.</div>
+  <div class="wrap">
+    <div class="logo">OPERONIX</div>
+    <p class="sub">Upitnik za procjenu digitalizacije — raspored: opći upitnik (1–13) → moduli po nivou → kontakt + slanje → orijentacioni skor. U stvarnoj aplikaciji identičan raspored, EN/BS, React.</p>
+    <div class="note"><strong>Šta sadrži živa stranica:</strong> ista pitanja + dodatni blok <em>Moduli i rješenja</em> (accordion) s interesom po modulu, Operonix AI paketima, SCADA add-on, Analytics (MES BI), personal/work time, IT/sigurnost; gumb <strong>Pošalji upitnik</strong> + zahvalnica u pregledniku; kopija JSON u međuspremnik.</div>
+
+    <div class="box">
+      <h2>1. – 13. Opći upitnik (osnov, proizvodnja, OEE, kvalitet, održavanje, plan, infrastruktura, prioriteti, budžet…)</h2>
+      <p style="font-size:0.85rem;color:var(--muted);margin:0">Tabovi kao na webu: kratki tekst, checkbox, izbori 1–5, itd.</p>
+    </div>
+
+    <h3 style="font-size:0.9rem; color:var(--muted); margin: 1.5rem 0 0.5rem;">Dodatni blok (po modulima, osnovno → operativno → tehnički)</h3>
+    <details>
+      <summary><span class="tag">Operativno</span> Proizvodnja (nalozi, izvršenje)</summary>
+      <div class="in">Interes (Da / Razmatramo / Ne) + polja: nalozi, ERP veza, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Operativno</span> MES (radni centri, telemetrija)</summary>
+      <div class="in">Današnji MES, cilj prve faze, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Operativno</span> OOE / OEE / TEEP, zastoji, TPM</summary>
+      <div class="in">Gubici, TEEP, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Operativno</span> Kvalitet (QMS, IATF)</summary>
+      <div class="in">Alati, sljedivost, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Operativno</span> Održavanje (CMMS)</summary>
+      <div class="in">Kvar–RN, MTBF, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Operativno</span> Logistika (WMS, lotovi)</summary>
+      <div class="in">Zalihe, integracije, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Add-on</span> SCADA uživo (PLC, živi zid)</summary>
+      <div class="in">Ekrani, protokol, mreža, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Operativno</span> Energetika (mjerači, dashboard)</summary>
+      <div class="in">Tačke mjerenja, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Operativno</span> Mikroklima (unosi, izvještaji)</summary>
+      <div class="in">Zone, senzori, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Operativno</span> Operonix AI (Basic / Održavanje / Proizvodnja / puni)</summary>
+      <div class="in">Pojedinačni interes + scenariji korištenja, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Add-on</span> AI Markdown izvještaji</summary>
+      <div class="in">Učestalost, čitatelji, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Tehnički</span> Operonix Analytics (MES BI, bonus+)</summary>
+      <div class="in">Odluke, KPI, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Operativno</span> Personal (T&A, obračun radnog vremena)</summary>
+      <div class="in">Smjene, čitači, export, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Osnovno</span> Radna snaga, smjene, kompetencije (sažetak)</summary>
+      <div class="in">Bez pune HR, …</div>
+    </details>
+    <details>
+      <summary><span class="tag">Tehnički</span> IT, integracija, sigurnost (tenant, SSO, API)</summary>
+      <div class="in">IdP, integracije, rezidencija podataka, …</div>
+    </details>
+
+    <div class="box" style="margin-top:1.25rem;border-color:#7dd3fc">
+      <h2>Slanje (samo u živoj aplikaciji)</h2>
+      <p style="font-size:0.85rem;margin:0.25rem 0 0.5rem">E-mail, Pošalji, Kopiraj JSON. Backend: vidi <code>operonix_web/.env.example</code>.</p>
+      <div class="f" title="E-mail (placeholder)"></div>
+    </div>
+
+    <div class="box" style="background:#0B1F3A0A; border-color:#1E3A5F">
+      <h2>Orijentacioni rezultat (prilika + složenost isporuke)</h2>
+      <p style="font-size:0.85rem;margin:0; color:var(--muted)">Bodovanje u aplikaciji — ista heuristika kao u docs upitniku.</p>
+    </div>
+  </div>
+</body>
+</html>
