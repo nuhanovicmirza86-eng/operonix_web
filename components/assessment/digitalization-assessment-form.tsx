@@ -26,6 +26,7 @@ import {
 } from "@/lib/assessment-scoring"
 import type { AssessmentCopy } from "@/lib/assessment-strings"
 import type { Locale, Messages } from "@/lib/i18n"
+import { cn } from "@/lib/utils"
 
 type Extras = {
   companyName: string
@@ -326,7 +327,17 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
 
         <form
           onSubmit={onSubmit}
-          className="space-y-8 print:space-y-4 print:[&_h2]:text-sm print:[&_input]:h-7 print:[&_input]:text-[11px] print:[&_label]:text-[10px] print:[&_button]:h-7 print:[&_button]:px-2 print:[&_button]:text-[10px]"
+          className={cn(
+            "space-y-8 print:space-y-4 print:[&_h2]:text-sm print:[&_input]:h-7 print:[&_input]:text-[11px] print:[&_label]:text-[10px] print:[&_button]:h-7 print:[&_button]:px-2 print:[&_button]:text-[10px]",
+            // Bijela polja + jasni rubovi (tamna tema je inače gotovo nevidljiva)
+            "[&_[data-slot=input]]:!bg-white [&_[data-slot=input]]:!text-neutral-900",
+            "[&_[data-slot=input]]:!border-neutral-400 [&_[data-slot=input]]:shadow-sm [&_[data-slot=input]]:placeholder:!text-neutral-500",
+            "[&_[data-slot=textarea]]:!bg-white [&_[data-slot=textarea]]:!text-neutral-900",
+            "[&_[data-slot=textarea]]:!border-neutral-400 [&_[data-slot=textarea]]:placeholder:!text-neutral-500",
+            "[&_[data-slot=checkbox]]:!bg-white [&_[data-slot=checkbox]]:!border-2",
+            "[&_[data-slot=checkbox]]:!border-neutral-500 [&_[data-slot=checkbox]]:shadow-sm",
+            "[&_[data-slot=checkbox][data-state=checked]]:!bg-[#0B1F3A] [&_[data-slot=checkbox][data-state=checked]]:!border-[#0B1F3A] [&_[data-slot=checkbox][data-state=checked]]:!text-white"
+          )}
         >
           {/* 1 — Company */}
           <Card className="print:break-inside-avoid">

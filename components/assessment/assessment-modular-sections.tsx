@@ -21,6 +21,10 @@ import {
 import type { Locale } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
+/** Kontrast na tamnoj kartici: bijela polja (usklađeno s glavnim upitnikom). */
+const upitnikFieldSurface =
+  "!bg-white !text-neutral-900 !border-neutral-400 placeholder:!text-neutral-500 shadow-sm"
+
 type Props = {
   locale: Locale
   value: Record<string, string>
@@ -109,7 +113,7 @@ function Field({
           onChange={(e) => set(e.target.value)}
           placeholder={ph}
           rows={3}
-          className="text-sm"
+          className={cn("text-sm", upitnikFieldSurface)}
         />
       </div>
     )
@@ -125,7 +129,7 @@ function Field({
         value={val}
         onChange={(e) => set(e.target.value)}
         placeholder={ph}
-        className="text-sm"
+        className={cn("text-sm", upitnikFieldSurface)}
       />
     </div>
   )
