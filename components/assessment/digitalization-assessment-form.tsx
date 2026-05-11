@@ -1347,7 +1347,7 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
                 <div className="flex flex-wrap gap-2">
                   <Button
                     type="button"
-                    className="border border-[#00C2FF]/35 bg-[#0B1F3A] text-white shadow-sm hover:bg-[#1E3A5F] hover:text-white disabled:text-white/80"
+                    variant="outline"
                     disabled={sendState === "sending" || !contactEmail.trim()}
                     onClick={handleSend}
                   >
