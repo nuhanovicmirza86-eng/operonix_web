@@ -96,6 +96,31 @@ function localeFromPayload(payload: unknown): string {
   return "en"
 }
 
+/**
+ * Dijagnostika: isti runtime env kao POST na ovoj domeni / deployu.
+ * Otvorite u pregledniku nakon Redeploy — bez tajni; samo booleani i Vercel meta.
+ */
+export async function GET() {
+  const checks = emailChannelEnvChecks()
+  const ready =
+    checks.hasResendApiKey && checks.hasResendFrom && checks.hasAssessmentToEmail
+  return NextResponse.json({
+    route: "operonix_web/app/api/assessment-submit",
+    checks,
+    resendChannelReady: ready,
+    vercel: {
+      env: process.env.VERCEL_ENV ?? null,
+      url: process.env.VERCEL_URL ?? null,
+      gitCommit: process.env.VERCEL_GIT_COMMIT_SHA
+        ? process.env.VERCEL_GIT_COMMIT_SHA.slice(0, 12)
+        : null,
+    },
+    interpret: ready
+      ? "U ovom serverless procesu tri varijable su vidljive; ako POST i dalje pada, greška je u Resend API (ključ/domena) — gledajte poruku u odgovoru ili Resend Logs."
+      : "U ovom serverless procesu bar jedna od RESEND_API_KEY / RESEND_FROM / ASSESSMENT_TO_EMAIL je prazna. Varijable su vjerovatnije na drugom Vercel projektu od domene, ili nisu u Production / nije Redeploy.",
+  })
+}
+
 export async function POST(request: Request) {
   console.info("[assessment-submit] POST")
   let body: Body
