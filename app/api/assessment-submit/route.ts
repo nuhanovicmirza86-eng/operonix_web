@@ -78,6 +78,16 @@ function thanksEmailText(locale: string): { subject: string; text: string } {
   }
 }
 
+function emailChannelEnvChecks() {
+  return {
+    hasResendApiKey: Boolean((process.env.RESEND_API_KEY || "").trim()),
+    hasResendFrom: Boolean((process.env.RESEND_FROM || "").trim()),
+    hasAssessmentToEmail:
+      Boolean((process.env.ASSESSMENT_TO_EMAIL || "").trim()) ||
+      Boolean((process.env.ASSESMENT_TO_EMAIL || "").trim()),
+  }
+}
+
 function localeFromPayload(payload: unknown): string {
   if (payload && typeof payload === "object" && "locale" in payload) {
     const l = String((payload as { locale?: string }).locale || "").toLowerCase()
@@ -247,8 +257,9 @@ export async function POST(request: Request) {
     }
   }
 
+  const checks = emailChannelEnvChecks()
   console.error("[assessment-submit] No email channel configured", {
-    hasResendApiKey: Boolean((process.env.RESEND_API_KEY || "").trim()),
+    ...checks,
     hasWeb3Forms: Boolean((process.env.WEB3FORMS_ACCESS_KEY || "").trim()),
     hasFirebaseIngest:
       Boolean((process.env.OPERONIX_QUOTE_FUNCTION_URL || "").trim()) &&
@@ -259,6 +270,7 @@ export async function POST(request: Request) {
     {
       ok: false,
       error: "no_server_email",
+      checks,
       message:
         "Server is missing OPERONIX_QUOTE_FUNCTION_URL+SECRET, WEB3FORMS_ACCESS_KEY, or RESEND_API_KEY",
     },

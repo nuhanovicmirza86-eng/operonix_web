@@ -277,6 +277,11 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
         delivered?: boolean | "partial"
         error?: string
         providerMessage?: string
+        checks?: {
+          hasResendApiKey?: boolean
+          hasResendFrom?: boolean
+          hasAssessmentToEmail?: boolean
+        }
       } = {}
       try {
         j = raw ? (JSON.parse(raw) as typeof j) : {}
@@ -301,7 +306,18 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
           typeof j.providerMessage === "string" && j.providerMessage.trim()
             ? ` — ${j.providerMessage.trim()}`
             : ""
-        setSubmitErr(base + hint)
+        let deployHint = ""
+        if (j.error === "no_server_email" && j.checks) {
+          const c = j.checks
+          const missing: string[] = []
+          if (!c.hasResendApiKey) missing.push("RESEND_API_KEY")
+          if (!c.hasResendFrom) missing.push("RESEND_FROM")
+          if (!c.hasAssessmentToEmail) missing.push("ASSESSMENT_TO_EMAIL")
+          if (missing.length > 0) {
+            deployHint = ` — Server u ovom deployu ne vidi: ${missing.join(", ")}. Vercel: za svaku varijablu uključite okruženje Production (i po želji Preview), spremite, zatim obavezno Redeploy production.`
+          }
+        }
+        setSubmitErr(base + hint + deployHint)
       }
     } catch {
       setSendState("err")
