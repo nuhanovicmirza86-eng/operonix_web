@@ -9,13 +9,43 @@ const DEFAULT_ASSESSMENT_RECIPIENTS = [
   "nuhanovic.mirza86@gmail.com",
 ] as const
 
-function parseAdminEmails(env: string | undefined): string[] {
-  const s = (env || "").trim()
+/** ASSESMENT = česta pogreška u imenu varijable na Vercelu (jedno "s"). */
+function parseAdminEmails(): string[] {
+  const s =
+    (process.env.ASSESSMENT_TO_EMAIL || "").trim() ||
+    (process.env.ASSESMENT_TO_EMAIL || "").trim()
   if (!s) return [...DEFAULT_ASSESSMENT_RECIPIENTS]
   return s
     .split(/[,;]/)
     .map((x) => x.trim())
     .filter((x) => x.length > 0)
+}
+
+const RESEND_BODY_MAX = 900_000
+
+function clipForResendBody(s: string): string {
+  if (s.length <= RESEND_BODY_MAX) return s
+  return (
+    s.slice(0, RESEND_BODY_MAX) +
+    `\n\n[… tijelo skraćeno (${s.length} znakova) — potpuni JSON u prilogu ili kopiju zatražite od korisnika.]`
+  )
+}
+
+function providerMessageFromResend(raw: string): string | undefined {
+  const t = raw.trim().slice(0, 4000)
+  try {
+    const o = JSON.parse(t) as { message?: unknown; error?: unknown }
+    if (typeof o.message === "string" && o.message.length > 0) {
+      return o.message.slice(0, 600)
+    }
+    if (typeof o.error === "string" && o.error.length > 0) {
+      return o.error.slice(0, 600)
+    }
+  } catch {
+    /* nije JSON */
+  }
+  if (t.length > 0 && t.length < 500) return t
+  return undefined
 }
 
 type Body = {
@@ -87,9 +117,17 @@ export async function POST(request: Request) {
   /** Vercel/Resend prvo: pogrešni OPERONIX_* u env često blokiraju slanje ako je Firebase ispred. */
   const resend = (process.env.RESEND_API_KEY || "").trim()
   if (resend) {
-    const adminRecipients = parseAdminEmails(process.env.ASSESSMENT_TO_EMAIL)
+    const adminRecipients = parseAdminEmails()
+    if (adminRecipients.length === 0) {
+      return NextResponse.json(
+        { ok: false, error: "no_admin_recipients", message: "ASSESSMENT_TO_EMAIL prazan nakon parsiranja" },
+        { status: 400 }
+      )
+    }
     const from = (process.env.RESEND_FROM || "").trim() || "Operonix <onboarding@resend.dev>"
-    const adminBody = `Kontakt: ${email}\nIme: ${(body.contactName || "").trim()}\nTel: ${(body.contactPhone || "").trim()}\n\n${text}`
+    const adminBody = clipForResendBody(
+      `Kontakt: ${email}\nIme: ${(body.contactName || "").trim()}\nTel: ${(body.contactPhone || "").trim()}\n\n${text}`
+    )
 
     const r1 = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -107,8 +145,17 @@ export async function POST(request: Request) {
     })
     if (!r1.ok) {
       const err = await r1.text()
+      const providerMessage = providerMessageFromResend(err)
       console.error("[assessment-submit] resend admin failed", r1.status, err.slice(0, 800))
-      return NextResponse.json({ ok: false, error: "resend_admin", detail: err }, { status: 502 })
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "resend_admin",
+          providerMessage,
+          detail: err.slice(0, 1500),
+        },
+        { status: 502 }
+      )
     }
 
     const r2 = await fetch("https://api.resend.com/emails", {

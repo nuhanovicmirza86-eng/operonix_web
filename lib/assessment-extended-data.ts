@@ -337,6 +337,8 @@ const BS: Record<string, string> = {
     "Pozadinski zapis (Firebase) nije uspio. Ako koristite samo Resend, uklonite ili ispravite OPERONIX_QUOTE_FUNCTION_URL i OPERONIX_QUOTE_INGEST_SECRET u Vercelu.",
   sendErrWeb3: "Web3Forms nije uspio. Provjerite WEB3FORMS_ACCESS_KEY.",
   sendErrBadRequest: "Neispravan zahtjev. Provjerite e-mail i sadržaj forme.",
+  sendErrNoRecipients:
+    "Lista primatelja upitnika je prazna. U Vercelu provjerite točno ime varijable ASSESSMENT_TO_EMAIL (dva slova „s“ u Assessment) i zarez između adresa.",
   sendErrBadResponse: "Neočekivani odgovor servera. Pokušajte ponovo ili ručno pošaljite JSON.",
   sendErrNetwork: "Mrežna greška. Provjerite vezu i pokušajte ponovo.",
   sendCopy: "Kopiraj JSON u međuspremnik",
@@ -468,6 +470,8 @@ const EN: Record<string, string> = {
     "Firebase ingest failed. If you use Resend only, remove or fix OPERONIX_QUOTE_FUNCTION_URL and OPERONIX_QUOTE_INGEST_SECRET in Vercel.",
   sendErrWeb3: "Web3Forms failed. Check WEB3FORMS_ACCESS_KEY.",
   sendErrBadRequest: "Invalid request. Check your e-mail and form content.",
+  sendErrNoRecipients:
+    "Recipient list is empty. On Vercel check the variable name ASSESSMENT_TO_EMAIL (spelling) and commas between addresses.",
   sendErrBadResponse: "Unexpected server response. Try again or send the JSON manually.",
   sendErrNetwork: "Network error. Check your connection and try again.",
   sendCopy: "Copy JSON to clipboard",

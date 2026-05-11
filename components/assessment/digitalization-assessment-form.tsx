@@ -201,6 +201,9 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
     if (code === "resend_admin") return trEx("sendErrResend")
     if (code === "ingest_failed" || code === "ingest_unreachable") return trEx("sendErrIngest")
     if (code === "web3forms") return trEx("sendErrWeb3")
+    if (code === "no_admin_recipients") {
+      return trEx("sendErrNoRecipients")
+    }
     if (code === "invalid_email" || code === "invalid_json" || code === "payload_too_large") {
       return trEx("sendErrBadRequest")
     }
@@ -269,7 +272,12 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
         }),
       })
       const raw = await r.text()
-      let j: { ok?: boolean; delivered?: boolean | "partial"; error?: string } = {}
+      let j: {
+        ok?: boolean
+        delivered?: boolean | "partial"
+        error?: string
+        providerMessage?: string
+      } = {}
       try {
         j = raw ? (JSON.parse(raw) as typeof j) : {}
       } catch {
@@ -288,7 +296,12 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
         }, 100)
       } else {
         setSendState("err")
-        setSubmitErr(submitErrorMessage(r.status, j.error))
+        const base = submitErrorMessage(r.status, j.error)
+        const hint =
+          typeof j.providerMessage === "string" && j.providerMessage.trim()
+            ? ` — ${j.providerMessage.trim()}`
+            : ""
+        setSubmitErr(base + hint)
       }
     } catch {
       setSendState("err")
