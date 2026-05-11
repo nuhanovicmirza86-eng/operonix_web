@@ -57,6 +57,7 @@ function localeFromPayload(payload: unknown): string {
 }
 
 export async function POST(request: Request) {
+  console.info("[assessment-submit] POST")
   let body: Body
   try {
     body = (await request.json()) as Body
@@ -199,9 +200,13 @@ export async function POST(request: Request) {
     }
   }
 
-  console.error(
-    "[assessment-submit] Missing email channel: set OPERONIX_QUOTE_FUNCTION_URL + OPERONIX_QUOTE_INGEST_SECRET (Firebase ingest), WEB3FORMS_ACCESS_KEY, or RESEND_API_KEY — see operonix_web/.env.example"
-  )
+  console.error("[assessment-submit] No email channel configured", {
+    hasResendApiKey: Boolean((process.env.RESEND_API_KEY || "").trim()),
+    hasWeb3Forms: Boolean((process.env.WEB3FORMS_ACCESS_KEY || "").trim()),
+    hasFirebaseIngest:
+      Boolean((process.env.OPERONIX_QUOTE_FUNCTION_URL || "").trim()) &&
+      (process.env.OPERONIX_QUOTE_INGEST_SECRET || "").trim().length >= 8,
+  })
 
   return NextResponse.json(
     {

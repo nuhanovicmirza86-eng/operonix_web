@@ -330,7 +330,7 @@ const BS: Record<string, string> = {
   sendErrNoApi:
     "API za slanje nije pronađen (404). Vercel projekt mora biti povezan s repozitorijem koji sadrži rutu /api/assessment-submit (operonix_web).",
   sendErrNoChannel:
-    "Na serveru nisu postavljene varijable okruženja za slanje e-pošte (npr. RESEND_API_KEY, RESEND_FROM, ASSESSMENT_TO_EMAIL).",
+    "Na serveru nedostaje kanal za slanje e-pošte. U Vercel moraju biti sve tri: RESEND_API_KEY, RESEND_FROM i ASSESSMENT_TO_EMAIL (bez toga Resend ne radi). Zatim Redeploy.",
   sendErrResend:
     "Resend nije prihvatio slanje. Provjerite API ključ, RESEND_FROM (adresa s verifikovane domene) i Zapise u Resend konzoli.",
   sendErrIngest:
@@ -461,7 +461,7 @@ const EN: Record<string, string> = {
   sendErrNoApi:
     "Submit API was not found (404). The Vercel project must be built from the repo that includes /api/assessment-submit (operonix_web).",
   sendErrNoChannel:
-    "Server e-mail environment variables are missing (e.g. RESEND_API_KEY, RESEND_FROM, ASSESSMENT_TO_EMAIL).",
+    "No outbound e-mail channel is configured. Set RESEND_API_KEY, RESEND_FROM, and ASSESSMENT_TO_EMAIL on Vercel, then Redeploy.",
   sendErrResend:
     "Resend rejected the send. Check the API key, RESEND_FROM (address on a verified domain), and Resend logs.",
   sendErrIngest:
