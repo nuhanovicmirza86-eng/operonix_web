@@ -334,7 +334,7 @@ const BS: Record<string, string> = {
   thankYouBody:
     "Zahvaljujemo vam se na upitu i interesovanju za Operonix Industrial inteligence platformu. " +
     "Odgovorit ćemo u najkraćem mogućem roku nakon što tim Operonix pregleda upitnik. " +
-    "Ako ste naveli e-mail, poslana je i automatska potvrda (provjerite u neželjena pošta/spam).",
+    "Automatska potvrda e-mailom poslana je ako je poslužitelj za slanje ispravno konfiguriran (inače provjerite spam mapu).",
   sendWarnNoBackend:
     "Napomena: e-mail poslužitelj nije konfiguriran — upitnik nije automatski poslan. Koristite „Kopiraj JSON“ i pošaljite ručno.",
   sendWarnPartial:
@@ -453,7 +453,7 @@ const EN: Record<string, string> = {
   thankYouBody:
     "We appreciate your inquiry and your interest in the Operonix Industrial intelligence platform. " +
     "We will respond in the shortest time possible after the Operonix team reviews your questionnaire. " +
-    "If you provided an e-mail, a confirmation has also been sent (check spam/junk).",
+    "A confirmation e-mail is sent when outbound mail is configured correctly (check spam/junk if you expected one).",
   sendWarnNoBackend:
     "Note: e-mail is not configured on the server — your response was not sent automatically. Use “Copy JSON” and e-mail it manually.",
   sendWarnPartial:

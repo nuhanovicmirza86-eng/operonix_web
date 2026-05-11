@@ -193,9 +193,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, channel: "resend", delivered: true })
   }
 
-  return NextResponse.json({
-    ok: true,
-    delivered: false,
-    message: "no_server_email",
-  })
+  console.error(
+    "[assessment-submit] Missing email channel: set OPERONIX_QUOTE_FUNCTION_URL + OPERONIX_QUOTE_INGEST_SECRET (Firebase ingest), WEB3FORMS_ACCESS_KEY, or RESEND_API_KEY — see operonix_web/.env.example"
+  )
+
+  return NextResponse.json(
+    {
+      ok: false,
+      error: "no_server_email",
+      message:
+        "Server is missing OPERONIX_QUOTE_FUNCTION_URL+SECRET, WEB3FORMS_ACCESS_KEY, or RESEND_API_KEY",
+    },
+    { status: 503 }
+  )
 }
