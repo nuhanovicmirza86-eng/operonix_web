@@ -5,8 +5,8 @@ export const runtime = "nodejs"
 const MAX_LEN = 450_000
 
 const DEFAULT_ASSESSMENT_RECIPIENTS = [
-  "nuhanovic.mirza86@gmail.com",
   "info@operonixindustrial.com",
+  "nuhanovic.mirza86@gmail.com",
 ] as const
 
 function parseAdminEmails(env: string | undefined): string[] {
