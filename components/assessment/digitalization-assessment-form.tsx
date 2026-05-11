@@ -191,8 +191,21 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
   const [sendState, setSendState] = useState<"idle" | "sending" | "ok" | "err">("idle")
   const [deliveryStatus, setDeliveryStatus] = useState<"full" | "partial" | "none" | null>(null)
   const [formErr, setFormErr] = useState<string | null>(null)
+  const [submitErr, setSubmitErr] = useState<string | null>(null)
   const thankYouRef = useRef<HTMLDivElement>(null)
   const trEx = getExtendedStrings(currentLang)
+
+  const submitErrorMessage = (status: number, code?: string): string => {
+    if (status === 404) return trEx("sendErrNoApi")
+    if (code === "no_server_email") return trEx("sendErrNoChannel")
+    if (code === "resend_admin") return trEx("sendErrResend")
+    if (code === "ingest_failed" || code === "ingest_unreachable") return trEx("sendErrIngest")
+    if (code === "web3forms") return trEx("sendErrWeb3")
+    if (code === "invalid_email" || code === "invalid_json" || code === "payload_too_large") {
+      return trEx("sendErrBadRequest")
+    }
+    return trEx("sendErr")
+  }
 
   const scoreIn = useMemo(
     () => toScoreInput(st as AssessmentFormState & Record<string, unknown>),
@@ -234,6 +247,7 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
 
   const handleSend = async () => {
     setFormErr(null)
+    setSubmitErr(null)
     setDeliveryStatus(null)
     const em = contactEmail.trim()
     if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
@@ -254,10 +268,14 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
           payload,
         }),
       })
-      const j = (await r.json()) as {
-        ok?: boolean
-        delivered?: boolean | "partial"
-        message?: string
+      const raw = await r.text()
+      let j: { ok?: boolean; delivered?: boolean | "partial"; error?: string } = {}
+      try {
+        j = raw ? (JSON.parse(raw) as typeof j) : {}
+      } catch {
+        setSendState("err")
+        setSubmitErr(r.status === 404 ? trEx("sendErrNoApi") : trEx("sendErrBadResponse"))
+        return
       }
       if (r.ok && j.ok) {
         let d: "full" | "partial" | "none" = "full"
@@ -270,10 +288,11 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
         }, 100)
       } else {
         setSendState("err")
-        setFormErr(null)
+        setSubmitErr(submitErrorMessage(r.status, j.error))
       }
     } catch {
       setSendState("err")
+      setSubmitErr(trEx("sendErrNetwork"))
     }
   }
 
@@ -1341,8 +1360,8 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
                     )}
                   </div>
                 )}
-                {sendState === "err" && !formErr && (
-                  <p className="text-sm text-destructive">{trEx("sendErr")}</p>
+                {submitErr && (
+                  <p className="text-sm text-destructive">{submitErr}</p>
                 )}
                 <div className="flex flex-wrap gap-2">
                   <Button

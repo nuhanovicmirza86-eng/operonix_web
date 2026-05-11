@@ -327,6 +327,18 @@ const BS: Record<string, string> = {
   sendSending: "Šaljem…",
   sendOk: "Hvala — upitnik je zaprimljen. Javit ćemo se e-mailom.",
   sendErr: "Slanje nije uspjelo. Pokušajte kasnije ili kopirajte sadržaj (gumb ispod) i pošaljite ručno.",
+  sendErrNoApi:
+    "API za slanje nije pronađen (404). Vercel projekt mora biti povezan s repozitorijem koji sadrži rutu /api/assessment-submit (operonix_web).",
+  sendErrNoChannel:
+    "Na serveru nisu postavljene varijable okruženja za slanje e-pošte (npr. RESEND_API_KEY, RESEND_FROM, ASSESSMENT_TO_EMAIL).",
+  sendErrResend:
+    "Resend nije prihvatio slanje. Provjerite API ključ, RESEND_FROM (adresa s verifikovane domene) i Zapise u Resend konzoli.",
+  sendErrIngest:
+    "Pozadinski zapis (Firebase) nije uspio. Ako koristite samo Resend, uklonite ili ispravite OPERONIX_QUOTE_FUNCTION_URL i OPERONIX_QUOTE_INGEST_SECRET u Vercelu.",
+  sendErrWeb3: "Web3Forms nije uspio. Provjerite WEB3FORMS_ACCESS_KEY.",
+  sendErrBadRequest: "Neispravan zahtjev. Provjerite e-mail i sadržaj forme.",
+  sendErrBadResponse: "Neočekivani odgovor servera. Pokušajte ponovo ili ručno pošaljite JSON.",
+  sendErrNetwork: "Mrežna greška. Provjerite vezu i pokušajte ponovo.",
   sendCopy: "Kopiraj JSON u međuspremnik",
   sendCopied: "Kopirano",
   sendEmailRequired: "Unesite ispravnu e-mail adresu prije slanja.",
@@ -446,6 +458,18 @@ const EN: Record<string, string> = {
   sendSending: "Sending…",
   sendOk: "Thank you — your response was received. We will e-mail you.",
   sendErr: "Send failed. Try again or copy the JSON below and e-mail it manually.",
+  sendErrNoApi:
+    "Submit API was not found (404). The Vercel project must be built from the repo that includes /api/assessment-submit (operonix_web).",
+  sendErrNoChannel:
+    "Server e-mail environment variables are missing (e.g. RESEND_API_KEY, RESEND_FROM, ASSESSMENT_TO_EMAIL).",
+  sendErrResend:
+    "Resend rejected the send. Check the API key, RESEND_FROM (address on a verified domain), and Resend logs.",
+  sendErrIngest:
+    "Firebase ingest failed. If you use Resend only, remove or fix OPERONIX_QUOTE_FUNCTION_URL and OPERONIX_QUOTE_INGEST_SECRET in Vercel.",
+  sendErrWeb3: "Web3Forms failed. Check WEB3FORMS_ACCESS_KEY.",
+  sendErrBadRequest: "Invalid request. Check your e-mail and form content.",
+  sendErrBadResponse: "Unexpected server response. Try again or send the JSON manually.",
+  sendErrNetwork: "Network error. Check your connection and try again.",
   sendCopy: "Copy JSON to clipboard",
   sendCopied: "Copied",
   sendEmailRequired: "Enter a valid e-mail before sending.",

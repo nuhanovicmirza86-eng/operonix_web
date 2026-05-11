@@ -83,47 +83,58 @@ export async function POST(request: Request) {
   const loc = localeFromPayload(body.payload)
   const thanks = thanksEmailText(loc)
 
-  const fnUrl = (process.env.OPERONIX_QUOTE_FUNCTION_URL || "").trim()
-  const ingestSecret = (process.env.OPERONIX_QUOTE_INGEST_SECRET || "").trim()
+  /** Vercel/Resend prvo: pogrešni OPERONIX_* u env često blokiraju slanje ako je Firebase ispred. */
+  const resend = (process.env.RESEND_API_KEY || "").trim()
+  if (resend) {
+    const adminRecipients = parseAdminEmails(process.env.ASSESSMENT_TO_EMAIL)
+    const from = (process.env.RESEND_FROM || "").trim() || "Operonix <onboarding@resend.dev>"
+    const adminBody = `Kontakt: ${email}\nIme: ${(body.contactName || "").trim()}\nTel: ${(body.contactPhone || "").trim()}\n\n${text}`
 
-  if (fnUrl && ingestSecret.length >= 8) {
-    try {
-      const r = await fetch(fnUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Operonix-Quote-Secret": ingestSecret,
-        },
-        body: JSON.stringify({
-          contactEmail: email,
-          contactName: (body.contactName || "").trim(),
-          contactPhone: (body.contactPhone || "").trim(),
-          companyName: company,
-          payload: body.payload,
-        }),
-      })
-      const j = (await r.json()) as { ok?: boolean; id?: string; error?: string }
-      if (!r.ok || !j.ok) {
-        return NextResponse.json(
-          { ok: false, error: "ingest_failed", detail: j },
-          { status: r.status >= 400 ? r.status : 502 }
-        )
-      }
-      return NextResponse.json({
-        ok: true,
-        channel: "firebase_ingest",
-        id: j.id,
-        delivered: true,
-      })
-    } catch (e) {
+    const r1 = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resend}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from,
+        to: adminRecipients,
+        reply_to: email,
+        subject: `[Operonix upitnik] ${company}`,
+        text: adminBody,
+      }),
+    })
+    if (!r1.ok) {
+      const err = await r1.text()
+      console.error("[assessment-submit] resend admin failed", r1.status, err.slice(0, 800))
+      return NextResponse.json({ ok: false, error: "resend_admin", detail: err }, { status: 502 })
+    }
+
+    const r2 = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resend}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from,
+        to: [email],
+        subject: thanks.subject,
+        text: thanks.text,
+      }),
+    })
+    if (!r2.ok) {
+      const err2 = await r2.text()
+      console.error("[assessment-submit] resend user thank-you failed", r2.status, err2.slice(0, 800))
       return NextResponse.json(
-        { ok: false, error: "ingest_unreachable", detail: String(e) },
-        { status: 502 }
+        { ok: true, channel: "resend", delivered: "partial", note: "admin_ok_user_failed" },
+        { status: 200 }
       )
     }
+    return NextResponse.json({ ok: true, channel: "resend", delivered: true })
   }
 
-  const w3k = process.env.WEB3FORMS_ACCESS_KEY
+  const w3k = (process.env.WEB3FORMS_ACCESS_KEY || "").trim()
   if (w3k) {
     const r = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -146,51 +157,46 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, channel: "web3forms", delivered: true })
   }
 
-  const resend = process.env.RESEND_API_KEY
-  if (resend) {
-    const adminRecipients = parseAdminEmails(process.env.ASSESSMENT_TO_EMAIL)
-    const from = process.env.RESEND_FROM || "Operonix <onboarding@resend.dev>"
-    const adminBody = `Kontakt: ${email}\nIme: ${(body.contactName || "").trim()}\nTel: ${(body.contactPhone || "").trim()}\n\n${text}`
+  const fnUrl = (process.env.OPERONIX_QUOTE_FUNCTION_URL || "").trim()
+  const ingestSecret = (process.env.OPERONIX_QUOTE_INGEST_SECRET || "").trim()
 
-    const r1 = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${resend}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        to: adminRecipients,
-        reply_to: email,
-        subject: `[Operonix upitnik] ${company}`,
-        text: adminBody,
-      }),
-    })
-    if (!r1.ok) {
-      const err = await r1.text()
-      return NextResponse.json({ ok: false, error: "resend_admin", detail: err }, { status: 502 })
-    }
-
-    const r2 = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${resend}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        to: [email],
-        subject: thanks.subject,
-        text: thanks.text,
-      }),
-    })
-    if (!r2.ok) {
+  if (fnUrl && ingestSecret.length >= 8) {
+    try {
+      const r = await fetch(fnUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Operonix-Quote-Secret": ingestSecret,
+        },
+        body: JSON.stringify({
+          contactEmail: email,
+          contactName: (body.contactName || "").trim(),
+          contactPhone: (body.contactPhone || "").trim(),
+          companyName: company,
+          payload: body.payload,
+        }),
+      })
+      const j = (await r.json()) as { ok?: boolean; id?: string; error?: string }
+      if (!r.ok || !j.ok) {
+        console.error("[assessment-submit] firebase ingest failed", r.status, j)
+        return NextResponse.json(
+          { ok: false, error: "ingest_failed", detail: j },
+          { status: r.status >= 400 ? r.status : 502 }
+        )
+      }
+      return NextResponse.json({
+        ok: true,
+        channel: "firebase_ingest",
+        id: j.id,
+        delivered: true,
+      })
+    } catch (e) {
+      console.error("[assessment-submit] firebase ingest unreachable", e)
       return NextResponse.json(
-        { ok: true, channel: "resend", delivered: "partial", note: "admin_ok_user_failed" },
-        { status: 200 }
+        { ok: false, error: "ingest_unreachable", detail: String(e) },
+        { status: 502 }
       )
     }
-    return NextResponse.json({ ok: true, channel: "resend", delivered: true })
   }
 
   console.error(
