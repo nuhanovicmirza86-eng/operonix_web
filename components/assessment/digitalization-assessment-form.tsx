@@ -11,6 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { LandingNoticeBar } from "@/components/landing/landing-notice-bar"
 import { Header } from "@/components/landing/header"
 import { Footer } from "@/components/landing/footer"
 import { AssessmentModularSections } from "@/components/assessment/assessment-modular-sections"
@@ -287,8 +288,8 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
 
   return (
     <div className="min-h-screen bg-background print:bg-white">
-      <div className="w-full bg-foreground text-background text-center text-sm py-2 print:hidden">
-        {headerFooterMessages.notice.text}
+      <div className="print:hidden">
+        <LandingNoticeBar notice={headerFooterMessages.notice} />
       </div>
 
       <div className="print:hidden">

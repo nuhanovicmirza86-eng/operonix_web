@@ -1,7 +1,44 @@
 {
   "notice": {
-    "label": "OBAVIJEST",
-    "text": "Od 01.05.2026 Operonix Industrial je dostupan, zatražite ponudu za svoju kompaniju."
+    "label": "Obavijest",
+    "headline": "Transformišite proizvodnju uz Operonix Industrial",
+    "body": "Jedna platforma za proizvodnju, održavanje i analitiku — kontakt ili upitnik za personalizovanu ponudu.",
+    "contactLabel": "Kontakt",
+    "email": "info@operonixindustrial.com"
+  },
+  "productionPitch": {
+    "title": "Transformišite proizvodnju uz Operonix Industrial",
+    "lead": "Operonix Industrial povezuje proizvodnju, održavanje, analitiku i industrijske podatke u jednu modernu platformu za fabrike koje žele veću efikasnost, potpunu kontrolu i digitalnu transformaciju bez kompromisa.",
+    "scope": "Od praćenja proizvodnje u realnom vremenu, OEE/OOE/TEEP analitike, održavanja mašina i upravljanja zastojima, pa sve do industrijske IoT povezanosti, SCADA Live prikaza i AI analitike — Operonix Industrial je razvijen da podigne industrijske procese na viši nivo.",
+    "whatYouGetTitle": "Šta dobijate?",
+    "whatYouGetItems": [
+      "Centralizovan pregled kompletne proizvodnje",
+      "Praćenje performansi mašina u realnom vremenu",
+      "Digitalizaciju održavanja i kvarova",
+      "Naprednu OEE/OOE/TEEP analitiku",
+      "Industrijske izvještaje i KPI dashboarde",
+      "Integraciju sa PLC i industrijskim uređajima",
+      "Skalabilnu SaaS platformu za više pogona i kompanija",
+      "Sigurnu i modernu cloud infrastrukturu"
+    ],
+    "whyTitle": "Zašto Operonix Industrial?",
+    "whyBody": "Zato što moderna industrija više ne može zavisiti od Excel tabela, papirnih evidencija i nepovezanih sistema. Operonix Industrial omogućava kompanijama da donose odluke na osnovu stvarnih podataka, smanje zastoje, povećaju produktivnost i izgrade pametnu fabriku spremnu za budućnost.",
+    "yourProductionTitle": "Vaša proizvodnja zaslužuje više",
+    "yourProductionIntro": "Bez obzira da li želite:",
+    "yourProductionItems": [
+      "MES sistem",
+      "OEE/OOE/TEEP analitiku",
+      "Digitalno održavanje",
+      "SCADA Live nadzor",
+      "Industrijsku IoT integraciju",
+      "AI asistenta za proizvodnju i analitiku"
+    ],
+    "yourProductionClosing": "Operonix Industrial može biti prilagođen potrebama vaše kompanije.",
+    "ctaTitle": "Popunite upitnik i zatražite ponudu za svoju kompaniju",
+    "ctaBody": "Na osnovu vaših proizvodnih procesa, broja mašina, pogona i potreba kompanije, pripremamo personalizovanu ponudu i prijedlog implementacije prilagođen vašem poslovanju.",
+    "ctaButton": "Popunite upitnik",
+    "tagline1": "Digitalizujte proizvodnju. Smanjite zastoje. Povećajte efikasnost.",
+    "tagline2": "Operonix Industrial — industrijska platforma nove generacije."
   },
   "upitnikGate": {
     "heading": "Jezik upitnika",

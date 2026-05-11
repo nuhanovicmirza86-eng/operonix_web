@@ -1,3 +1,5 @@
+import { ProductionPitchSection } from "@/components/landing/production-pitch-section"
+import { LandingNoticeBar } from "@/components/landing/landing-notice-bar"
 import { Header } from "@/components/landing/header"
 import { Hero } from "@/components/landing/hero"
 import { Modules } from "@/components/landing/modules"
@@ -28,9 +30,12 @@ export default async function Home({ searchParams }: HomeProps) {
     <main className="min-h-screen bg-background pt-20">
       <Header messages={messages.header} currentLang={locale} />
 
-      <div className="w-full bg-foreground text-background text-center text-sm py-2">
-        {messages.notice.text}
-      </div>
+      <LandingNoticeBar notice={messages.notice} />
+
+      <ProductionPitchSection
+        messages={messages.productionPitch}
+        currentLang={locale}
+      />
 
       <Hero messages={messages.hero} />
       <Modules messages={messages.modules} />

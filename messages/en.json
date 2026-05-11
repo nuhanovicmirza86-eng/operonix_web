@@ -1,7 +1,44 @@
 {
   "notice": {
-    "label": "NOTICE",
-    "text": "As of 1 May 2026, Operonix Industrial is available — request a quote for your company."
+    "label": "Update",
+    "headline": "Transform manufacturing with Operonix Industrial",
+    "body": "One platform for production, maintenance, and analytics — contact us or request a tailored quote via the questionnaire.",
+    "contactLabel": "Contact",
+    "email": "info@operonixindustrial.com"
+  },
+  "productionPitch": {
+    "title": "Transform manufacturing with Operonix Industrial",
+    "lead": "Operonix Industrial connects production, maintenance, analytics, and industrial data in one modern platform for plants that want higher efficiency, full control, and digital transformation without compromise.",
+    "scope": "From real-time production tracking, OEE/OOE/TEEP analytics, machine maintenance, and downtime management to industrial IoT connectivity, SCADA Live views, and AI-driven analysis — Operonix Industrial is built to raise industrial operations to the next level.",
+    "whatYouGetTitle": "What you get",
+    "whatYouGetItems": [
+      "A centralised view of your entire production operation",
+      "Real-time machine performance monitoring",
+      "Digital maintenance and breakdown workflows",
+      "Advanced OEE/OOE/TEEP analytics",
+      "Industrial reporting and KPI dashboards",
+      "Integration with PLCs and industrial equipment",
+      "A scalable SaaS platform for multiple plants and companies",
+      "Secure, modern cloud infrastructure"
+    ],
+    "whyTitle": "Why Operonix Industrial?",
+    "whyBody": "Because modern industry can no longer rely on spreadsheets, paper records, and disconnected systems. Operonix Industrial helps companies decide from real data, reduce downtime, increase productivity, and build a smart factory ready for the future.",
+    "yourProductionTitle": "Your production deserves more",
+    "yourProductionIntro": "Whether you need:",
+    "yourProductionItems": [
+      "An MES",
+      "OEE/OOE/TEEP analytics",
+      "Digital maintenance",
+      "SCADA Live supervision",
+      "Industrial IoT integration",
+      "An AI assistant for production and analytics"
+    ],
+    "yourProductionClosing": "Operonix Industrial can be tailored to your company’s needs.",
+    "ctaTitle": "Complete the questionnaire and request a quote for your company",
+    "ctaBody": "Based on your processes, number of machines, plants, and business needs, we prepare a personalised proposal and implementation plan aligned with how you operate.",
+    "ctaButton": "Complete the questionnaire",
+    "tagline1": "Digitise production. Cut downtime. Raise efficiency.",
+    "tagline2": "Operonix Industrial — the next-generation industrial platform."
   },
   "upitnikGate": {
     "heading": "Questionnaire language",

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { LandingNoticeBar } from "@/components/landing/landing-notice-bar"
 import { Header } from "@/components/landing/header"
 import { Footer } from "@/components/landing/footer"
 import type { Messages } from "@/lib/i18n"
@@ -12,9 +13,7 @@ type Props = {
 export function UpitnikLanguageGate({ messages }: Props) {
   return (
     <div className="min-h-screen bg-background">
-      <div className="w-full bg-foreground text-background text-center text-sm py-2">
-        {messages.notice.text}
-      </div>
+      <LandingNoticeBar notice={messages.notice} />
       <Header messages={messages.header} currentLang="bs" />
 
       <div className="mx-auto max-w-lg px-4 sm:px-6 py-16 sm:py-20">

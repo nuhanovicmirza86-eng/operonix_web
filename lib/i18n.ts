@@ -121,7 +121,28 @@ type FooterLinks = {
 export type Messages = {
   notice: {
     label: string
-    text: string
+    headline: string
+    body: string
+    contactLabel: string
+    email: string
+  }
+  productionPitch: {
+    title: string
+    lead: string
+    scope: string
+    whatYouGetTitle: string
+    whatYouGetItems: string[]
+    whyTitle: string
+    whyBody: string
+    yourProductionTitle: string
+    yourProductionIntro: string
+    yourProductionItems: string[]
+    yourProductionClosing: string
+    ctaTitle: string
+    ctaBody: string
+    ctaButton: string
+    tagline1: string
+    tagline2: string
   }
   upitnikGate: {
     heading: string

@@ -109,3 +109,74 @@
     opacity: 1;
   }
 }
+
+@keyframes notice-gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes notice-shine {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes notice-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes notice-pulse-ring {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.65 0.15 180 / 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 6px oklch(0.65 0.15 180 / 0);
+  }
+}
+
+.landing-notice-backdrop {
+  background: linear-gradient(
+    125deg,
+    oklch(0.14 0.045 250),
+    oklch(0.16 0.07 195),
+    oklch(0.13 0.05 200),
+    oklch(0.15 0.06 185)
+  );
+  background-size: 220% 220%;
+  animation: notice-gradient-shift 14s ease-in-out infinite;
+}
+
+.landing-notice-shine {
+  animation: notice-shine 7s ease-in-out infinite;
+}
+
+.landing-notice-marquee-track {
+  animation: notice-marquee 32s linear infinite;
+}
+
+.landing-notice-badge-pulse {
+  animation: notice-pulse-ring 2.8s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-notice-backdrop,
+  .landing-notice-shine,
+  .landing-notice-marquee-track,
+  .landing-notice-badge-pulse {
+    animation: none !important;
+  }
+}
