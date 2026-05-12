@@ -27,7 +27,7 @@ import {
 } from "@/lib/assessment-scoring"
 import type { AssessmentCopy } from "@/lib/assessment-strings"
 import type { Locale, Messages } from "@/lib/i18n"
-import { cn } from "@/lib/utils"
+import { cn, sanitizeIntegerDigits, sanitizeUnsignedDecimalString } from "@/lib/utils"
 
 type Extras = {
   companyName: string
@@ -521,16 +521,30 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
                   <Label htmlFor="emp">{t.s1.employees}</Label>
                   <Input
                     id="emp"
+                    inputMode="numeric"
+                    autoComplete="off"
                     value={st.employees}
-                    onChange={(e) => setSt((s) => ({ ...s, employees: e.target.value }))}
+                    onChange={(e) =>
+                      setSt((s) => ({
+                        ...s,
+                        employees: sanitizeIntegerDigits(e.target.value),
+                      }))
+                    }
                   />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="pl">{t.s1.plants}</Label>
                   <Input
                     id="pl"
+                    inputMode="numeric"
+                    autoComplete="off"
                     value={st.plants}
-                    onChange={(e) => setSt((s) => ({ ...s, plants: e.target.value }))}
+                    onChange={(e) =>
+                      setSt((s) => ({
+                        ...s,
+                        plants: sanitizeIntegerDigits(e.target.value),
+                      }))
+                    }
                   />
                 </div>
               </div>
@@ -577,18 +591,32 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
                     ["workCenters", t.s2.workCenters],
                     ["productCount", t.s2.productCount],
                     ["shifts", t.s2.shifts],
-                    ["cycle", t.s2.cycle],
                   ] as const
                 ).map(([id, label]) => (
                   <div key={id} className="space-y-2 sm:col-span-1">
                     <Label htmlFor={id}>{label}</Label>
                     <Input
                       id={id}
-                      value={st[id as "machines" | "workCenters" | "productCount" | "shifts" | "cycle"]}
-                      onChange={(e) => setSt((s) => ({ ...s, [id]: e.target.value }))}
+                      inputMode="numeric"
+                      autoComplete="off"
+                      value={st[id]}
+                      onChange={(e) =>
+                        setSt((s) => ({
+                          ...s,
+                          [id]: sanitizeIntegerDigits(e.target.value),
+                        }))
+                      }
                     />
                   </div>
                 ))}
+                <div className="space-y-2 sm:col-span-2">
+                  <Label htmlFor="cycle">{t.s2.cycle}</Label>
+                  <Input
+                    id="cycle"
+                    value={st.cycle}
+                    onChange={(e) => setSt((s) => ({ ...s, cycle: e.target.value }))}
+                  />
+                </div>
               </div>
               <div>
                 <Label className="mb-2 block">{t.s2.track}</Label>
@@ -772,24 +800,45 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
                   <Label htmlFor="downtimePct">{t.s4.dPct}</Label>
                   <Input
                     id="downtimePct"
+                    inputMode="decimal"
+                    autoComplete="off"
                     value={st.downtimePct}
-                    onChange={(e) => setSt((s) => ({ ...s, downtimePct: e.target.value }))}
+                    onChange={(e) =>
+                      setSt((s) => ({
+                        ...s,
+                        downtimePct: sanitizeUnsignedDecimalString(e.target.value),
+                      }))
+                    }
                   />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="scrapPct">{t.s4.sPct}</Label>
                   <Input
                     id="scrapPct"
+                    inputMode="decimal"
+                    autoComplete="off"
                     value={st.scrapPct}
-                    onChange={(e) => setSt((s) => ({ ...s, scrapPct: e.target.value }))}
+                    onChange={(e) =>
+                      setSt((s) => ({
+                        ...s,
+                        scrapPct: sanitizeUnsignedDecimalString(e.target.value),
+                      }))
+                    }
                   />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="utilPct">{t.s4.uPct}</Label>
                   <Input
                     id="utilPct"
+                    inputMode="decimal"
+                    autoComplete="off"
                     value={st.utilPct}
-                    onChange={(e) => setSt((s) => ({ ...s, utilPct: e.target.value }))}
+                    onChange={(e) =>
+                      setSt((s) => ({
+                        ...s,
+                        utilPct: sanitizeUnsignedDecimalString(e.target.value),
+                      }))
+                    }
                   />
                 </div>
               </div>
