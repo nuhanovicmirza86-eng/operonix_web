@@ -1,9 +1,9 @@
 "use client"
 
-import { useCallback, useMemo, useRef, useState, type FormEvent } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Printer } from "lucide-react"
+import { FileDown, Printer, Share2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -199,7 +199,8 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
     if (status === 404) return trEx("sendErrNoApi")
     if (code === "no_server_email") return trEx("sendErrNoChannel")
     if (code === "resend_admin") return trEx("sendErrResend")
-    if (code === "ingest_failed" || code === "ingest_unreachable") return trEx("sendErrIngest")
+    if (code === "ingest_failed" || code === "ingest_unreachable" || code === "firestore_ingest_failed")
+      return trEx("sendErrIngest")
     if (code === "web3forms") return trEx("sendErrWeb3")
     if (code === "no_admin_recipients") {
       return trEx("sendErrNoRecipients")
@@ -247,6 +248,79 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
     opportunity,
     complexity,
   ])
+
+  const [pdfBusy, setPdfBusy] = useState(false)
+  const [pdfLocalErr, setPdfLocalErr] = useState<string | null>(null)
+  const [canShareFiles, setCanShareFiles] = useState(false)
+
+  useEffect(() => {
+    if (typeof navigator === "undefined" || !navigator.share) return
+    try {
+      const f = new File([new Uint8Array([0x25, 0x50, 0x44, 0x46])], "probe.pdf", {
+        type: "application/pdf",
+      })
+      setCanShareFiles(Boolean(navigator.canShare?.({ files: [f] })))
+    } catch {
+      setCanShareFiles(false)
+    }
+  }, [])
+
+  const fetchAssessmentPdfBlob = useCallback(async () => {
+    const payload = buildPayload()
+    const r = await fetch("/api/assessment-pdf", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        payload,
+        locale: currentLang === "bs" ? "bs" : "en",
+      }),
+    })
+    if (!r.ok) throw new Error("pdf_http")
+    return r.blob()
+  }, [buildPayload, currentLang])
+
+  const pdfBaseName = useCallback(() => {
+    const co =
+      st.companyName.trim().replace(/[^\w\u00C0-\u024f\-]+/gi, "-").replace(/^-|-$/g, "").slice(0, 40) ||
+      "upitnik"
+    return currentLang === "bs"
+      ? `operonix-industrial-upitnik-${co}.pdf`
+      : `operonix-industrial-questionnaire-${co}.pdf`
+  }, [st.companyName, currentLang])
+
+  const handlePdfDownload = useCallback(async () => {
+    setPdfLocalErr(null)
+    setPdfBusy(true)
+    try {
+      const blob = await fetchAssessmentPdfBlob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement("a")
+      a.href = url
+      a.download = pdfBaseName()
+      a.click()
+      URL.revokeObjectURL(url)
+    } catch {
+      setPdfLocalErr(t.pdfDownloadErr)
+    } finally {
+      setPdfBusy(false)
+    }
+  }, [fetchAssessmentPdfBlob, pdfBaseName, t.pdfDownloadErr])
+
+  const handlePdfShare = useCallback(async () => {
+    setPdfLocalErr(null)
+    setPdfBusy(true)
+    try {
+      const blob = await fetchAssessmentPdfBlob()
+      const file = new File([blob], pdfBaseName(), { type: "application/pdf" })
+      if (navigator.share && navigator.canShare?.({ files: [file] })) {
+        await navigator.share({ files: [file], title: t.title })
+      }
+    } catch (e) {
+      if (e instanceof Error && e.name !== "AbortError") setPdfLocalErr(t.pdfDownloadErr)
+    } finally {
+      setPdfBusy(false)
+    }
+  }, [fetchAssessmentPdfBlob, pdfBaseName, t.pdfDownloadErr, t.title])
 
   const handleSend = async () => {
     setFormErr(null)
@@ -325,15 +399,6 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
     }
   }
 
-  const copyAll = async () => {
-    const text = JSON.stringify(buildPayload(), null, 2)
-    try {
-      await navigator.clipboard.writeText(text)
-    } catch {
-      // ignore
-    }
-  }
-
   return (
     <div className="min-h-screen bg-background print:bg-white">
       <div className="print:hidden">
@@ -345,7 +410,8 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
       </div>
 
       <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-10 print:max-w-none print:px-6">
-        <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between print:mb-4">
+        <div className="mb-6 flex flex-col gap-3 print:mb-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3 print:block">
             <Image
               src="/logo.png"
@@ -359,6 +425,16 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2 print:justify-end">
+            <Button type="button" variant="outline" size="sm" onClick={handlePdfDownload} disabled={pdfBusy}>
+              <FileDown className="h-4 w-4" />
+              {pdfBusy ? t.pdfDownloadBusy : t.pdfDownload}
+            </Button>
+            {canShareFiles ? (
+              <Button type="button" variant="outline" size="sm" onClick={handlePdfShare} disabled={pdfBusy}>
+                <Share2 className="h-4 w-4" />
+                {t.pdfShare}
+              </Button>
+            ) : null}
             <Button type="button" variant="outline" size="sm" onClick={() => window.print()}>
               <Printer className="h-4 w-4" />
               {t.print}
@@ -367,6 +443,10 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
               <Link href={`/?lang=${currentLang === "bs" ? "bs" : "en"}`}>{t.backHome}</Link>
             </Button>
           </div>
+          </div>
+          {pdfLocalErr ? (
+            <p className="text-sm text-destructive print:hidden">{pdfLocalErr}</p>
+          ) : null}
         </div>
 
         <div className="mb-8 space-y-1 print:mb-4">
@@ -1337,6 +1417,23 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
                 <p className="text-sm text-muted-foreground">{trEx("sendBlockLead")}</p>
               </CardHeader>
               <CardContent className="space-y-4">
+                <p className="text-xs text-muted-foreground leading-relaxed">{t.pdfOptionsLead}</p>
+                <div className="flex flex-wrap gap-2">
+                  <Button type="button" variant="outline" size="sm" onClick={handlePdfDownload} disabled={pdfBusy}>
+                    <FileDown className="h-4 w-4" />
+                    {pdfBusy ? t.pdfDownloadBusy : t.pdfDownload}
+                  </Button>
+                  {canShareFiles ? (
+                    <Button type="button" variant="outline" size="sm" onClick={handlePdfShare} disabled={pdfBusy}>
+                      <Share2 className="h-4 w-4" />
+                      {t.pdfShare}
+                    </Button>
+                  ) : null}
+                  <Button type="button" variant="outline" size="sm" onClick={() => window.print()}>
+                    <Printer className="h-4 w-4" />
+                    {t.print}
+                  </Button>
+                </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="cname">{trEx("contactName")}</Label>
@@ -1400,9 +1497,6 @@ export function DigitalizationAssessmentPageView({ t, currentLang, headerFooterM
                     onClick={handleSend}
                   >
                     {sendState === "sending" ? trEx("sendSending") : trEx("sendButton")}
-                  </Button>
-                  <Button type="button" variant="outline" onClick={copyAll}>
-                    {trEx("sendCopy")}
                   </Button>
                 </div>
               </CardContent>

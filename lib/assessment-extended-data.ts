@@ -326,7 +326,8 @@ const BS: Record<string, string> = {
   sendButton: "Pošalji upitnik",
   sendSending: "Šaljem…",
   sendOk: "Hvala — upitnik je zaprimljen. Javit ćemo se e-mailom.",
-  sendErr: "Slanje nije uspjelo. Pokušajte kasnije ili kopirajte sadržaj (gumb ispod) i pošaljite ručno.",
+  sendErr:
+    "Slanje nije uspjelo. Pokušajte kasnije ili nas kontaktirajte putem e-pošte s navedenim kontaktom.",
   sendErrNoApi:
     "API za slanje nije pronađen (404). Vercel projekt mora biti povezan s repozitorijem koji sadrži rutu /api/assessment-submit (operonix_web).",
   sendErrNoChannel:
@@ -334,15 +335,14 @@ const BS: Record<string, string> = {
   sendErrResend:
     "Resend nije prihvatio slanje. Provjerite API ključ, RESEND_FROM (adresa s verifikovane domene) i Zapise u Resend konzoli.",
   sendErrIngest:
-    "Pozadinski zapis (Firebase) nije uspio. Ako koristite samo Resend, uklonite ili ispravite OPERONIX_QUOTE_FUNCTION_URL i OPERONIX_QUOTE_INGEST_SECRET u Vercelu.",
+    "Zapis upita u aplikaciju (Firebase) nije uspio. Provjerite OPERONIX_QUOTE_FUNCTION_URL i OPERONIX_QUOTE_INGEST_SECRET na Vercelu (Production + Redeploy) — moraju odgovarati Cloud Function tajni.",
   sendErrWeb3: "Web3Forms nije uspio. Provjerite WEB3FORMS_ACCESS_KEY.",
   sendErrBadRequest: "Neispravan zahtjev. Provjerite e-mail i sadržaj forme.",
   sendErrNoRecipients:
     "Lista primatelja upitnika je prazna. U Vercelu provjerite točno ime varijable ASSESSMENT_TO_EMAIL (dva slova „s“ u Assessment) i zarez između adresa.",
-  sendErrBadResponse: "Neočekivani odgovor servera. Pokušajte ponovo ili ručno pošaljite JSON.",
+  sendErrBadResponse:
+    "Neočekivani odgovor servera. Pokušajte ponovo ili nas kontaktirajte e-mailom.",
   sendErrNetwork: "Mrežna greška. Provjerite vezu i pokušajte ponovo.",
-  sendCopy: "Kopiraj JSON u međuspremnik",
-  sendCopied: "Kopirano",
   sendEmailRequired: "Unesite ispravnu e-mail adresu prije slanja.",
   thankYouTitle: "Hvala vam",
   thankYouBody:
@@ -350,7 +350,7 @@ const BS: Record<string, string> = {
     "Odgovorit ćemo u najkraćem mogućem roku nakon što tim Operonix pregleda upitnik. " +
     "Automatska potvrda e-mailom poslana je ako je poslužitelj za slanje ispravno konfiguriran (inače provjerite spam mapu).",
   sendWarnNoBackend:
-    "Napomena: e-mail poslužitelj nije konfiguriran — upitnik nije automatski poslan. Koristite „Kopiraj JSON“ i pošaljite ručno.",
+    "Napomena: upitnik nije automatski poslan e-poštom. Molimo javite nam se na navedenu adresu e-pošte.",
   sendWarnPartial:
     "Upitnik je zaprimljen, ali automatska potvrda na vaš e-mail možda nije stigla. Glavni odgovor stiže od tima Operonix.",
 }
@@ -459,7 +459,7 @@ const EN: Record<string, string> = {
   sendButton: "Send questionnaire",
   sendSending: "Sending…",
   sendOk: "Thank you — your response was received. We will e-mail you.",
-  sendErr: "Send failed. Try again or copy the JSON below and e-mail it manually.",
+  sendErr: "Send failed. Try again later or contact us by e-mail using the address you entered.",
   sendErrNoApi:
     "Submit API was not found (404). The Vercel project must be built from the repo that includes /api/assessment-submit (operonix_web).",
   sendErrNoChannel:
@@ -467,15 +467,14 @@ const EN: Record<string, string> = {
   sendErrResend:
     "Resend rejected the send. Check the API key, RESEND_FROM (address on a verified domain), and Resend logs.",
   sendErrIngest:
-    "Firebase ingest failed. If you use Resend only, remove or fix OPERONIX_QUOTE_FUNCTION_URL and OPERONIX_QUOTE_INGEST_SECRET in Vercel.",
+    "Saving the inquiry to the app (Firebase) failed. Check OPERONIX_QUOTE_FUNCTION_URL and OPERONIX_QUOTE_INGEST_SECRET on Vercel (Production + Redeploy) — they must match the Cloud Function secret.",
   sendErrWeb3: "Web3Forms failed. Check WEB3FORMS_ACCESS_KEY.",
   sendErrBadRequest: "Invalid request. Check your e-mail and form content.",
   sendErrNoRecipients:
     "Recipient list is empty. On Vercel check the variable name ASSESSMENT_TO_EMAIL (spelling) and commas between addresses.",
-  sendErrBadResponse: "Unexpected server response. Try again or send the JSON manually.",
+  sendErrBadResponse:
+    "Unexpected server response. Try again or contact us by e-mail.",
   sendErrNetwork: "Network error. Check your connection and try again.",
-  sendCopy: "Copy JSON to clipboard",
-  sendCopied: "Copied",
   sendEmailRequired: "Enter a valid e-mail before sending.",
   thankYouTitle: "Thank you",
   thankYouBody:
@@ -483,7 +482,7 @@ const EN: Record<string, string> = {
     "We will respond in the shortest time possible after the Operonix team reviews your questionnaire. " +
     "A confirmation e-mail is sent when outbound mail is configured correctly (check spam/junk if you expected one).",
   sendWarnNoBackend:
-    "Note: e-mail is not configured on the server — your response was not sent automatically. Use “Copy JSON” and e-mail it manually.",
+    "Note: your questionnaire was not sent by e-mail automatically. Please contact us at the e-mail address you entered.",
   sendWarnPartial:
     "Your assessment was received, but the automatic confirmation to your inbox may not have been sent. The Operonix team will still follow up.",
 }

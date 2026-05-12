@@ -18,6 +18,11 @@ export type AssessmentCopy = {
   complexityL: string
   resultDisclaimer: string
   print: string
+  pdfDownload: string
+  pdfDownloadBusy: string
+  pdfDownloadErr: string
+  pdfShare: string
+  pdfOptionsLead: string
   s1: { title: string; company: string; industry: string; productionType: string; ptSerial: string; ptProject: string; ptMto: string; ptMts: string; employees: string; plants: string; certIso: string; certIatf: string; certOther: string; certOtherPh: string }
   s2: { title: string; machines: string; workCenters: string; productCount: string; shifts: string; cycle: string; track: string; trExcel: string; trPaper: string; trErp: string; trMes: string; trNone: string }
   s3: { title: string; decisions: string; dExp: string; dExcel: string; dRep: string; dRt: string; has: string; erp: string; scada: string; mes: string; prob: string; pData: string; pLate: string; pManual: string; pOee: string; pUnk: string }
@@ -55,6 +60,12 @@ const en: AssessmentCopy = {
   resultDisclaimer:
     "This score does not set price or contract terms. The Operonix team may adjust the model. Budget and scope are confirmed in the written proposal.",
   print: "Print / Save as PDF",
+  pdfDownload: "Download PDF",
+  pdfDownloadBusy: "Building PDF…",
+  pdfDownloadErr: "Could not create the PDF. Please try again.",
+  pdfShare: "Share / send PDF",
+  pdfOptionsLead:
+    "Download a PDF with the Operonix Industrial logo and header, share it from your device, or use Print for a paper copy.",
   s1: {
     title: "1. Company",
     company: "Company name",
@@ -273,6 +284,12 @@ const bs: AssessmentCopy = {
   resultDisclaimer:
     "Ovaj skor ne određuje cijenu niti ugovor. Operonix tim može korigirati model. Budžet i opseg u pisanoj ponudi su presudni.",
   print: "Štampaj / spremi kao PDF",
+  pdfDownload: "Preuzmi PDF",
+  pdfDownloadBusy: "Pripremam PDF…",
+  pdfDownloadErr: "PDF nije mogao biti napravljen. Pokušajte ponovo.",
+  pdfShare: "Podijeli / pošalji PDF",
+  pdfOptionsLead:
+    "Preuzmite PDF s logotipom i nazivom Operonix Industrial u zaglavlju, podijelite ga s uređaja ili koristite Štampaj za papirnatu kopiju.",
   s1: {
     title: "1. Osnovni podaci o kompaniji",
     company: "Naziv kompanije",

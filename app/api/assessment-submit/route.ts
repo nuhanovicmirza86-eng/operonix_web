@@ -1,5 +1,17 @@
 import { NextResponse } from "next/server"
 
+import { assessmentPayloadToHumanText } from "@/lib/assessment-payload-human-text"
+import {
+  OPERONIX_DOCUMENT_COMPANY_NAME,
+  assessmentPdfFooterNote,
+} from "@/lib/assessment-document-branding"
+import {
+  buildAssessmentPdfBuffer,
+  buildAssessmentXlsxBuffer,
+  safeAttachmentSlug,
+} from "@/lib/assessment-quote-attachments"
+import { getOperonixLogoDataUrl } from "@/lib/load-operonix-logo"
+
 export const runtime = "nodejs"
 
 const MAX_LEN = 450_000
@@ -27,7 +39,7 @@ function clipForResendBody(s: string): string {
   if (s.length <= RESEND_BODY_MAX) return s
   return (
     s.slice(0, RESEND_BODY_MAX) +
-    `\n\n[… tijelo skraćeno (${s.length} znakova) — potpuni JSON u prilogu ili kopiju zatražite od korisnika.]`
+    `\n\n[… tijelo skraćeno (${s.length} znakova) — cjeloviti upit u aplikaciji: Super Admin → Upiti s weba (Operonix).]`
   )
 }
 
@@ -85,6 +97,9 @@ function emailChannelEnvChecks() {
     hasAssessmentToEmail:
       Boolean((process.env.ASSESSMENT_TO_EMAIL || "").trim()) ||
       Boolean((process.env.ASSESMENT_TO_EMAIL || "").trim()),
+    hasOperonixIngest:
+      Boolean((process.env.OPERONIX_QUOTE_FUNCTION_URL || "").trim()) &&
+      (process.env.OPERONIX_QUOTE_INGEST_SECRET || "").trim().length >= 8,
   }
 }
 
@@ -94,6 +109,53 @@ function localeFromPayload(payload: unknown): string {
     return l.startsWith("bs") ? "bs" : "en"
   }
   return "en"
+}
+
+/**
+ * Zapis u Firestore `operonix_website_quote_requests` (Maintenance super_admin ekran).
+ * Kad je `skipNotificationEmails`, Cloud Function ne šalje dupli SMTP (već ima Resend/Web3).
+ */
+async function tryOperonixFirestoreIngest(
+  body: Body,
+  opts: { skipNotificationEmails: boolean; humanSummary: string }
+): Promise<{ ok: boolean; id?: string; error?: string }> {
+  const fnUrl = (process.env.OPERONIX_QUOTE_FUNCTION_URL || "").trim()
+  const ingestSecret = (process.env.OPERONIX_QUOTE_INGEST_SECRET || "").trim()
+  if (!fnUrl || ingestSecret.length < 8) {
+    return { ok: true }
+  }
+
+  const email = (body.contactEmail || "").trim()
+  const company =
+    (typeof body.companyName === "string" && body.companyName.trim()) || "Operonix assessment"
+
+  try {
+    const r = await fetch(fnUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Operonix-Quote-Secret": ingestSecret,
+      },
+      body: JSON.stringify({
+        contactEmail: email,
+        contactName: (body.contactName || "").trim(),
+        contactPhone: (body.contactPhone || "").trim(),
+        companyName: company,
+        payload: body.payload,
+        skipNotificationEmails: opts.skipNotificationEmails,
+        humanSummary: opts.humanSummary,
+      }),
+    })
+    const j = (await r.json()) as { ok?: boolean; id?: string; error?: string }
+    if (!r.ok || !j.ok) {
+      console.error("[assessment-submit] firestore ingest failed", r.status, j)
+      return { ok: false, error: typeof j.error === "string" ? j.error : `http_${r.status}` }
+    }
+    return { ok: true, id: j.id }
+  } catch (e) {
+    console.error("[assessment-submit] firestore ingest unreachable", e)
+    return { ok: false, error: String(e) }
+  }
 }
 
 /**
@@ -116,8 +178,10 @@ export async function GET() {
         : null,
     },
     interpret: ready
-      ? "U ovom serverless procesu tri varijable su vidljive; ako POST i dalje pada, greška je u Resend API (ključ/domena) — gledajte poruku u odgovoru ili Resend Logs."
-      : "U ovom serverless procesu bar jedna od RESEND_API_KEY / RESEND_FROM / ASSESSMENT_TO_EMAIL je prazna. Varijable su vjerovatnije na drugom Vercel projektu od domene, ili nisu u Production / nije Redeploy.",
+      ? "U ovom serverless procesu tri varijable su vidljive; ako POST i dalje pada, greška je u Resend API (ključ/domena) — gledajte poruku u odgovoru ili Resend Logs. " +
+        "Za Super Admin listu upita na telefonu trebaju OPERONIX_QUOTE_FUNCTION_URL + OPERONIX_QUOTE_INGEST_SECRET (istu tajnu kao na Cloud Function)."
+      : "U ovom serverless procesu bar jedna od RESEND_API_KEY / RESEND_FROM / ASSESSMENT_TO_EMAIL je prazna. Varijable su vjerovatnije na drugom Vercel projektu od domene, ili nisu u Production / nije Redeploy. " +
+        "Za zapis u aplikaciji dodajte i OPERONIX_QUOTE_FUNCTION_URL + OPERONIX_QUOTE_INGEST_SECRET.",
   })
 }
 
@@ -148,10 +212,41 @@ export async function POST(request: Request) {
     (typeof body.companyName === "string" && body.companyName.trim()) || "Operonix assessment"
   const loc = localeFromPayload(body.payload)
   const thanks = thanksEmailText(loc)
+  const locHuman = localeFromPayload(body.payload) === "bs" ? "bs" : "en"
+  const humanBlock = assessmentPayloadToHumanText(body.payload, locHuman)
+  const humanSummaryForIngest =
+    humanBlock.length > 950_000
+      ? `${humanBlock.slice(0, 950_000)}\n\n[… tekst skraćen zbog limita baze]`
+      : humanBlock
+
+  const fnUrl = (process.env.OPERONIX_QUOTE_FUNCTION_URL || "").trim()
+  const ingestSecret = (process.env.OPERONIX_QUOTE_INGEST_SECRET || "").trim()
+  const ingestConfigured = Boolean(fnUrl && ingestSecret.length >= 8)
+
+  /** Kad Resend/Web3 šalju adminu mail, prvo snimamo Firestore da Super Admin uvijek vidi upit. */
+  let sideChannelIngest: { ok: boolean; id?: string; error?: string } | undefined
 
   /** Vercel/Resend prvo: pogrešni OPERONIX_* u env često blokiraju slanje ako je Firebase ispred. */
   const resend = (process.env.RESEND_API_KEY || "").trim()
   if (resend) {
+    if (ingestConfigured) {
+      const fi = await tryOperonixFirestoreIngest(body, {
+        skipNotificationEmails: true,
+        humanSummary: humanSummaryForIngest,
+      })
+      sideChannelIngest = fi
+      if (!fi.ok) {
+        return NextResponse.json(
+          {
+            ok: false,
+            error: "firestore_ingest_failed",
+            firestoreIngest: fi,
+          },
+          { status: 502 }
+        )
+      }
+    }
+
     const adminRecipients = parseAdminEmails()
     if (adminRecipients.length === 0) {
       return NextResponse.json(
@@ -160,9 +255,43 @@ export async function POST(request: Request) {
       )
     }
     const from = (process.env.RESEND_FROM || "").trim() || "Operonix <onboarding@resend.dev>"
-    const adminBody = clipForResendBody(
-      `Kontakt: ${email}\nIme: ${(body.contactName || "").trim()}\nTel: ${(body.contactPhone || "").trim()}\n\n${text}`
-    )
+    const adminHeader =
+      `Kontakt (slanje): ${email}\nIme: ${(body.contactName || "").trim() || "—"}\nTel: ${(body.contactPhone || "").trim() || "—"}\n`
+    const adminTextBody = clipForResendBody(`${adminHeader}\n${humanBlock}`)
+
+    const r1Payload: Record<string, unknown> = {
+      from,
+      to: adminRecipients,
+      reply_to: email,
+      subject: `[Operonix upitnik] ${company}`,
+      text: adminTextBody,
+    }
+
+    try {
+      const logo = getOperonixLogoDataUrl()
+      const docHeading =
+        locHuman === "bs"
+          ? `Upitnik za digitalizaciju proizvodnje — ${company}`
+          : `Production digitalization questionnaire — ${company}`
+      const pdfBranding = {
+        companyName: OPERONIX_DOCUMENT_COMPANY_NAME,
+        documentHeading: docHeading,
+        footerNote: assessmentPdfFooterNote(locHuman),
+        logoDataUrl: logo,
+      }
+      const [xlsxBuf, pdfBuf] = await Promise.all([
+        buildAssessmentXlsxBuffer(humanBlock, body.payload ?? {}),
+        buildAssessmentPdfBuffer(humanBlock, pdfBranding),
+      ])
+      const slug = safeAttachmentSlug(company)
+      const stamp = new Date().toISOString().slice(0, 10)
+      r1Payload.attachments = [
+        { filename: `operonix-upitnik-${slug}-${stamp}.xlsx`, content: xlsxBuf.toString("base64") },
+        { filename: `operonix-upitnik-${slug}-${stamp}.pdf`, content: pdfBuf.toString("base64") },
+      ]
+    } catch (attErr) {
+      console.error("[assessment-submit] attachment build failed", attErr)
+    }
 
     const r1 = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -170,13 +299,7 @@ export async function POST(request: Request) {
         Authorization: `Bearer ${resend}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        from,
-        to: adminRecipients,
-        reply_to: email,
-        subject: `[Operonix upitnik] ${company}`,
-        text: adminBody,
-      }),
+      body: JSON.stringify(r1Payload),
     })
     if (!r1.ok) {
       const err = await r1.text()
@@ -210,15 +333,44 @@ export async function POST(request: Request) {
       const err2 = await r2.text()
       console.error("[assessment-submit] resend user thank-you failed", r2.status, err2.slice(0, 800))
       return NextResponse.json(
-        { ok: true, channel: "resend", delivered: "partial", note: "admin_ok_user_failed" },
+        {
+          ok: true,
+          channel: "resend",
+          delivered: "partial",
+          note: "admin_ok_user_failed",
+          firestoreIngest: sideChannelIngest ?? { ok: false, skipped: true },
+        },
         { status: 200 }
       )
     }
-    return NextResponse.json({ ok: true, channel: "resend", delivered: true })
+    return NextResponse.json({
+      ok: true,
+      channel: "resend",
+      delivered: true,
+      firestoreIngest:
+        sideChannelIngest ?? (ingestConfigured ? undefined : { ok: false, skipped: true }),
+    })
   }
 
   const w3k = (process.env.WEB3FORMS_ACCESS_KEY || "").trim()
   if (w3k) {
+    if (ingestConfigured) {
+      const fi = await tryOperonixFirestoreIngest(body, {
+        skipNotificationEmails: true,
+        humanSummary: humanSummaryForIngest,
+      })
+      sideChannelIngest = fi
+      if (!fi.ok) {
+        return NextResponse.json(
+          { ok: false, error: "firestore_ingest_failed", firestoreIngest: fi },
+          { status: 502 }
+        )
+      }
+    }
+
+    const messageBody = clipForResendBody(
+      `Reply-To: ${email}\nIme: ${(body.contactName || "").trim()}\nTel: ${(body.contactPhone || "").trim()}\n\n${humanBlock}`
+    )
     const r = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -227,7 +379,7 @@ export async function POST(request: Request) {
         subject: `[Operonix upitnik] ${company}`,
         from_name: (body.contactName || "").trim() || company,
         email,
-        message: `Reply-To: ${email}\nName: ${(body.contactName || "").trim()}\nPhone: ${(body.contactPhone || "").trim()}\n\n${text}`,
+        message: messageBody,
       }),
     })
     const j = (await r.json()) as { success?: boolean; message?: string }
@@ -237,11 +389,13 @@ export async function POST(request: Request) {
         { status: 502 }
       )
     }
-    return NextResponse.json({ ok: true, channel: "web3forms", delivered: true })
+    return NextResponse.json({
+      ok: true,
+      channel: "web3forms",
+      delivered: true,
+      firestoreIngest: sideChannelIngest ?? { ok: false, skipped: true },
+    })
   }
-
-  const fnUrl = (process.env.OPERONIX_QUOTE_FUNCTION_URL || "").trim()
-  const ingestSecret = (process.env.OPERONIX_QUOTE_INGEST_SECRET || "").trim()
 
   if (fnUrl && ingestSecret.length >= 8) {
     try {
@@ -257,6 +411,8 @@ export async function POST(request: Request) {
           contactPhone: (body.contactPhone || "").trim(),
           companyName: company,
           payload: body.payload,
+          skipNotificationEmails: false,
+          humanSummary: humanSummaryForIngest,
         }),
       })
       const j = (await r.json()) as { ok?: boolean; id?: string; error?: string }
@@ -272,6 +428,7 @@ export async function POST(request: Request) {
         channel: "firebase_ingest",
         id: j.id,
         delivered: true,
+        firestoreIngest: { ok: true, id: j.id },
       })
     } catch (e) {
       console.error("[assessment-submit] firebase ingest unreachable", e)
