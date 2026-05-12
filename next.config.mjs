@@ -6,7 +6,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  serverExternalPackages: ["pdfmake", "exceljs"],
+  serverExternalPackages: ["pdfmake"],
 }
 
 export default nextConfig

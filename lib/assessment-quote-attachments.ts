@@ -1,79 +1,4 @@
-import ExcelJS from "exceljs"
-
 const PDF_BODY_MAX = 180_000
-
-export function flattenPayloadRows(
-  payload: unknown,
-  prefix = ""
-): { path: string; value: string }[] {
-  const rows: { path: string; value: string }[] = []
-  if (payload === null || payload === undefined) {
-    if (prefix) rows.push({ path: prefix, value: "" })
-    return rows
-  }
-  if (typeof payload !== "object") {
-    rows.push({ path: prefix || "(root)", value: String(payload) })
-    return rows
-  }
-  if (Array.isArray(payload)) {
-    const s = payload
-      .map((x) =>
-        typeof x === "object" && x !== null ? JSON.stringify(x) : String(x)
-      )
-      .join(", ")
-    rows.push({ path: prefix || "(array)", value: s })
-    return rows
-  }
-  for (const [k, v] of Object.entries(payload as Record<string, unknown>)) {
-    const p = prefix ? `${prefix}.${k}` : k
-    if (v !== null && typeof v === "object" && !Array.isArray(v)) {
-      rows.push(...flattenPayloadRows(v, p))
-    } else if (Array.isArray(v)) {
-      const s = v
-        .map((x) =>
-          typeof x === "object" && x !== null ? JSON.stringify(x) : String(x)
-        )
-        .join(", ")
-      rows.push({ path: p, value: s })
-    } else {
-      rows.push({
-        path: p,
-        value: v === null || v === undefined ? "" : String(v),
-      })
-    }
-  }
-  return rows
-}
-
-export async function buildAssessmentXlsxBuffer(
-  humanBlock: string,
-  payload: unknown
-): Promise<Buffer> {
-  const wb = new ExcelJS.Workbook()
-  const summary = wb.addWorksheet("Sažetak", {
-    views: [{ state: "frozen", ySplit: 1 }],
-  })
-  summary.getColumn(1).width = 110
-  const lines = humanBlock.split("\n")
-  lines.forEach((line, idx) => {
-    const row = summary.getRow(idx + 1)
-    const cell = row.getCell(1)
-    cell.value = line
-    cell.alignment = { wrapText: true, vertical: "top" }
-  })
-
-  const data = wb.addWorksheet("Polja")
-  data.addRow(["Polje", "Vrijednost"])
-  data.getRow(1).font = { bold: true }
-  for (const r of flattenPayloadRows(payload)) {
-    data.addRow([r.path, r.value])
-  }
-  data.getColumn(1).width = 45
-  data.getColumn(2).width = 70
-
-  const buf = await wb.xlsx.writeBuffer()
-  return Buffer.from(buf)
-}
 
 type PdfMakeFactory = {
   vfs: Record<string, string>
@@ -99,7 +24,7 @@ export async function buildAssessmentPdfBuffer(
   if (body.length > PDF_BODY_MAX) {
     body =
       body.slice(0, PDF_BODY_MAX) +
-      "\n\n[… tijelo skraćeno — potpuni tekst je u aplikaciji ili Excel izvozu.]"
+      "\n\n[… tijelo skraćeno — potpuni tekst u ovom PDF-u je obrezan zbog veličine.]"
   }
 
   const pdfMake = (await import("pdfmake/build/pdfmake")).default as PdfMakeFactory

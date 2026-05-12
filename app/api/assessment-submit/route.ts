@@ -5,11 +5,7 @@ import {
   OPERONIX_DOCUMENT_COMPANY_NAME,
   assessmentPdfFooterNote,
 } from "@/lib/assessment-document-branding"
-import {
-  buildAssessmentPdfBuffer,
-  buildAssessmentXlsxBuffer,
-  safeAttachmentSlug,
-} from "@/lib/assessment-quote-attachments"
+import { buildAssessmentPdfBuffer, safeAttachmentSlug } from "@/lib/assessment-quote-attachments"
 import { getOperonixLogoDataUrl } from "@/lib/load-operonix-logo"
 
 export const runtime = "nodejs"
@@ -39,7 +35,7 @@ function clipForResendBody(s: string): string {
   if (s.length <= RESEND_BODY_MAX) return s
   return (
     s.slice(0, RESEND_BODY_MAX) +
-    `\n\n[… tijelo skraćeno (${s.length} znakova) — cjeloviti upit u aplikaciji: Super Admin → Upiti s weba (Operonix).]`
+    `\n\n[… tijelo skraćeno (${s.length} znakova) — potpuni tekst u priloženom PDF-u.]`
   )
 }
 
@@ -112,7 +108,7 @@ function localeFromPayload(payload: unknown): string {
 }
 
 /**
- * Zapis u Firestore `operonix_website_quote_requests` (Maintenance super_admin ekran).
+ * Zapis u Firestore `operonix_website_quote_requests` (interni pregled upita).
  * Kad je `skipNotificationEmails`, Cloud Function ne šalje dupli SMTP (već ima Resend/Web3).
  */
 async function tryOperonixFirestoreIngest(
@@ -179,9 +175,9 @@ export async function GET() {
     },
     interpret: ready
       ? "U ovom serverless procesu tri varijable su vidljive; ako POST i dalje pada, greška je u Resend API (ključ/domena) — gledajte poruku u odgovoru ili Resend Logs. " +
-        "Za Super Admin listu upita na telefonu trebaju OPERONIX_QUOTE_FUNCTION_URL + OPERONIX_QUOTE_INGEST_SECRET (istu tajnu kao na Cloud Function)."
+        "Za interni zapis upita u Operonix Industrial sustavu na uređaju trebaju OPERONIX_QUOTE_FUNCTION_URL + OPERONIX_QUOTE_INGEST_SECRET (istu tajnu kao na Cloud Function)."
       : "U ovom serverless procesu bar jedna od RESEND_API_KEY / RESEND_FROM / ASSESSMENT_TO_EMAIL je prazna. Varijable su vjerovatnije na drugom Vercel projektu od domene, ili nisu u Production / nije Redeploy. " +
-        "Za zapis u aplikaciji dodajte i OPERONIX_QUOTE_FUNCTION_URL + OPERONIX_QUOTE_INGEST_SECRET.",
+        "Za interni zapis upita dodajte i OPERONIX_QUOTE_FUNCTION_URL + OPERONIX_QUOTE_INGEST_SECRET.",
   })
 }
 
@@ -223,7 +219,7 @@ export async function POST(request: Request) {
   const ingestSecret = (process.env.OPERONIX_QUOTE_INGEST_SECRET || "").trim()
   const ingestConfigured = Boolean(fnUrl && ingestSecret.length >= 8)
 
-  /** Kad Resend/Web3 šalju adminu mail, prvo snimamo Firestore da Super Admin uvijek vidi upit. */
+  /** Kad Resend/Web3 šalju adminu mail, prvo snimamo Firestore da interni tim uvijek vidi upit. */
   let sideChannelIngest: { ok: boolean; id?: string; error?: string } | undefined
 
   /** Vercel/Resend prvo: pogrešni OPERONIX_* u env često blokiraju slanje ako je Firebase ispred. */
@@ -279,14 +275,10 @@ export async function POST(request: Request) {
         footerNote: assessmentPdfFooterNote(locHuman),
         logoDataUrl: logo,
       }
-      const [xlsxBuf, pdfBuf] = await Promise.all([
-        buildAssessmentXlsxBuffer(humanBlock, body.payload ?? {}),
-        buildAssessmentPdfBuffer(humanBlock, pdfBranding),
-      ])
+      const pdfBuf = await buildAssessmentPdfBuffer(humanBlock, pdfBranding)
       const slug = safeAttachmentSlug(company)
       const stamp = new Date().toISOString().slice(0, 10)
       r1Payload.attachments = [
-        { filename: `operonix-upitnik-${slug}-${stamp}.xlsx`, content: xlsxBuf.toString("base64") },
         { filename: `operonix-upitnik-${slug}-${stamp}.pdf`, content: pdfBuf.toString("base64") },
       ]
     } catch (attErr) {

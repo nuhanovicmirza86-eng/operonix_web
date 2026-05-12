@@ -10,6 +10,24 @@ import type { Locale } from "./i18n"
 
 type Loc = "bs" | "en"
 
+/** Lista stavki u čistom ASCII (PDF / neki fontovi ne crtaju •). */
+const LIST_BULLET = "  - "
+
+/**
+ * Uklanja zastarjeli pravni tekst iz starijih buildova ili Firestore `humanSummary`
+ * (npr. Super Admin, „aplikacija“, Unicode strelice koje padaju u ▯).
+ */
+export function stripLegacyAssessmentLegalFootnotes(text: string): string {
+  let t = text.normalize("NFC")
+  t = t.replace(/\s+Puni zapis upita[\s\S]*?Upiti s weba\)\s*\.?/gi, "")
+  t = t.replace(/\s+The full request is stored[\s\S]*?Web inquiries\)\s*\.?/gi, "")
+  t = t.replace(/\s+Operonix aplikacij\w*[\s\S]*?Upiti s weba\)\s*\.?/gi, "")
+  t = t.replace(/\s*[`]?\(?\s*Super Admin[\s\S]{0,240}?Upiti s weba\)\s*\.?/gi, "")
+  t = t.replace(/\s*[`]?\(?\s*Super Admin[\s\S]{0,240}?Web inquiries\)\s*\.?/gi, "")
+  t = t.replace(/\s+cjeloviti upit u aplikaciji[\s\S]*?Operonix\)\s*\]?\.?/gi, "")
+  return t.replace(/\n{3,}/g, "\n\n").trimEnd()
+}
+
 function str(v: unknown): string {
   return v === null || v === undefined ? "" : String(v).trim()
 }
@@ -36,7 +54,7 @@ function formatFormBlock(form: Record<string, unknown>, c: AssessmentCopy): stri
   const kv = (label: string, val: unknown): string | null => {
     const s = str(val)
     if (!s) return null
-    return `  • ${label}: ${s}`
+    return `${LIST_BULLET}${label}: ${s}`
   }
 
   const add = (bucket: string[], label: string, val: unknown) => {
@@ -45,7 +63,7 @@ function formatFormBlock(form: Record<string, unknown>, c: AssessmentCopy): stri
   }
 
   const mark = (bucket: string[], label: string, cond: boolean) => {
-    if (cond) bucket.push(`  • ${label}`)
+    if (cond) bucket.push(`${LIST_BULLET}${label}`)
   }
 
   // --- 1 ---
@@ -62,8 +80,8 @@ function formatFormBlock(form: Record<string, unknown>, c: AssessmentCopy): stri
   }
   add(s1, c.s1.employees, form.employees)
   add(s1, c.s1.plants, form.plants)
-  if (form.certIso === true) s1.push(`  • ${c.s1.certIso}`)
-  if (form.certIatf === true) s1.push(`  • ${c.s1.certIatf}`)
+  if (form.certIso === true) s1.push(`${LIST_BULLET}${c.s1.certIso}`)
+  if (form.certIatf === true) s1.push(`${LIST_BULLET}${c.s1.certIatf}`)
   add(s1, c.s1.certOtherPh, form.certOther)
   flush(c.s1.title, s1)
 
@@ -105,12 +123,12 @@ function formatFormBlock(form: Record<string, unknown>, c: AssessmentCopy): stri
   }
   if (form.hasErp === true) {
     const en = str(form.erpName)
-    s3.push(en ? `  • ${c.s3.erp}: ${en}` : `  • ${c.s3.erp}`)
+    s3.push(en ? `${LIST_BULLET}${c.s3.erp}: ${en}` : `${LIST_BULLET}${c.s3.erp}`)
   }
-  if (form.hasScada === true) s3.push(`  • ${c.s3.scada}`)
+  if (form.hasScada === true) s3.push(`${LIST_BULLET}${c.s3.scada}`)
   if (form.hasMes === true) {
     const mn = str(form.mesName)
-    s3.push(mn ? `  • ${c.s3.mes}: ${mn}` : `  • ${c.s3.mes}`)
+    s3.push(mn ? `${LIST_BULLET}${c.s3.mes}: ${mn}` : `${LIST_BULLET}${c.s3.mes}`)
   }
   const mp = Array.isArray(form.mainProblems) ? (form.mainProblems as string[]) : []
   if (mp.length) {
@@ -129,12 +147,12 @@ function formatFormBlock(form: Record<string, unknown>, c: AssessmentCopy): stri
   // --- 4 ---
   const s4: string[] = []
   if (form.oeeTracked === true) {
-    s4.push(`  • ${c.s4.oeeQ}: ${c.s4.oeeYes}`)
+    s4.push(`${LIST_BULLET}${c.s4.oeeQ}: ${c.s4.oeeYes}`)
     const how = str(form.oeeHow)
     if (how === "manual") add(s4, c.s4.oeeHow, c.s4.oMan)
     else if (how === "system") add(s4, c.s4.oeeHow, c.s4.oSys)
   } else if (form.oeeTracked === false) {
-    s4.push(`  • ${c.s4.oeeQ}: ${c.s4.oeeNo}`)
+    s4.push(`${LIST_BULLET}${c.s4.oeeQ}: ${c.s4.oeeNo}`)
   }
   add(s4, c.s4.dPct, form.downtimePct)
   add(s4, c.s4.sPct, form.scrapPct)
@@ -267,7 +285,7 @@ function formatFormBlock(form: Record<string, unknown>, c: AssessmentCopy): stri
   if (form.infraEthernet === true) infra.push(c.s9.imEth)
   if (form.infraScada === true) infra.push(c.s9.imSc)
   if (infra.length) {
-    s9.push(`  • ${infra.join("; ")}`)
+    s9.push(`${LIST_BULLET}${infra.join("; ")}`)
   }
   const cr = Array.isArray(form.canRead) ? (form.canRead as string[]) : []
   if (cr.length) {
@@ -306,7 +324,7 @@ function formatFormBlock(form: Record<string, unknown>, c: AssessmentCopy): stri
     for (const [lk, ik] of pk) {
       const v = p[ik]
       if (v === undefined || v === null || v === "") continue
-      s10.push(`  • ${c.s10[lk]}: ${v} (${c.s10.oneToFive})`)
+      s10.push(`${LIST_BULLET}${c.s10[lk]}: ${v} (${c.s10.oneToFive})`)
     }
     flush(c.s10.title, s10)
   }
@@ -383,7 +401,9 @@ function formatScores(scores: unknown, c: AssessmentCopy): string[] {
     if (o.band === "LOW") band = c.bandLow
     else if (o.band === "MEDIUM") band = c.bandMedium
     else if (o.band === "HIGH") band = c.bandHigh
-    body.push(`  • ${c.opportunity}: ${o.points ?? "—"} ${c.points}${band ? ` — ${band}` : ""}`)
+    body.push(
+      `${LIST_BULLET}${c.opportunity}: ${o.points ?? "-"} ${c.points}${band ? ` - ${band}` : ""}`
+    )
   }
   const comp = s.complexity
   if (comp && typeof comp === "object") {
@@ -392,7 +412,9 @@ function formatScores(scores: unknown, c: AssessmentCopy): string[] {
     if (x.band === "S") band = c.complexityS
     else if (x.band === "M") band = c.complexityM
     else if (x.band === "L") band = c.complexityL
-    body.push(`  • ${c.complexity}: ${x.points ?? "—"} ${c.points}${band ? ` — ${band}` : ""}`)
+    body.push(
+      `${LIST_BULLET}${c.complexity}: ${x.points ?? "-"} ${c.points}${band ? ` - ${band}` : ""}`
+    )
   }
   if (body.length === 0) return []
   return ["", c.resultTitle, ...body]
@@ -408,7 +430,7 @@ function formatExtended(ext: Record<string, unknown>, locale: Locale): string[] 
       const v = str(ext[q.id])
       if (!v) continue
       const lab = tr(q.labelKey)
-      secLines.push(`  • ${lab}: ${v}`)
+      secLines.push(`${LIST_BULLET}${lab}: ${v}`)
     }
     if (secLines.length) {
       lines.push("")
@@ -426,7 +448,7 @@ export function assessmentPayloadToHumanText(payload: unknown, loc: Loc): string
   const L =
     loc === "bs"
       ? {
-          head: "Operonix — zahtjev za ponudu (sažetak upitnika)",
+          head: "Operonix Industrial - zahtjev za ponudu (sažetak upitnika)",
           submitted: "Vrijeme slanja",
           sendContact: "Kontakt pri slanju obrasca",
           email: "E-mail",
@@ -434,12 +456,10 @@ export function assessmentPayloadToHumanText(payload: unknown, loc: Loc): string
           phone: "Telefon",
           companyField: "Kompanija (iz obrasca)",
           formBlock: "Odgovori klijenta",
-          foot:
-            "Orijentacioni skor u tekstu ne zamjenjuje pisanu ponudu. " +
-            "Puni zapis upita nalazi se u Operonix aplikaciji (Super Admin → Upiti s weba).",
+          foot: "Sažetak je informativan; obvezujući je isključivo pisan odgovor tima Operonix Industrial.",
         }
       : {
-          head: "Operonix — quote request (questionnaire summary)",
+          head: "Operonix Industrial - quote request (questionnaire summary)",
           submitted: "Submitted at",
           sendContact: "Submit form contact",
           email: "E-mail",
@@ -447,13 +467,13 @@ export function assessmentPayloadToHumanText(payload: unknown, loc: Loc): string
           phone: "Phone",
           companyField: "Company (from form)",
           formBlock: "Client answers",
-          foot:
-            "The indicative score in this text does not replace a formal quote. " +
-            "The full request is stored in the Operonix app (Super Admin → Web inquiries).",
+          foot: "This summary is indicative; only a written response from Operonix Industrial is binding.",
         }
 
   if (!payload || typeof payload !== "object") {
-    return `${L.head}\n\n${String(payload ?? "")}\n\n${L.foot}`
+    return stripLegacyAssessmentLegalFootnotes(
+      `${L.head}\n\n${String(payload ?? "")}\n\n${L.foot}`
+    )
   }
 
   const p = payload as Record<string, unknown>
@@ -497,7 +517,8 @@ export function assessmentPayloadToHumanText(payload: unknown, loc: Loc): string
 
   out.push("")
   out.push(L.foot)
-  return out.filter((line, idx, arr) => !(line === "" && arr[idx - 1] === "")).join("\n")
+  const raw = out.filter((line, idx, arr) => !(line === "" && arr[idx - 1] === "")).join("\n")
+  return stripLegacyAssessmentLegalFootnotes(raw)
 }
 
 function pushContactLine(out: string[], label: string, v: unknown) {
