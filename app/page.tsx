@@ -2,6 +2,7 @@ import { ProductionPitchSection } from "@/components/landing/production-pitch-se
 import { LandingNoticeBar } from "@/components/landing/landing-notice-bar"
 import { Header } from "@/components/landing/header"
 import { Hero } from "@/components/landing/hero"
+import { IndustrialPositioningSection } from "@/components/landing/industrial-positioning-section"
 import { Modules } from "@/components/landing/modules"
 import { Automotive } from "@/components/landing/automotive"
 import { Solutions } from "@/components/landing/solutions"
@@ -38,6 +39,7 @@ export default async function Home({ searchParams }: HomeProps) {
       />
 
       <Hero messages={messages.hero} />
+      <IndustrialPositioningSection messages={messages.industrialPositioning} />
       <Modules messages={messages.modules} />
       <ScadaShowcase messages={messages.scada} />
       <Automotive messages={messages.automotive} />

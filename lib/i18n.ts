@@ -56,6 +56,30 @@ export type LegalArticlePageMessages = {
   }
 }
 
+export type IndustrialPositioningMessages = {
+  sectionLabel: string
+  title: string
+  lead: string
+  notReplacementTitle: string
+  notReplacementBody: string
+  contrastMostLabel: string
+  contrastMost: string
+  contrastOperonixLabel: string
+  contrastOperonix: string
+  layerTitle: string
+  diagramSourcesLabel: string
+  diagramSources: string[]
+  diagramCenter: string
+  diagramOutputsLabel: string
+  diagramOutputs: string[]
+  problemsTitle: string
+  problems: string[]
+  aiTitle: string
+  aiIntro: string
+  aiBullets: string[]
+  closing: string
+}
+
 type PrivacyPolicyMessages = {
   metaTitle: string
   metaDescription: string
@@ -244,6 +268,7 @@ export type Messages = {
     company: string
     links: FooterLinks
   }
+  industrialPositioning: IndustrialPositioningMessages
   privacyPolicy: PrivacyPolicyMessages
   termsOfService: LegalArticlePageMessages
   cookieSettings: LegalArticlePageMessages

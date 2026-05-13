@@ -120,6 +120,57 @@
       }
     ]
   },
+  "industrialPositioning": {
+    "sectionLabel": "Industrial operations",
+    "title": "An industrial operational system—not machine software alone",
+    "lead": "Operonix Industrial connects production, maintenance, quality, energy, and industrial data in one operational system. The practical outcomes are fewer stoppages, better quality, less scrap, clearer traceability, and more stable processes—without selling a replacement for your PLC or SCADA.",
+    "notReplacementTitle": "Built alongside your PLC and SCADA",
+    "notReplacementBody": "Operonix Industrial does not try to replace your PLC or your existing SCADA. It connects the line with production, maintenance, quality, energy, and business workflows—so teams share one industrial context instead of scattered tools and spreadsheets.",
+    "contrastMostLabel": "What many tools focus on",
+    "contrastMost": "Machine state, alarms, and single-variable trends. That is necessary on the floor, but it is only part of the story when deliveries slip or losses grow.",
+    "contrastOperonixLabel": "What Operonix Industrial focuses on",
+    "contrastOperonix": "The full industrial context: why output slips, where losses show up, what precedes scrap, and how maintenance, people, and energy interact with production—not just another temperature chart.",
+    "layerTitle": "One layer that ties plant sources to operations",
+    "diagramSourcesLabel": "Sources you already run",
+    "diagramSources": [
+      "PLC / SCADA",
+      "ERP",
+      "Sensors & telemetry",
+      "Quality records",
+      "Maintenance work"
+    ],
+    "diagramCenter": "OPERONIX INDUSTRIAL",
+    "diagramOutputsLabel": "Connected in one platform",
+    "diagramOutputs": [
+      "MES",
+      "OEE / OOE / TEEP",
+      "Quality",
+      "Maintenance",
+      "Energy",
+      "Analytics",
+      "Assisted insight"
+    ],
+    "problemsTitle": "Problems manufacturers recognise on day one",
+    "problems": [
+      "Unplanned downtime and recurring stoppages",
+      "Scrap and process drift",
+      "Energy spend without process context",
+      "Disconnected systems and manual Excel bridges",
+      "Weak traceability when issues escalate",
+      "Maintenance tasks without production context",
+      "Accountability split across departments"
+    ],
+    "aiTitle": "Assisted insight—after the data model is serious",
+    "aiIntro": "No buzzwords: when tenant, roles, and events are coherent, AI supports grounded operational questions—not a generic factory chatbot.",
+    "aiBullets": [
+      "Repeating stoppages and downtime patterns",
+      "Process deviation and shift-to-shift differences",
+      "Energy use against orders, lines, and recipes",
+      "Quality problems linked to time, batch, and events",
+      "Maintenance patterns that precede failure or scrap"
+    ],
+    "closing": "You are not buying a slide about technology. You are buying operational outcomes: less downtime, better quality, less waste, traceability you can defend, and processes that stay under control as complexity grows."
+  },
   "modules": {
     "sectionLabel": "Platform Modules",
     "title": "One platform. Complete control.",

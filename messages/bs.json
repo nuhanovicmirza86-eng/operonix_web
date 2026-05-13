@@ -120,6 +120,57 @@
       }
     ]
   },
+  "industrialPositioning": {
+    "sectionLabel": "Industrijsko poslovanje",
+    "title": "Industrijski operativni sistem—a ne samo softver za očitavanje stroja",
+    "lead": "Operonix Industrial povezuje proizvodnju, održavanje, kvalitet, energiju i industrijske podatke u jedan operativni sistem. Praktični ciljevi su manje zastoja, bolji kvalitet, manje škarta, jasnija sljedivost i stabilniji procesi—bez poruke da zamjenjujete PLC ili SCADA.",
+    "notReplacementTitle": "Radi uz vaš PLC i postojeći SCADA",
+    "notReplacementBody": "Operonix Industrial ne pokušava zamijeniti PLC niti vaš postojeći SCADA. Povezuje ono što se događa na liniji s proizvodnjom, održavanjem, kvalitetom, energijom i poslovnim procesima—da timovi dijele jedan industrijski kontekst umjesto rasutih alata i Excel mostova.",
+    "contrastMostLabel": "Na čemu mnogi sistemi staju",
+    "contrastMost": "Stanje mašine, alarmi i trend jedne varijable. To je nužno u hali, ali nije cijela priča kad kasnite s isporukom ili rastu gubici.",
+    "contrastOperonixLabel": "Šta Operonix Industrial gura naprijed",
+    "contrastOperonix": "Cijeli industrijski kontekst: zašto proizvodnja kasni, gdje nastaje gubitak, šta prethodi škartu i kako održavanje, ljudi i energija ulaze u proces—ne još jedan graf temperature.",
+    "layerTitle": "Jedan sloj od izvora u pogonu do operacije",
+    "diagramSourcesLabel": "Izvori koje već imate",
+    "diagramSources": [
+      "PLC / SCADA",
+      "ERP",
+      "Senzori i telemetrija",
+      "Kvalitet i evidencije",
+      "Održavanje"
+    ],
+    "diagramCenter": "OPERONIX INDUSTRIAL",
+    "diagramOutputsLabel": "Povezano u jednoj platformi",
+    "diagramOutputs": [
+      "MES",
+      "OEE / OOE / TEEP",
+      "Kvalitet",
+      "Održavanje",
+      "Energija",
+      "Analitika",
+      "Pomoć pri razumijevanju"
+    ],
+    "problemsTitle": "Problemi koje fabrike odmah prepoznaju",
+    "problems": [
+      "Planirani i neplanirani zastoji koji se ponavljaju",
+      "Škart i odstupanje procesa",
+      "Energija bez veze s recepturom i proizvodnjom",
+      "Nepovezani sistemi i ručni Excel",
+      "Slaba traceability kad problem eskalira",
+      "Održavanje bez konteksta proizvodnje",
+      "Odgovornost razvučena kroz odjeljenja"
+    ],
+    "aiTitle": "Pomoć pri razumijevanju—tek kad je model podataka ozbiljan",
+    "aiIntro": "Bez buzzworda: kad su tenant, uloge i događaji usklađeni, AI podržava konkretna operativna pitanja—ne generički chatbot za fabriku.",
+    "aiBullets": [
+      "Ponavljajući zastoji i obrasci prekida",
+      "Odstupanja procesa između smjena",
+      "Potrošnja energije u kontekstu naloga, linije i receptura",
+      "Kvalitativni problemi povezani s vremenom, serijom i događajima",
+      "Obrasci održavanja koji prethode kvaru ili škartu"
+    ],
+    "closing": "Ne kupujete slogan o tehnologiji. Kupujete operativne ishode: manje zastoja, bolji kvalitet, manje otpada, sljedivost koju možete braniti i proces koji ostaje pod kontrolom kako raste složenost."
+  },
   "modules": {
     "sectionLabel": "Moduli platforme",
     "title": "Jedna platforma. Potpuna kontrola.",
