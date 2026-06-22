@@ -123,7 +123,7 @@
   "industrialPositioning": {
     "sectionLabel": "Industrijsko poslovanje",
     "title": "Industrijski operativni sistem—a ne samo softver za očitavanje stroja",
-    "lead": "Operonix Industrial povezuje proizvodnju, održavanje, kvalitet, energiju i industrijske podatke u jedan operativni sistem. Praktični ciljevi su manje zastoja, bolji kvalitet, manje škarta, jasnija sljedivost i stabilniji procesi—bez poruke da zamjenjujete PLC ili SCADA.",
+    "lead": "Operonix Industrial povezuje proizvodnju, održavanje, kvalitet, energiju i industrijske podatke u jedan operativni sistem. Praktični ciljevi su manje zastoja, bolji kvalitet, manje škarta, jasnija sljedivost i stabilniji procesi.",
     "notReplacementTitle": "Radi uz vaš PLC i postojeći SCADA",
     "notReplacementBody": "Operonix Industrial ne pokušava zamijeniti PLC niti vaš postojeći SCADA. Povezuje ono što se događa na liniji s proizvodnjom, održavanjem, kvalitetom, energijom i poslovnim procesima—da timovi dijele jedan industrijski kontekst umjesto rasutih alata i Excel mostova.",
     "contrastMostLabel": "Na čemu mnogi sistemi staju",

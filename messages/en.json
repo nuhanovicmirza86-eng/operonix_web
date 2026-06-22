@@ -123,7 +123,7 @@
   "industrialPositioning": {
     "sectionLabel": "Industrial operations",
     "title": "An industrial operational system—not machine software alone",
-    "lead": "Operonix Industrial connects production, maintenance, quality, energy, and industrial data in one operational system. The practical outcomes are fewer stoppages, better quality, less scrap, clearer traceability, and more stable processes—without selling a replacement for your PLC or SCADA.",
+    "lead": "Operonix Industrial connects production, maintenance, quality, energy, and industrial data in one operational system. The practical outcomes are fewer stoppages, better quality, less scrap, clearer traceability, and more stable processes.",
     "notReplacementTitle": "Built alongside your PLC and SCADA",
     "notReplacementBody": "Operonix Industrial does not try to replace your PLC or your existing SCADA. It connects the line with production, maintenance, quality, energy, and business workflows—so teams share one industrial context instead of scattered tools and spreadsheets.",
     "contrastMostLabel": "What many tools focus on",
